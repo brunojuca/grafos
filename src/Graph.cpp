@@ -77,7 +77,6 @@ bool Graph::getWeightedNode()
     return this->weighted_node;
 }
 
-
 Node *Graph::getFirstNode()
 {
 
@@ -97,64 +96,53 @@ Node *Graph::getLastNode()
 */
 void Graph::insertNode(int id)
 {
-    
 }
 
 void Graph::insertEdge(int id, int target_id, float weight)
 {
-
-    
 }
 
-void Graph::removeNode(int id){ 
-    
+void Graph::removeNode(int id)
+{
 }
 
 bool Graph::searchNode(int id)
 {
-    
 }
 
 Node *Graph::getNode(int id)
 {
-
-    
 }
-
 
 //Function that prints a set of edges belongs breadth tree
 
-void Graph::breadthFirstSearch(ofstream &output_file){
-    
+void Graph::breadthFirstSearch(ofstream &output_file)
+{
 }
 
-
-
-float Graph::floydMarshall(int idSource, int idTarget){
-    
+float Graph::floydMarshall(int idSource, int idTarget)
+{
 }
 
-   
-
-float Graph::dijkstra(int idSource, int idTarget){
-    
+float Graph::dijkstra(int idSource, int idTarget)
+{
 }
 
 //function that prints a topological sorting
-void topologicalSorting(){
-
+void topologicalSorting()
+{
 }
 
-void breadthFirstSearch(ofstream& output_file){
-
+void breadthFirstSearch(ofstream &output_file)
+{
 }
-Graph* getVertexInduced(int* listIdNodes){
-
+Graph *getVertexInduced(int *listIdNodes)
+{
 }
 
-Graph* agmKuskal(){
-
+Graph *agmKuskal()
+{
 }
-Graph* agmPrim(){
-
+Graph *agmPrim()
+{
 }
