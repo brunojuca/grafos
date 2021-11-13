@@ -94,24 +94,94 @@ Node *Graph::getLastNode()
     The outdegree attribute of nodes is used as a counter for the number of edges in the graph.
     This allows the correct updating of the numbers of edges in the graph being directed or not.
 */
-void Graph::insertNode(int id)
+
+/**
+ * @brief Insert a new node into Graph and returns a pointer to the created node
+ * 
+ * @param id New node id
+ * @param weight New node weight
+ * @return Node* 
+ */
+Node *Graph::insertNode(int id, float weight)
 {
+    Node *newNode = new Node(id, weight);
+
+    if (this->getFirstNode() == nullptr)
+        this->first_node = this->last_node = newNode; // TODO Decide if we are gonna make setters
+
+    else
+    {
+        this->getLastNode()->setNextNode(newNode);
+        this->last_node = newNode;
+    }
+    
+    return newNode;
 }
 
 void Graph::insertEdge(int id, int target_id, float weight)
 {
+    Node *source_node = this->getNode(id);
+    Node *target_node = this->getNode(target_id);
+
+    // If Graph does not have source node
+    if (source_node == nullptr)
+        source_node = this->insertNode(id);
+    
+    // If Graph does not have target node
+    if (target_node == nullptr)
+        target_node = this->insertNode(target_id);
+
+    source_node->insertEdge(target_id, weight);
+    target_node->insertEdge(id, weight);
 }
 
 void Graph::removeNode(int id)
 {
 }
 
+/**
+ * @brief Search node by Id. Returns true if node exists already.
+ * 
+ * @param id 
+ * @return true 
+ * @return false 
+ */
 bool Graph::searchNode(int id)
 {
+    Node *node = this->getFirstNode();
+
+    if (node == nullptr)
+        return false;
+
+    while (node != nullptr)
+    {
+        if (node->getId() == id)
+            return true;
+        node = node->getNextNode();
+    }
+    return false;
 }
 
+/**
+ * @brief Search and get node by Id. Returns a pointer to the node or nullptr if not found.
+ * 
+ * @param id 
+ * @return Node* 
+ */
 Node *Graph::getNode(int id)
 {
+    Node *node = this->getFirstNode();
+
+    if (node == nullptr)
+        return nullptr;
+
+    while (node != nullptr)
+    {
+        if (node->getId() == id)
+            return node;
+        node = node->getNextNode();
+    }
+    return nullptr;
 }
 
 //Function that prints a set of edges belongs breadth tree

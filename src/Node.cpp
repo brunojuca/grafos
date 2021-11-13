@@ -9,13 +9,13 @@ using namespace std;
 **************************************************************************************************/
 
 // Constructor
-Node::Node(int id)
+Node::Node(int id, float weight)
 {
 
     this->id = id;
     this->in_degree = 0;
     this->out_degree = 0;
-    this->weight = 0;
+    this->weight = weight;
     this->first_edge = nullptr;
     this->last_edge = nullptr;
     this->next_node = nullptr;
@@ -94,11 +94,19 @@ void Node::setWeight(float weight)
 }
 
 // Other methods
+
+/**
+ * @brief Insert new edge into the node's adjacency list
+ * 
+ * @param target_id Target node id
+ * @param weight Weight of edge
+ */
 void Node::insertEdge(int target_id, float weight)
 {
     // Verifies whether there are at least one edge in the node
     if (this->first_edge != nullptr)
     {
+        // Has one or more nodes
         // Allocating the new edge and keeping the integrity of the edge list
         Edge *edge = new Edge(target_id);
         edge->setWeight(weight);
@@ -107,6 +115,7 @@ void Node::insertEdge(int target_id, float weight)
     }
     else
     {
+        // Does not have any node
         // Allocating the new edge and keeping the integrity of the edge list
         this->first_edge = new Edge(target_id);
         this->first_edge->setWeight(weight);

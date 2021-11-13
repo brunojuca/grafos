@@ -85,10 +85,9 @@ Graph *leituraInstancia(ifstream &input_file, int directed, int weightedEdge, in
     int idNodeSource;
     int idNodeTarget;
     int order;
-    int numEdges;
 
     //Pegando a ordem do grafo
-    input_file >> order >> numEdges;
+    input_file >> order;
 
     //Criando objeto grafo
     Graph *graph = new Graph(order, directed, weightedEdge, weightedNode);
@@ -96,8 +95,7 @@ Graph *leituraInstancia(ifstream &input_file, int directed, int weightedEdge, in
     //Leitura de arquivo
     while (input_file >> idNodeSource >> idNodeTarget)
     {
-
-        graph->insertEdge(idNodeSource, idNodeTarget, 0);
+        graph->insertEdge(idNodeSource, idNodeTarget);
     }
 
     return graph;
@@ -206,6 +204,28 @@ int mainMenu(ofstream &output_file, Graph *graph)
     }
 
     return 0;
+}
+
+void printGraph(Graph *graph)
+{
+    cout << "Graph Adjacency List" << endl
+         << endl;
+    Node *node = graph->getFirstNode();
+    Edge *edge;
+
+    while (node != nullptr)
+    {
+        edge = node->getFirstEdge();
+
+        cout << "Id: " << node->getId() << "\tEdges: ";
+        while (edge != nullptr)
+        {
+            cout << edge->getTargetId() << " ";
+            edge = edge->getNextEdge();
+        }
+        cout << endl;
+        node = node->getNextNode();
+    }
 }
 
 int main(int argc, char const *argv[])

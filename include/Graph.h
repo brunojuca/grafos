@@ -38,8 +38,8 @@ public:
     Node *getFirstNode();
     Node *getLastNode();
     //Other methods
-    void insertNode(int id);
-    void insertEdge(int id, int target_id, float weight);
+    Node *insertNode(int id, float weight = 1);
+    void insertEdge(int id, int target_id, float weight = 1);
     void removeNode(int id);
     bool searchNode(int id);
     Node *getNode(int id);
