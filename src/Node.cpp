@@ -22,19 +22,7 @@ Node::Node(int id, float weight)
 };
 
 // Destructor
-Node::~Node()
-{
-
-    Edge *next_edge = this->first_edge;
-
-    while (next_edge != nullptr)
-    {
-
-        Edge *aux_edge = next_edge->getNextEdge();
-        delete next_edge;
-        next_edge = aux_edge;
-    }
-};
+Node::~Node(){};
 
 // Getters
 Edge *Node::getFirstEdge()
@@ -126,18 +114,11 @@ void Node::insertEdge(int target_id, float weight)
 void Node::removeAllEdges()
 {
     // Verifies whether there are at least one edge in the node
-    if (this->first_edge != nullptr)
+    while (this->first_edge != nullptr)
     {
-
-        Edge *next = nullptr;
-        Edge *aux = this->first_edge;
-        // Removing all edges of the node
-        while (aux != nullptr)
-        {
-
-            next = aux->getNextEdge();
-            delete aux;
-        }
+        Edge *aux = this->first_edge->getNextEdge();
+        delete this->first_edge;
+        this->first_edge = aux;
     }
 
     this->first_edge = this->last_edge = nullptr;

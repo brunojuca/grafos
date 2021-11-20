@@ -1,6 +1,6 @@
-#include "Graph.h"
-#include "Node.h"
-#include "Edge.h"
+#include "../include/Graph.h"
+#include "../include/Node.h"
+#include "../include/Edge.h"
 #include <iostream>
 #include <fstream>
 #include <stack>
@@ -11,6 +11,10 @@
 #include <ctime>
 #include <float.h>
 #include <iomanip>
+#include <deque>
+#include <vector>
+#include <map>
+#include <algorithm>
 
 using namespace std;
 
@@ -108,13 +112,14 @@ Node *Graph::insertNode(int id, float weight)
 
     if (this->getFirstNode() == nullptr)
         this->first_node = this->last_node = newNode; // TODO Decide if we are gonna make setters
-
     else
     {
         this->getLastNode()->setNextNode(newNode);
         this->last_node = newNode;
     }
-    
+
+    this->nodesMap[id] = newNode;
+
     return newNode;
 }
 
@@ -126,13 +131,14 @@ void Graph::insertEdge(int id, int target_id, float weight)
     // If Graph does not have source node
     if (source_node == nullptr)
         source_node = this->insertNode(id);
-    
     // If Graph does not have target node
     if (target_node == nullptr)
         target_node = this->insertNode(target_id);
 
     source_node->insertEdge(target_id, weight);
-    target_node->insertEdge(id, weight);
+    if (!directed)
+        target_node->insertEdge(id, weight);
+    this->number_edges++;
 }
 
 void Graph::removeNode(int id)
@@ -148,18 +154,7 @@ void Graph::removeNode(int id)
  */
 bool Graph::searchNode(int id)
 {
-    Node *node = this->getFirstNode();
-
-    if (node == nullptr)
-        return false;
-
-    while (node != nullptr)
-    {
-        if (node->getId() == id)
-            return true;
-        node = node->getNextNode();
-    }
-    return false;
+    return nodesMap[id] != nullptr;
 }
 
 /**
@@ -170,18 +165,7 @@ bool Graph::searchNode(int id)
  */
 Node *Graph::getNode(int id)
 {
-    Node *node = this->getFirstNode();
-
-    if (node == nullptr)
-        return nullptr;
-
-    while (node != nullptr)
-    {
-        if (node->getId() == id)
-            return node;
-        node = node->getNextNode();
-    }
-    return nullptr;
+    return nodesMap[id];
 }
 
 //Function that prints a set of edges belongs breadth tree
@@ -199,20 +183,100 @@ float Graph::dijkstra(int idSource, int idTarget)
 }
 
 //function that prints a topological sorting
-void topologicalSorting()
+void Graph::topologicalSorting()
 {
 }
 
-void breadthFirstSearch(ofstream &output_file)
+Graph *Graph::transitiveClosure(int id)
+{
+    if(this->getFirstNode() == nullptr || this->getNode(id) == nullptr)
+        return nullptr;
+    
+    Node *node = this->getNode(id);
+    deque<int> nodesList;
+    auxTransitiveClosure(node, nodesList);
+    Graph *newGraph = new Graph(nodesList.size(), this->directed, this->weighted_edge, this->weighted_node);
+    for (int nodeId : nodesList)
+    {
+        Node *oldNode = this->getNode(nodeId);
+        Node *newNode;
+
+        if (!newGraph->searchNode(nodeId))
+            newNode = newGraph->insertNode(nodeId, node->getWeight());
+        else
+            newNode = newGraph->getNode(nodeId);
+        for (Edge *edge = oldNode->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
+        {
+            if (!newGraph->searchNode(edge->getTargetId()))
+                newGraph->insertNode(edge->getTargetId(), this->getNode(edge->getTargetId())->getWeight());
+            newNode->insertEdge(edge->getTargetId(), edge->getWeight());
+            newGraph->number_edges++;
+        }
+    }
+
+    return newGraph;
+}
+
+void Graph::auxTransitiveClosure(Node *node, deque<int> &nodesList)
+{
+    for (Edge *edge = node->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
+    {
+        if (find(nodesList.begin(), nodesList.end(), edge->getTargetId()) == nodesList.end())
+        {
+            nodesList.push_back(edge->getTargetId());
+            auxTransitiveClosure(getNode(edge->getTargetId()), nodesList);
+        }
+    }
+}
+
+Graph *Graph::agmKuskal()
 {
 }
-Graph *getVertexInduced(int *listIdNodes)
+Graph *Graph::agmPrim()
 {
 }
 
-Graph *agmKuskal()
+/**
+ * @brief Function that generates a .dot file that can be used to generate a image of the graph using Graphviz
+ * 
+ * @param nome 
+ */
+void Graph::generateDot(string nome)
 {
-}
-Graph *agmPrim()
-{
+	ofstream dot_file("DOTs/" + nome + ".dot", ios::out);
+	string edgeType;
+	if (getDirected())
+	{
+		dot_file << "digraph { " << endl;
+		edgeType = "->";
+	}
+	else
+	{
+		dot_file << "graph {" << endl;
+		edgeType = "--";
+	}
+
+	dot_file << "   overlap=false; layout=neato; splines=true;" << endl;
+	dot_file << endl
+		   << "   node [shape=box, style=filled, fillcolor=lightblue]" << endl;
+	dot_file << endl
+		   << "   edge [color=blue, len=20.0, fontsize=20, fontcolor=darkblue]\n"
+		   << endl;
+
+	for (Node *node = first_node; node != nullptr; node = node->getNextNode())
+	{
+        dot_file << "   " << node->getId() << endl;
+		for (Edge *edge = node->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
+		{
+			if (getWeightedEdge())
+				dot_file << "   " << node->getId() << edgeType << edge->getTargetId() << " [label=\"" << edge->getWeight() << "\"]" << endl;
+			else
+				dot_file << "   " << node->getId() << edgeType << edge->getTargetId() << endl;
+		}
+	}
+
+	dot_file << "}";
+	dot_file.close();
+
+    system(string("dot -Tpng ./DOTs/" + nome + ".dot -o output/" + nome + ".png").c_str());
 }

@@ -8,6 +8,7 @@
 #include <fstream>
 #include <stack>
 #include <list>
+#include <map>
 
 using namespace std;
 
@@ -23,6 +24,7 @@ private:
     bool weighted_node;
     Node *first_node;
     Node *last_node;
+    map<int, Node*> nodesMap;
 
 public:
     //Constructor
@@ -47,7 +49,7 @@ public:
     //methods phase1
     void topologicalSorting();
     void breadthFirstSearch(ofstream &output_file);
-    Graph *getVertexInduced(int *listIdNodes);
+    Graph *transitiveClosure(int id);
     Graph *agmKuskal();
     Graph *agmPrim();
     float floydMarshall(int idSource, int idTarget);
@@ -58,8 +60,12 @@ public:
     float greedRandom();
     float greedRactiveRandom();
 
+    void generateDot(string nome);
 private:
     //Auxiliar methods
+    void auxTransitiveClosure(Node *node, deque<int>& nodesList);
+
+
 };
 
 #endif // GRAPH_H_INCLUDED
