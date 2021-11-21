@@ -14,6 +14,7 @@
 #include <deque>
 #include <vector>
 #include <map>
+#include <unordered_set>
 #include <algorithm>
 
 using namespace std;
@@ -187,14 +188,20 @@ void Graph::topologicalSorting()
 {
 }
 
-Graph *Graph::transitiveClosure(int id)
+/**
+ * @brief Function that return a vertex-induced subgraphby the direct transitive closure of the given vertex
+ * 
+ * @param id 
+ * @return Graph* 
+ */
+Graph *Graph::directTransitiveClosure(int id)
 {
-    if(this->getFirstNode() == nullptr || this->getNode(id) == nullptr)
+    if (this->getFirstNode() == nullptr || this->getNode(id) == nullptr)
         return nullptr;
-    
+
     Node *node = this->getNode(id);
     deque<int> nodesList;
-    auxTransitiveClosure(node, nodesList);
+    this->auxDirectTransitiveClosure(node, nodesList);
     Graph *newGraph = new Graph(nodesList.size(), this->directed, this->weighted_edge, this->weighted_node);
     for (int nodeId : nodesList)
     {
@@ -202,29 +209,101 @@ Graph *Graph::transitiveClosure(int id)
         Node *newNode;
 
         if (!newGraph->searchNode(nodeId))
-            newNode = newGraph->insertNode(nodeId, node->getWeight());
+            newNode = newGraph->insertNode(nodeId, oldNode->getWeight());
         else
             newNode = newGraph->getNode(nodeId);
         for (Edge *edge = oldNode->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
         {
-            if (!newGraph->searchNode(edge->getTargetId()))
-                newGraph->insertNode(edge->getTargetId(), this->getNode(edge->getTargetId())->getWeight());
-            newNode->insertEdge(edge->getTargetId(), edge->getWeight());
-            newGraph->number_edges++;
+            if (find(nodesList.begin(), nodesList.end(), edge->getTargetId()) != nodesList.end())
+            {
+                if (!newGraph->searchNode(edge->getTargetId()))
+                    newGraph->insertNode(edge->getTargetId(), this->getNode(edge->getTargetId())->getWeight());
+                newNode->insertEdge(edge->getTargetId(), edge->getWeight());
+                newGraph->number_edges++;
+            }
         }
     }
+
+    if(!newGraph->searchNode(id))
+        newGraph->insertNode(id, this->getNode(id)->getWeight());
 
     return newGraph;
 }
 
-void Graph::auxTransitiveClosure(Node *node, deque<int> &nodesList)
+/**
+ * @brief Auxiliar function to directTransitiveClosure function
+ * 
+ * @param node 
+ * @param nodesList 
+ */
+void Graph::auxDirectTransitiveClosure(Node *node, deque<int> &nodesList)
 {
     for (Edge *edge = node->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
     {
         if (find(nodesList.begin(), nodesList.end(), edge->getTargetId()) == nodesList.end())
         {
             nodesList.push_back(edge->getTargetId());
-            auxTransitiveClosure(getNode(edge->getTargetId()), nodesList);
+            this->auxDirectTransitiveClosure(getNode(edge->getTargetId()), nodesList);
+        }
+    }
+}
+
+Graph *Graph::indirectTransitiveClosure(int id)
+{
+    if (this->getFirstNode() == nullptr || this->getNode(id) == nullptr)
+        return nullptr;
+
+    unordered_set<int> nodesList;
+    vector<int> visited;
+
+    for (pair<int, Node *> nodePair : nodesMap)
+        if(nodePair.first != id)
+            auxIndirectTransitiveClosure(nodePair.second, id, nodePair.second->getId(), nodesList, visited);
+
+    Graph *newGraph = new Graph(nodesList.size(), this->directed, this->weighted_edge, this->weighted_node);
+
+    if(!newGraph->searchNode(id))
+        newGraph->insertNode(id, this->getNode(id)->getWeight());
+    
+    for (int nodeId : nodesList)
+    {
+        Node *oldNode = this->getNode(nodeId);
+        Node *newNode;
+
+        if (!newGraph->searchNode(nodeId))
+            newNode = newGraph->insertNode(nodeId, oldNode->getWeight());
+        else
+            newNode = newGraph->getNode(nodeId);
+        for (Edge *edge = oldNode->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
+        {
+            if (find(nodesList.begin(), nodesList.end(), edge->getTargetId()) != nodesList.end() || edge->getTargetId() == id)
+            {
+                if (!newGraph->searchNode(edge->getTargetId()))
+                    newGraph->insertNode(edge->getTargetId(), this->getNode(edge->getTargetId())->getWeight());
+                newNode->insertEdge(edge->getTargetId(), edge->getWeight());
+                newGraph->number_edges++;
+            }
+        }
+    }
+
+
+    return newGraph;
+}
+
+void Graph::auxIndirectTransitiveClosure(Node *node, int &targetId, int startNode, unordered_set<int> &nodesList, vector<int> &visited)
+{
+    visited.push_back(node->getId());
+    if (node->getId() == targetId)
+    {
+        nodesList.insert(startNode);
+        return;
+    }
+    else
+    {
+        for (Edge *edge = node->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
+        {
+            if (find(visited.begin(), visited.end(), edge->getTargetId()) == visited.end() || edge->getTargetId() == targetId)
+                this->auxIndirectTransitiveClosure(this->getNode(edge->getTargetId()), targetId, startNode, nodesList, visited);
         }
     }
 }
@@ -243,40 +322,40 @@ Graph *Graph::agmPrim()
  */
 void Graph::generateDot(string nome)
 {
-	ofstream dot_file("DOTs/" + nome + ".dot", ios::out);
-	string edgeType;
-	if (getDirected())
-	{
-		dot_file << "digraph { " << endl;
-		edgeType = "->";
-	}
-	else
-	{
-		dot_file << "graph {" << endl;
-		edgeType = "--";
-	}
+    ofstream dot_file("DOTs/" + nome + ".dot", ios::out);
+    string edgeType;
+    if (getDirected())
+    {
+        dot_file << "digraph { " << endl;
+        edgeType = "->";
+    }
+    else
+    {
+        dot_file << "graph {" << endl;
+        edgeType = "--";
+    }
 
-	dot_file << "   overlap=false; layout=neato; splines=true;" << endl;
-	dot_file << endl
-		   << "   node [shape=box, style=filled, fillcolor=lightblue]" << endl;
-	dot_file << endl
-		   << "   edge [color=blue, len=20.0, fontsize=20, fontcolor=darkblue]\n"
-		   << endl;
+    dot_file << "   overlap=false; layout=neato; splines=true;" << endl;
+    dot_file << endl
+             << "   node [shape=box, style=filled, fillcolor=lightblue]" << endl;
+    dot_file << endl
+             << "   edge [color=blue, len=20.0, fontsize=20, fontcolor=darkblue]\n"
+             << endl;
 
-	for (Node *node = first_node; node != nullptr; node = node->getNextNode())
-	{
+    for (Node *node = first_node; node != nullptr; node = node->getNextNode())
+    {
         dot_file << "   " << node->getId() << endl;
-		for (Edge *edge = node->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
-		{
-			if (getWeightedEdge())
-				dot_file << "   " << node->getId() << edgeType << edge->getTargetId() << " [label=\"" << edge->getWeight() << "\"]" << endl;
-			else
-				dot_file << "   " << node->getId() << edgeType << edge->getTargetId() << endl;
-		}
-	}
+        for (Edge *edge = node->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
+        {
+            if (getWeightedEdge())
+                dot_file << "   " << node->getId() << edgeType << edge->getTargetId() << " [label=\"" << edge->getWeight() << "\"]" << endl;
+            else
+                dot_file << "   " << node->getId() << edgeType << edge->getTargetId() << endl;
+        }
+    }
 
-	dot_file << "}";
-	dot_file.close();
+    dot_file << "}";
+    dot_file.close();
 
     system(string("dot -Tpng ./DOTs/" + nome + ".dot -o output/" + nome + ".png").c_str());
 }

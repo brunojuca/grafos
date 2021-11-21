@@ -9,6 +9,8 @@
 #include <stack>
 #include <list>
 #include <map>
+#include <vector>
+#include <unordered_set>
 
 using namespace std;
 
@@ -24,7 +26,7 @@ private:
     bool weighted_node;
     Node *first_node;
     Node *last_node;
-    map<int, Node*> nodesMap;
+    map<int, Node *> nodesMap;
 
 public:
     //Constructor
@@ -49,7 +51,8 @@ public:
     //methods phase1
     void topologicalSorting();
     void breadthFirstSearch(ofstream &output_file);
-    Graph *transitiveClosure(int id);
+    Graph *directTransitiveClosure(int id);
+    Graph *indirectTransitiveClosure(int id);
     Graph *agmKuskal();
     Graph *agmPrim();
     float floydMarshall(int idSource, int idTarget);
@@ -61,11 +64,11 @@ public:
     float greedRactiveRandom();
 
     void generateDot(string nome);
+
 private:
     //Auxiliar methods
-    void auxTransitiveClosure(Node *node, deque<int>& nodesList);
-
-
+    void auxDirectTransitiveClosure(Node *node, deque<int> &nodesList);
+    void auxIndirectTransitiveClosure(Node *node, int &targetId, int startNode, unordered_set<int> &nodesList, vector<int> &visited);
 };
 
 #endif // GRAPH_H_INCLUDED

@@ -13,15 +13,19 @@ int main()
     grafo.insertNode(3, 0);
     grafo.insertNode(5, 0);
     grafo.insertNode(0, 0);
+    grafo.insertNode(6, 0);
 
-    grafo.insertEdge(1, 2, 0);
     grafo.insertEdge(1, 0, 0);
-    grafo.insertEdge(1, 3, 0);
-    grafo.insertEdge(3, 2, 0);
-    grafo.insertEdge(3, 5, 0);
+    grafo.insertEdge(2, 0, 0);
+    grafo.insertEdge(3, 0, 0);
+    grafo.insertEdge(4, 0, 0);
+    grafo.insertEdge(5, 0, 0);
 
-    grafo.generateDot("teste");
-    Graph *newGraph = grafo.transitiveClosure(2);
+    grafo.generateDot("Grafo_Original");
 
-    newGraph->generateDot("Teste_transitive_closure");
+    Graph *newGraph = grafo.directTransitiveClosure(0);
+    newGraph->generateDot("Teste_direct_transitive_closure");
+    
+    newGraph = grafo.indirectTransitiveClosure(0);
+    newGraph->generateDot("Teste_indirect_transitive_closure");
 }
