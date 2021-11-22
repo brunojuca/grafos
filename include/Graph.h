@@ -31,6 +31,7 @@ private:
 public:
     //Constructor
     Graph(int order, bool directed, bool weighted_edge, bool weighted_node);
+    Graph(bool directed, bool weighted_edge, bool weighted_node);
     //Destructor
     ~Graph();
     //Getters
@@ -50,7 +51,7 @@ public:
 
     //methods phase1
     void topologicalSorting();
-    void breadthFirstSearch(ofstream &output_file);
+    Graph *breadthFirstSearch(int id);
     Graph *directTransitiveClosure(int id);
     Graph *indirectTransitiveClosure(int id);
     Graph *agmKuskal();
@@ -64,6 +65,7 @@ public:
     float greedRactiveRandom();
 
     void generateDot(string nome);
+    void generateDot(string nome, string layout);
 
 private:
     //Auxiliar methods

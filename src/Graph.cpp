@@ -14,6 +14,7 @@
 #include <deque>
 #include <vector>
 #include <map>
+#include <queue>
 #include <unordered_set>
 #include <algorithm>
 
@@ -26,8 +27,17 @@ using namespace std;
 // Constructor
 Graph::Graph(int order, bool directed, bool weighted_edge, bool weighted_node)
 {
-
     this->order = order;
+    this->directed = directed;
+    this->weighted_edge = weighted_edge;
+    this->weighted_node = weighted_node;
+    this->first_node = this->last_node = nullptr;
+    this->number_edges = 0;
+}
+
+Graph::Graph(bool directed, bool weighted_edge, bool weighted_node)
+{
+    this->order = 0;
     this->directed = directed;
     this->weighted_edge = weighted_edge;
     this->weighted_node = weighted_node;
@@ -171,8 +181,36 @@ Node *Graph::getNode(int id)
 
 //Function that prints a set of edges belongs breadth tree
 
-void Graph::breadthFirstSearch(ofstream &output_file)
+Graph *Graph::breadthFirstSearch(int id)
 {
+    vector<bool> visited(this->order, false);
+
+    queue<int> q;
+
+    q.push(id);
+    visited[id] = true;
+
+    Graph *newGraph = new Graph(this->directed, this->weighted_edge, this->weighted_node);
+    newGraph->insertNode(id, this->getNode(id)->getWeight());
+
+    while (!q.empty())
+    {
+        id = q.front();
+        q.pop();
+
+        for (Edge *edge = this->getNode(id)->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
+        {
+            if (!visited[edge->getTargetId()])
+            {
+                newGraph->insertNode(edge->getTargetId(), this->getNode(edge->getTargetId())->getWeight());
+                newGraph->insertEdge(id, edge->getTargetId(), edge->getWeight());
+                visited[edge->getTargetId()] = true;
+                q.push(edge->getTargetId());
+            }
+        }
+    }
+
+    return newGraph;
 }
 
 float Graph::floydMarshall(int idSource, int idTarget)
@@ -224,7 +262,7 @@ Graph *Graph::directTransitiveClosure(int id)
         }
     }
 
-    if(!newGraph->searchNode(id))
+    if (!newGraph->searchNode(id))
         newGraph->insertNode(id, this->getNode(id)->getWeight());
 
     return newGraph;
@@ -257,14 +295,14 @@ Graph *Graph::indirectTransitiveClosure(int id)
     vector<int> visited;
 
     for (pair<int, Node *> nodePair : nodesMap)
-        if(nodePair.first != id)
+        if (nodePair.first != id)
             auxIndirectTransitiveClosure(nodePair.second, id, nodePair.second->getId(), nodesList, visited);
 
     Graph *newGraph = new Graph(nodesList.size(), this->directed, this->weighted_edge, this->weighted_node);
 
-    if(!newGraph->searchNode(id))
+    if (!newGraph->searchNode(id))
         newGraph->insertNode(id, this->getNode(id)->getWeight());
-    
+
     for (int nodeId : nodesList)
     {
         Node *oldNode = this->getNode(nodeId);
@@ -285,7 +323,6 @@ Graph *Graph::indirectTransitiveClosure(int id)
             }
         }
     }
-
 
     return newGraph;
 }
@@ -322,6 +359,17 @@ Graph *Graph::agmPrim()
  */
 void Graph::generateDot(string nome)
 {
+    this->generateDot(nome, "dot");
+}
+
+/**
+ * @brief Function that generates a .dot file that can be used to generate a image of the graph using Graphviz
+ * 
+ * @param nome 
+ * @param layout 
+ */
+void Graph::generateDot(string nome, string layout)
+{
     ofstream dot_file("DOTs/" + nome + ".dot", ios::out);
     string edgeType;
     if (getDirected())
@@ -335,7 +383,7 @@ void Graph::generateDot(string nome)
         edgeType = "--";
     }
 
-    dot_file << "   overlap=false; layout=neato; splines=true;" << endl;
+    dot_file << "   overlap=false; layout=\"" + layout + "\"; splines=true;" << endl;
     dot_file << endl
              << "   node [shape=box, style=filled, fillcolor=lightblue]" << endl;
     dot_file << endl

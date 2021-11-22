@@ -5,7 +5,7 @@
 
 int main()
 {
-    Graph grafo(4, false, false, false);
+    Graph grafo(7, true, false, false);
 
     grafo.insertNode(4, 0);
     grafo.insertNode(1, 0);
@@ -28,4 +28,26 @@ int main()
     
     newGraph = grafo.indirectTransitiveClosure(0);
     newGraph->generateDot("Teste_indirect_transitive_closure");
+    
+    Graph grafo2(7, true, false, false);
+
+    grafo2.insertNode(0, 0);
+    grafo2.insertNode(1, 0);
+    grafo2.insertNode(2, 0);
+    grafo2.insertNode(3, 0);
+    grafo2.insertNode(4, 0);
+    grafo2.insertNode(5, 0);
+    grafo2.insertNode(6, 0);
+
+    grafo2.insertEdge(0, 1, 0);
+    grafo2.insertEdge(0, 2, 0);
+    grafo2.insertEdge(0, 3, 0);
+    grafo2.insertEdge(1, 2, 0);
+    grafo2.insertEdge(4, 1, 0);
+    grafo2.insertEdge(2, 5, 0);
+    grafo2.insertEdge(5, 4, 0);
+
+    grafo2.generateDot("grafo2");
+
+    grafo2.breadthFirstSearch(0)->generateDot("grafo2_BFS");
 }
