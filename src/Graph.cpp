@@ -184,6 +184,7 @@ Node *Graph::getNode(int id)
 Graph *Graph::breadthFirstSearch(int id)
 {
     vector<bool> visited(this->order, false);
+    vector<bool> completed(this->order, false);
 
     queue<int> q;
 
@@ -199,7 +200,8 @@ Graph *Graph::breadthFirstSearch(int id)
     {
         id = q.front();
         q.pop();
-
+        cout << id << endl;
+        completed[id] = true;
         for (Edge *edge = this->getNode(id)->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
         {
             if (!visited[edge->getTargetId()])
@@ -210,7 +212,15 @@ Graph *Graph::breadthFirstSearch(int id)
                 q.push(edge->getTargetId());
             }
             else
-                back_edges.push_back(make_tuple(id, edge->getTargetId(), edge->getWeight()));
+            {
+                if (!newGraph->getDirected())
+                {
+                    if (!completed[edge->getTargetId()])
+                        back_edges.push_back(make_tuple(id, edge->getTargetId(), edge->getWeight()));
+                }
+                else
+                    back_edges.push_back(make_tuple(id, edge->getTargetId(), edge->getWeight()));
+            }
         }
     }
 
