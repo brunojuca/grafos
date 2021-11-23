@@ -64,8 +64,7 @@ public:
     float greedRandom();
     float greedRactiveRandom();
 
-    void generateDot(string nome);
-    void generateDot(string nome, string layout);
+    void generateDot(string nome, string layout="dot");
 
 private:
     //Auxiliar methods

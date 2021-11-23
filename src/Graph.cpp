@@ -193,6 +193,8 @@ Graph *Graph::breadthFirstSearch(int id)
     Graph *newGraph = new Graph(this->directed, this->weighted_edge, this->weighted_node);
     newGraph->insertNode(id, this->getNode(id)->getWeight());
 
+    vector<tuple<int, int, int>> back_edges;
+
     while (!q.empty())
     {
         id = q.front();
@@ -207,8 +209,55 @@ Graph *Graph::breadthFirstSearch(int id)
                 visited[edge->getTargetId()] = true;
                 q.push(edge->getTargetId());
             }
+            else
+                back_edges.push_back(make_tuple(id, edge->getTargetId(), edge->getWeight()));
         }
     }
+
+    ofstream dot_file("DOTs/BFS_with_back_edges.dot", ios::out);
+    string edgeType;
+    if (getDirected())
+    {
+        dot_file << "digraph { " << endl;
+        edgeType = "->";
+    }
+    else
+    {
+        dot_file << "graph {" << endl;
+        edgeType = "--";
+    }
+
+    dot_file << "   overlap=false; layout=neato; splines=true;" << endl;
+    dot_file << endl
+             << "   node [shape=box, style=filled, fillcolor=lightblue]" << endl;
+    dot_file << endl
+             << "   edge [color=blue, len=20.0, fontsize=20, fontcolor=darkblue]\n"
+             << endl;
+
+    for (Node *node = newGraph->getFirstNode(); node != nullptr; node = node->getNextNode())
+    {
+        dot_file << "   " << node->getId() << endl;
+        for (Edge *edge = node->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
+        {
+            if (getWeightedEdge())
+                dot_file << "   " << node->getId() << edgeType << edge->getTargetId() << " [label=\"" << edge->getWeight() << "\"]" << endl;
+            else
+                dot_file << "   " << node->getId() << edgeType << edge->getTargetId() << endl;
+        }
+    }
+
+    for (auto edge : back_edges)
+    {
+        if (getWeightedEdge())
+            dot_file << "   " << get<0>(edge) << edgeType << get<1>(edge) << " [label=\"" << get<2>(edge) << "\", color=\"red\"]" << endl;
+        else
+            dot_file << "   " << get<0>(edge) << edgeType << get<1>(edge) << " [color=\"red\"]" << endl;
+    }
+
+    dot_file << "}";
+    dot_file.close();
+
+    system(string("dot -Tpng ./DOTs/BFS_with_back_edges.dot -o output/BFS_with_back_edges.png").c_str());
 
     return newGraph;
 }
@@ -350,16 +399,6 @@ Graph *Graph::agmKuskal()
 }
 Graph *Graph::agmPrim()
 {
-}
-
-/**
- * @brief Function that generates a .dot file that can be used to generate a image of the graph using Graphviz
- * 
- * @param nome 
- */
-void Graph::generateDot(string nome)
-{
-    this->generateDot(nome, "dot");
 }
 
 /**

@@ -25,10 +25,10 @@ int main()
 
     Graph *newGraph = grafo.directTransitiveClosure(0);
     newGraph->generateDot("Teste_direct_transitive_closure");
-    
+    delete newGraph;
     newGraph = grafo.indirectTransitiveClosure(0);
     newGraph->generateDot("Teste_indirect_transitive_closure");
-    
+    delete newGraph;
     Graph grafo2(7, true, false, false);
 
     grafo2.insertNode(0, 0);
@@ -49,5 +49,6 @@ int main()
 
     grafo2.generateDot("grafo2");
 
-    grafo2.breadthFirstSearch(0)->generateDot("grafo2_BFS");
+    newGraph = grafo2.breadthFirstSearch(0);
+    delete newGraph;
 }
