@@ -200,7 +200,6 @@ Graph *Graph::breadthFirstSearch(int id)
     {
         id = q.front();
         q.pop();
-        cout << id << endl;
         completed[id] = true;
         for (Edge *edge = this->getNode(id)->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
         {
@@ -274,6 +273,83 @@ Graph *Graph::breadthFirstSearch(int id)
 
 float Graph::floydMarshall(int idSource, int idTarget)
 {
+    vector<vector<float>> path_mat(this->order, vector<float>(this->order));
+
+    for (auto node1 : nodesMap)
+        this->pathDistanceDFS(node1.first, path_mat);
+
+    for (int i = 0; i < this->order; i++)
+        for (int j = 0; j < this->order; j++)
+            if(path_mat[i][j] == 0 && i!=j)
+                path_mat[i][j] = INFINITY;
+
+    cout << "-----------------------------------" << endl;
+    cout << "Matriz de distancias ANTES do algoritmo:" << endl;
+    for (int i = 0; i < this->order; i++)
+    {
+        for (int j = 0; j < this->order; j++)
+            cout << path_mat[i][j] << " ";
+        cout << endl;
+    }
+    cout << "-----------------------------------" << endl;
+
+    for (int k = 0; k < this->order; k++)
+    {
+        for (int i = 0; i < this->order; i++)
+        {
+            for (int j = 0; j < this->order; j++)
+            {
+                if (k != i && k != j && i != j)
+                {
+                    if (path_mat[i][k] + path_mat[k][j] < path_mat[i][j])
+                    {
+                        cout << "Entrou" << endl;
+                        path_mat[i][j] = path_mat[i][k] + path_mat[k][j];
+                    }
+                }
+            }
+        }
+    }
+
+    cout << "-----------------------------------" << endl;
+    cout << "Matriz de distancias DEPOIS do algoritmo:" << endl;
+    for (int i = 0; i < this->order; i++)
+    {
+        for (int j = 0; j < this->order; j++)
+            cout << path_mat[i][j] << " ";
+        cout << endl;
+    }
+    cout << "-----------------------------------" << endl;
+
+    return path_mat[idSource][idTarget];
+}
+
+void Graph::pathDistanceDFS(int node, vector<vector<float>> &path_mat)
+{
+    vector<bool> visited(this->order, false);
+
+    queue<int> q;
+    queue<float> distance;
+    distance.push(0.0f);
+    int id = node;
+    q.push(id);
+    visited[id] = true;
+    while (!q.empty())
+    {
+        id = q.front();
+        q.pop();
+        for (Edge *edge = this->getNode(id)->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
+        {
+            if (!visited[edge->getTargetId()])
+            {
+                path_mat[node][edge->getTargetId()] = distance.front() + edge->getWeight();
+                visited[edge->getTargetId()] = true;
+                q.push(edge->getTargetId());
+                distance.push(path_mat[node][edge->getTargetId()]);
+            }
+        }
+        distance.pop();
+    }
 }
 
 float Graph::dijkstra(int idSource, int idTarget)
