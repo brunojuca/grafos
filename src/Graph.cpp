@@ -33,6 +33,9 @@ Graph::Graph(int order, bool directed, bool weighted_edge, bool weighted_node)
     this->weighted_node = weighted_node;
     this->first_node = this->last_node = nullptr;
     this->number_edges = 0;
+
+    for(int i = 1; i < order; i++)
+        this->insertNode(i);
 }
 
 Graph::Graph(bool directed, bool weighted_edge, bool weighted_node)

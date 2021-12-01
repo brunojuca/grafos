@@ -3,7 +3,74 @@
 #include <Node.h>
 #include <iostream>
 
-int main()
+Graph *createGraph(std::string graph_file_path, bool directed, bool weighted_edge, bool weighted_node)
+{
+    std::cout << "teste" << std::endl;
+
+    ifstream graph_file;
+    graph_file.open(graph_file_path, ios::in);
+
+    int order;
+    graph_file >> order;
+
+    std::cout << "order: " << order << std::endl;
+
+    Graph* graph = new Graph(order, directed, weighted_edge, weighted_node);
+
+    int idNodeSource, idNodeTarget;
+
+
+    if (!weighted_edge && !weighted_node)
+    {
+
+        while (graph_file >> idNodeSource >> idNodeTarget)
+        {
+            graph->insertEdge(idNodeSource, idNodeTarget, 1);
+        }
+    }
+    else if (weighted_edge && !weighted_node)
+    {
+
+        float edgeWeight;
+
+        while (graph_file >> idNodeSource >> idNodeTarget >> edgeWeight)
+        {
+
+            graph->insertEdge(idNodeSource, idNodeTarget, edgeWeight);
+        }
+    }
+    else if (weighted_node && !weighted_edge)
+    {
+
+        float nodeSourceWeight, nodeTargetWeight;
+
+        while (graph_file >> idNodeSource >> nodeSourceWeight >> idNodeTarget >> nodeTargetWeight)
+        {
+
+            graph->insertEdge(idNodeSource, idNodeTarget, 1);
+            graph->getNode(idNodeSource)->setWeight(nodeSourceWeight);
+            graph->getNode(idNodeTarget)->setWeight(nodeTargetWeight);
+        }
+    }
+    else if (weighted_node && weighted_edge)
+    {
+
+        float nodeSourceWeight, nodeTargetWeight, edgeWeight;
+
+        while (graph_file >> idNodeSource >> nodeSourceWeight >> idNodeTarget >> nodeTargetWeight)
+        {
+
+            graph->insertEdge(idNodeSource, idNodeTarget, edgeWeight);
+            graph->getNode(idNodeSource)->setWeight(nodeSourceWeight);
+            graph->getNode(idNodeTarget)->setWeight(nodeTargetWeight);
+        }
+    }
+    
+    return graph;
+}
+
+// int main(char* graph_file_path, bool directed, bool weighted_edge, bool weighted_node)
+int main(int argsc, char* args[])
 {
     Graph grafo(7, true, false, false);
 
@@ -51,7 +118,21 @@ int main()
 
     newGraph = grafo2.breadthFirstSearch(4);
 
-    float distancia_teste = grafo2.floydMarshall(0,4);
+    float distancia_teste = grafo2.floydMarshall(0, 4);
     cout << "Distancia por BFS: " << distancia_teste << endl;
+
+    std::cout << "Teste" << std::endl;
     delete newGraph;
+    std::cout << "Teste" << std::endl;
+    std::cout << "caminho: " << args[1] << "\ndirected: " << args[2] << "\nweighted_edge: " << args[3] << "\nweighted_node: " << args[4] << std::endl;
+
+    newGraph = createGraph(args[1], stoi(args[2]), stoi(args[3]), stoi(args[4]));
+    std::cout << "Grafo gerado" << std::endl;
+    
+    std::cout << "Grafo gerado" << std::endl;
+    newGraph->generateDot("graph_file");
+    newGraph = newGraph->breadthFirstSearch(5);
+    newGraph->generateDot("graph_file_BFS");
+    std::cout << newGraph->floydMarshall(5, 10) << std::endl;
+
 }
