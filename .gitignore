@@ -35,4 +35,4 @@
 /test/**
 *.dot
 *.png
-**/vscode
+**/.vscode

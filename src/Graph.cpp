@@ -13,6 +13,7 @@
 #include <iomanip>
 #include <deque>
 #include <vector>
+#include <set>
 #include <map>
 #include <queue>
 #include <unordered_set>
@@ -354,6 +355,48 @@ void Graph::pathDistanceDFS(int node, vector<vector<float>> &path_mat)
 
 float Graph::dijkstra(int idSource, int idTarget)
 {
+    unordered_set<int> unvisited;
+    map<int, float> dist;
+    int currentId;
+    float currentDist, tempDist;
+    Node *node = this->first_node;
+    Edge *edge;
+
+    while (node != nullptr)
+    {
+        unvisited.insert(node->getId());
+        dist.emplace(node->getId(), INFINITY);
+        node = node->getNextNode();
+    }
+    dist[idSource] = 0;
+
+    while (!unvisited.empty())
+    {
+        currentId = *(unvisited.begin());
+        currentDist = dist[currentId];
+        for (auto &&id : unvisited)
+        {
+            if (dist[id] < currentDist)
+            {
+                currentId = id;
+            }
+        }
+        unvisited.erase(currentId);
+
+        node = this->getNode(currentId);
+        edge = node->getFirstEdge();
+
+        while (edge != nullptr)
+        {
+            tempDist = dist[currentId] + edge->getWeight();
+            if (tempDist < dist[edge->getTargetId()])
+            {
+                dist[edge->getTargetId()] = tempDist;
+            }
+            edge = edge->getNextEdge();
+        }
+    }
+    return dist[idTarget];
 }
 
 //function that prints a topological sorting
