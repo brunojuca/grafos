@@ -23,7 +23,7 @@ using namespace std;
 
 /**************************************************************************************************
  * Defining the Graph's methods
-**************************************************************************************************/
+ **************************************************************************************************/
 
 // Constructor
 Graph::Graph(int order, bool directed, bool weighted_edge, bool weighted_node)
@@ -35,7 +35,7 @@ Graph::Graph(int order, bool directed, bool weighted_edge, bool weighted_node)
     this->first_node = this->last_node = nullptr;
     this->number_edges = 0;
 
-    for(int i = 1; i < order; i++)
+    for (int i = 1; i < order; i++)
         this->insertNode(i);
 }
 
@@ -76,20 +76,20 @@ int Graph::getNumberEdges()
 
     return this->number_edges;
 }
-//Function that verifies if the graph is directed
+// Function that verifies if the graph is directed
 bool Graph::getDirected()
 {
 
     return this->directed;
 }
-//Function that verifies if the graph is weighted at the edges
+// Function that verifies if the graph is weighted at the edges
 bool Graph::getWeightedEdge()
 {
 
     return this->weighted_edge;
 }
 
-//Function that verifies if the graph is weighted at the nodes
+// Function that verifies if the graph is weighted at the nodes
 bool Graph::getWeightedNode()
 {
 
@@ -116,10 +116,10 @@ Node *Graph::getLastNode()
 
 /**
  * @brief Insert a new node into Graph and returns a pointer to the created node
- * 
+ *
  * @param id New node id
  * @param weight New node weight
- * @return Node* 
+ * @return Node*
  */
 Node *Graph::insertNode(int id, float weight)
 {
@@ -162,10 +162,10 @@ void Graph::removeNode(int id)
 
 /**
  * @brief Search node by Id. Returns true if node exists already.
- * 
- * @param id 
- * @return true 
- * @return false 
+ *
+ * @param id
+ * @return true
+ * @return false
  */
 bool Graph::searchNode(int id)
 {
@@ -174,16 +174,16 @@ bool Graph::searchNode(int id)
 
 /**
  * @brief Search and get node by Id. Returns a pointer to the node or nullptr if not found.
- * 
- * @param id 
- * @return Node* 
+ *
+ * @param id
+ * @return Node*
  */
 Node *Graph::getNode(int id)
 {
     return nodesMap[id];
 }
 
-//Function that prints a set of edges belongs breadth tree
+// Function that prints a set of edges belongs breadth tree
 
 Graph *Graph::breadthFirstSearch(int id)
 {
@@ -244,7 +244,7 @@ Graph *Graph::breadthFirstSearch(int id)
     dot_file << endl
              << "   node [shape=box, style=filled, fillcolor=lightblue]" << endl;
     dot_file << endl
-             << "   edge [color=blue, len=20.0, fontsize=20, fontcolor=darkblue]\n"
+             << "   edge [color=blue, len=20.0, fontsize=20]\n"
              << endl;
 
     for (Node *node = newGraph->getFirstNode(); node != nullptr; node = node->getNextNode())
@@ -272,23 +272,36 @@ Graph *Graph::breadthFirstSearch(int id)
 
     system(string("dot -Tpng ./DOTs/BFS_with_back_edges.dot -o output/BFS_with_back_edges.png").c_str());
 
+    newGraph->order = newGraph->nodesMap.size();
+
     return newGraph;
 }
 
-float Graph::floydMarshall(int idSource, int idTarget)
+Graph* Graph::floydMarshall(int idSource, int idTarget)
 {
-    vector<vector<float>> path_mat(this->order, vector<float>(this->order));
+    vector<vector<float>> dist_mat(this->order, vector<float>(this->order));
+    vector<vector<float>> path_mat(this->order, vector<float>(this->order, -1.0f));
 
     for (auto node1 : nodesMap)
-        this->pathDistanceDFS(node1.first, path_mat);
-
+        this->pathDistanceDFS(node1.first, dist_mat, path_mat);
+    
     for (int i = 0; i < this->order; i++)
         for (int j = 0; j < this->order; j++)
-            if(path_mat[i][j] == 0 && i!=j)
-                path_mat[i][j] = INFINITY;
+            if (dist_mat[i][j] == 0 && i != j)
+                dist_mat[i][j] = INFINITY;
 
     cout << "-----------------------------------" << endl;
     cout << "Matriz de distancias ANTES do algoritmo:" << endl;
+    for (int i = 0; i < this->order; i++)
+    {
+        for (int j = 0; j < this->order; j++)
+            cout << dist_mat[i][j] << " ";
+        cout << endl;
+    }
+    cout << "-----------------------------------" << endl;
+
+    cout << "-----------------------------------" << endl;
+    cout << "Matriz de precessor ANTES do algoritmo:" << endl;
     for (int i = 0; i < this->order; i++)
     {
         for (int j = 0; j < this->order; j++)
@@ -305,10 +318,10 @@ float Graph::floydMarshall(int idSource, int idTarget)
             {
                 if (k != i && k != j && i != j)
                 {
-                    if (path_mat[i][k] + path_mat[k][j] < path_mat[i][j])
+                    if (dist_mat[i][k] + dist_mat[k][j] < dist_mat[i][j])
                     {
-                        cout << "Entrou" << endl;
-                        path_mat[i][j] = path_mat[i][k] + path_mat[k][j];
+                        dist_mat[i][j] = dist_mat[i][k] + dist_mat[k][j];
+                        path_mat[j][i] = path_mat[k][i];
                     }
                 }
             }
@@ -320,15 +333,38 @@ float Graph::floydMarshall(int idSource, int idTarget)
     for (int i = 0; i < this->order; i++)
     {
         for (int j = 0; j < this->order; j++)
+            cout << dist_mat[i][j] << " ";
+        cout << endl;
+    }
+    cout << "-----------------------------------" << endl;
+
+    cout << "-----------------------------------" << endl;
+    cout << "Matriz de precessor DEPOIS do algoritmo:" << endl;
+    for (int i = 0; i < this->order; i++)
+    {
+        for (int j = 0; j < this->order; j++)
             cout << path_mat[i][j] << " ";
         cout << endl;
     }
     cout << "-----------------------------------" << endl;
 
-    return path_mat[idSource][idTarget];
+    Graph *newGraph = new Graph(directed, weighted_edge, weighted_node);
+
+    while (path_mat[idSource][idTarget] != -1)
+    {
+        newGraph->insertEdge(path_mat[idSource][idTarget], idTarget, dist_mat[path_mat[idSource][idTarget]][idTarget]);
+        if (path_mat[idSource][idTarget] == idSource){
+            break;
+        }
+        idTarget = path_mat[idSource][idTarget];
+    }
+
+    newGraph->order =  newGraph->nodesMap.size();
+
+    return newGraph;
 }
 
-void Graph::pathDistanceDFS(int node, vector<vector<float>> &path_mat)
+void Graph::pathDistanceDFS(int node, vector<vector<float>> &dist_mat, vector<vector<float>> &path_mat)
 {
     vector<bool> visited(this->order, false);
 
@@ -346,10 +382,11 @@ void Graph::pathDistanceDFS(int node, vector<vector<float>> &path_mat)
         {
             if (!visited[edge->getTargetId()])
             {
-                path_mat[node][edge->getTargetId()] = distance.front() + edge->getWeight();
+                dist_mat[node][edge->getTargetId()] = distance.front() + edge->getWeight();
+                path_mat[node][edge->getTargetId()] = id;
                 visited[edge->getTargetId()] = true;
                 q.push(edge->getTargetId());
-                distance.push(path_mat[node][edge->getTargetId()]);
+                distance.push(dist_mat[node][edge->getTargetId()]);
             }
         }
         distance.pop();
@@ -402,16 +439,16 @@ float Graph::dijkstra(int idSource, int idTarget)
     return dist[idTarget];
 }
 
-//function that prints a topological sorting
+// function that prints a topological sorting
 void Graph::topologicalSorting()
 {
 }
 
 /**
  * @brief Function that return a vertex-induced subgraphby the direct transitive closure of the given vertex
- * 
- * @param id 
- * @return Graph* 
+ *
+ * @param id
+ * @return Graph*
  */
 Graph *Graph::directTransitiveClosure(int id)
 {
@@ -451,9 +488,9 @@ Graph *Graph::directTransitiveClosure(int id)
 
 /**
  * @brief Auxiliar function to directTransitiveClosure function
- * 
- * @param node 
- * @param nodesList 
+ *
+ * @param node
+ * @param nodesList
  */
 void Graph::auxDirectTransitiveClosure(Node *node, deque<int> &nodesList)
 {
@@ -535,9 +572,9 @@ Graph *Graph::agmPrim()
 
 /**
  * @brief Function that generates a .dot file that can be used to generate a image of the graph using Graphviz
- * 
- * @param nome 
- * @param layout 
+ *
+ * @param nome
+ * @param layout
  */
 void Graph::generateDot(string nome, string layout)
 {
@@ -558,7 +595,7 @@ void Graph::generateDot(string nome, string layout)
     dot_file << endl
              << "   node [shape=box, style=filled, fillcolor=lightblue]" << endl;
     dot_file << endl
-             << "   edge [color=blue, len=20.0, fontsize=20, fontcolor=darkblue]\n"
+             << "   edge [color=blue, len=20.0, fontsize=20]\n"
              << endl;
 
     for (Node *node = first_node; node != nullptr; node = node->getNextNode())

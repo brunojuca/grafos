@@ -5,15 +5,11 @@
 
 Graph *createGraph(std::string graph_file_path, bool directed, bool weighted_edge, bool weighted_node)
 {
-    std::cout << "teste" << std::endl;
-
     ifstream graph_file;
     graph_file.open(graph_file_path, ios::in);
 
     int order;
     graph_file >> order;
-
-    std::cout << "order: " << order << std::endl;
 
     Graph* graph = new Graph(order, directed, weighted_edge, weighted_node);
 
@@ -96,7 +92,7 @@ int main(int argsc, char* args[])
     newGraph = grafo.indirectTransitiveClosure(0);
     newGraph->generateDot("Teste_indirect_transitive_closure");
     delete newGraph;
-    Graph grafo2(7, true, true, false);
+    Graph grafo2(7, false, true, false);
 
     grafo2.insertNode(0);
     grafo2.insertNode(1);
@@ -118,21 +114,18 @@ int main(int argsc, char* args[])
 
     newGraph = grafo2.breadthFirstSearch(4);
 
-    float distancia_teste = grafo2.floydMarshall(0, 4);
-    cout << "Distancia por BFS: " << distancia_teste << endl;
+    newGraph = grafo2.floydMarshall(4, 3);
+    newGraph->generateDot("Menor_Caminho");
 
-    std::cout << "Teste" << std::endl;
     delete newGraph;
-    std::cout << "Teste" << std::endl;
-    std::cout << "caminho: " << args[1] << "\ndirected: " << args[2] << "\nweighted_edge: " << args[3] << "\nweighted_node: " << args[4] << std::endl;
 
     newGraph = createGraph(args[1], stoi(args[2]), stoi(args[3]), stoi(args[4]));
-    std::cout << "Grafo gerado" << std::endl;
     
     std::cout << "Grafo gerado" << std::endl;
-    newGraph->generateDot("graph_file");
-    newGraph = newGraph->breadthFirstSearch(5);
-    newGraph->generateDot("graph_file_BFS");
-    std::cout << newGraph->floydMarshall(5, 10) << std::endl;
+    // newGraph->generateDot("graph_file");
+    // newGraph = newGraph->breadthFirstSearch(5);
+    // newGraph->generateDot("125_graph");
+    newGraph->floydMarshall(5, 28)->generateDot("test_5_28");
+    newGraph->floydMarshall(28, 5)->generateDot("test_28_5");
 
 }

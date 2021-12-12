@@ -56,7 +56,7 @@ public:
     Graph *indirectTransitiveClosure(int id);
     Graph *agmKuskal();
     Graph *agmPrim();
-    float floydMarshall(int idSource, int idTarget);
+    Graph *floydMarshall(int idSource, int idTarget);
     float dijkstra(int idSource, int idTarget);
 
     //methods phase1
@@ -70,7 +70,7 @@ private:
     //Auxiliar methods
     void auxDirectTransitiveClosure(Node *node, deque<int> &nodesList);
     void auxIndirectTransitiveClosure(Node *node, int &targetId, int startNode, unordered_set<int> &nodesList, vector<int> &visited);
-    void pathDistanceDFS(int node, vector<vector<float>>& path_mat);
+    void pathDistanceDFS(int node, vector<vector<float>>& dist_mat, vector<vector<float>> &path_mat);
 };
 
 #endif // GRAPH_H_INCLUDED
