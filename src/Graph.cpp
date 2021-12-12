@@ -229,6 +229,8 @@ Graph *Graph::breadthFirstSearch(int id)
 
     ofstream dot_file("DOTs/BFS_with_back_edges.dot", ios::out);
     string edgeType;
+    map<pair<int, int>, bool> edges_added;
+
     if (getDirected())
     {
         dot_file << "digraph { " << endl;
@@ -240,11 +242,11 @@ Graph *Graph::breadthFirstSearch(int id)
         edgeType = "--";
     }
 
-    dot_file << "   overlap=false; layout=neato; splines=true;" << endl;
+    dot_file << "   overlap=false; layout=dot; splines=true;" << endl;
     dot_file << endl
              << "   node [shape=box, style=filled, fillcolor=lightblue]" << endl;
     dot_file << endl
-             << "   edge [color=blue, len=20.0, fontsize=20]\n"
+             << "   edge [color=blue, len=20.0, fontsize=15]\n"
              << endl;
 
     for (Node *node = newGraph->getFirstNode(); node != nullptr; node = node->getNextNode())
@@ -252,19 +254,27 @@ Graph *Graph::breadthFirstSearch(int id)
         dot_file << "   " << node->getId() << endl;
         for (Edge *edge = node->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
         {
-            if (getWeightedEdge())
-                dot_file << "   " << node->getId() << edgeType << edge->getTargetId() << " [label=\"" << edge->getWeight() << "\"]" << endl;
-            else
-                dot_file << "   " << node->getId() << edgeType << edge->getTargetId() << endl;
+            if (edges_added[make_pair(edge->getTargetId(), node->getId())] != true)
+            {
+                edges_added[make_pair(node->getId(), edge->getTargetId())] = true;
+                if (getWeightedEdge())
+                    dot_file << "   " << node->getId() << edgeType << edge->getTargetId() << " [label=\"" << edge->getWeight() << "\"]" << endl;
+                else
+                    dot_file << "   " << node->getId() << edgeType << edge->getTargetId() << endl;
+            }
         }
     }
 
     for (auto edge : back_edges)
     {
-        if (getWeightedEdge())
-            dot_file << "   " << get<0>(edge) << edgeType << get<1>(edge) << " [label=\"" << get<2>(edge) << "\", color=\"red\"]" << endl;
-        else
-            dot_file << "   " << get<0>(edge) << edgeType << get<1>(edge) << " [color=\"red\"]" << endl;
+        if (edges_added[make_pair(get<1>(edge), get<0>(edge))] != true)
+        {
+            edges_added[make_pair(get<0>(edge), get<1>(edge))] = true;
+            if (getWeightedEdge())
+                dot_file << "   " << get<0>(edge) << edgeType << get<1>(edge) << " [label=\"" << get<2>(edge) << "\", color=\"red\"]" << endl;
+            else
+                dot_file << "   " << get<0>(edge) << edgeType << get<1>(edge) << " [color=\"red\"]" << endl;
+        }
     }
 
     dot_file << "}";
@@ -277,14 +287,14 @@ Graph *Graph::breadthFirstSearch(int id)
     return newGraph;
 }
 
-Graph* Graph::floydMarshall(int idSource, int idTarget)
+Graph *Graph::floydMarshall(int idSource, int idTarget)
 {
     vector<vector<float>> dist_mat(this->order, vector<float>(this->order));
     vector<vector<float>> path_mat(this->order, vector<float>(this->order, -1.0f));
 
     for (auto node1 : nodesMap)
         this->pathDistanceDFS(node1.first, dist_mat, path_mat);
-    
+
     for (int i = 0; i < this->order; i++)
         for (int j = 0; j < this->order; j++)
             if (dist_mat[i][j] == 0 && i != j)
@@ -353,13 +363,14 @@ Graph* Graph::floydMarshall(int idSource, int idTarget)
     while (path_mat[idSource][idTarget] != -1)
     {
         newGraph->insertEdge(path_mat[idSource][idTarget], idTarget, dist_mat[path_mat[idSource][idTarget]][idTarget]);
-        if (path_mat[idSource][idTarget] == idSource){
+        if (path_mat[idSource][idTarget] == idSource)
+        {
             break;
         }
         idTarget = path_mat[idSource][idTarget];
     }
 
-    newGraph->order =  newGraph->nodesMap.size();
+    newGraph->order = newGraph->nodesMap.size();
 
     return newGraph;
 }
@@ -580,6 +591,7 @@ void Graph::generateDot(string nome, string layout)
 {
     ofstream dot_file("DOTs/" + nome + ".dot", ios::out);
     string edgeType;
+    map<pair<int, int>, bool> edges_added;
     if (getDirected())
     {
         dot_file << "digraph { " << endl;
@@ -595,7 +607,7 @@ void Graph::generateDot(string nome, string layout)
     dot_file << endl
              << "   node [shape=box, style=filled, fillcolor=lightblue]" << endl;
     dot_file << endl
-             << "   edge [color=blue, len=20.0, fontsize=20]\n"
+             << "   edge [color=blue, len=20.0, fontsize=15]\n"
              << endl;
 
     for (Node *node = first_node; node != nullptr; node = node->getNextNode())
@@ -603,10 +615,15 @@ void Graph::generateDot(string nome, string layout)
         dot_file << "   " << node->getId() << endl;
         for (Edge *edge = node->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
         {
-            if (getWeightedEdge())
-                dot_file << "   " << node->getId() << edgeType << edge->getTargetId() << " [label=\"" << edge->getWeight() << "\"]" << endl;
-            else
-                dot_file << "   " << node->getId() << edgeType << edge->getTargetId() << endl;
+            if (edges_added[make_pair(edge->getTargetId(), node->getId())] != true)
+            {
+                edges_added[make_pair(node->getId(), edge->getTargetId())] = true;
+
+                if (getWeightedEdge())
+                    dot_file << "   " << node->getId() << edgeType << edge->getTargetId() << " [label=\"" << edge->getWeight() << "\"]" << endl;
+                else
+                    dot_file << "   " << node->getId() << edgeType << edge->getTargetId() << endl;
+            }
         }
     }
 
