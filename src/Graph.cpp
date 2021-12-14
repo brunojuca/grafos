@@ -300,25 +300,24 @@ Graph *Graph::floydMarshall(int idSource, int idTarget)
             if (dist_mat[i][j] == 0 && i != j)
                 dist_mat[i][j] = INFINITY;
 
-    cout << "-----------------------------------" << endl;
-    cout << "Matriz de distancias ANTES do algoritmo:" << endl;
-    for (int i = 0; i < this->order; i++)
+    // Print dist matrix
+    cout << "dist mat:" << endl;
+    for (int i = 0; i < dist_mat.size(); i++)
     {
-        for (int j = 0; j < this->order; j++)
+        for (int j = 0; j < dist_mat.size(); j++)
             cout << dist_mat[i][j] << " ";
         cout << endl;
     }
-    cout << "-----------------------------------" << endl;
+    cout << endl;
 
-    cout << "-----------------------------------" << endl;
-    cout << "Matriz de precessor ANTES do algoritmo:" << endl;
-    for (int i = 0; i < this->order; i++)
+    cout << "path mat:" << endl;
+    for (int i = 0; i < path_mat.size(); i++)
     {
-        for (int j = 0; j < this->order; j++)
+        for (int j = 0; j < path_mat.size(); j++)
             cout << path_mat[i][j] << " ";
         cout << endl;
     }
-    cout << "-----------------------------------" << endl;
+    cout << endl;
 
     for (int k = 0; k < this->order; k++)
     {
@@ -328,35 +327,39 @@ Graph *Graph::floydMarshall(int idSource, int idTarget)
             {
                 if (k != i && k != j && i != j)
                 {
+                    cout << i << " " << j << " " << k << endl;
                     if (dist_mat[i][k] + dist_mat[k][j] < dist_mat[i][j])
                     {
+                        cout << "entrou" << endl;
                         dist_mat[i][j] = dist_mat[i][k] + dist_mat[k][j];
-                        path_mat[j][i] = path_mat[k][i];
+                        cout << path_mat[i][j] << endl;
+                        path_mat[i][j] = path_mat[k][j];
+                        cout << path_mat[i][j] << endl;
+                        cout << "mudou " << i << " " << j << " " << k << endl;
                     }
                 }
             }
         }
     }
 
-    cout << "-----------------------------------" << endl;
-    cout << "Matriz de distancias DEPOIS do algoritmo:" << endl;
-    for (int i = 0; i < this->order; i++)
+    // Print dist matrix
+    cout << "dist mat:" << endl;
+    for (int i = 0; i < dist_mat.size(); i++)
     {
-        for (int j = 0; j < this->order; j++)
+        for (int j = 0; j < dist_mat.size(); j++)
             cout << dist_mat[i][j] << " ";
         cout << endl;
     }
-    cout << "-----------------------------------" << endl;
+    cout << endl;
 
-    cout << "-----------------------------------" << endl;
-    cout << "Matriz de precessor DEPOIS do algoritmo:" << endl;
-    for (int i = 0; i < this->order; i++)
+    cout << "path mat:" << endl;
+    for (int i = 0; i < path_mat.size(); i++)
     {
-        for (int j = 0; j < this->order; j++)
+        for (int j = 0; j < path_mat.size(); j++)
             cout << path_mat[i][j] << " ";
         cout << endl;
     }
-    cout << "-----------------------------------" << endl;
+    cout << endl;
 
     Graph *newGraph = new Graph(directed, weighted_edge, weighted_node);
 
@@ -463,115 +466,88 @@ void Graph::topologicalSorting()
  */
 Graph *Graph::directTransitiveClosure(int id)
 {
-    if (this->getFirstNode() == nullptr || this->getNode(id) == nullptr)
-        return nullptr;
+    Graph *graph = new Graph(this->directed, this->weighted_edge, this->weighted_node);
+    graph->insertNode(id, this->getNode(id)->getWeight());
 
-    Node *node = this->getNode(id);
-    deque<int> nodesList;
-    this->auxDirectTransitiveClosure(node, nodesList);
-    Graph *newGraph = new Graph(nodesList.size(), this->directed, this->weighted_edge, this->weighted_node);
-    for (int nodeId : nodesList)
+    vector<bool> visited(this->order, false);
+
+    queue<int> q;
+    q.push(id);
+    visited[id] = true;
+    while (!q.empty())
     {
-        Node *oldNode = this->getNode(nodeId);
-        Node *newNode;
-
-        if (!newGraph->searchNode(nodeId))
-            newNode = newGraph->insertNode(nodeId, oldNode->getWeight());
-        else
-            newNode = newGraph->getNode(nodeId);
-        for (Edge *edge = oldNode->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
+        id = q.front();
+        q.pop();
+        for (Edge *edge = this->getNode(id)->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
         {
-            if (find(nodesList.begin(), nodesList.end(), edge->getTargetId()) != nodesList.end())
+            if (!visited[edge->getTargetId()])
             {
-                if (!newGraph->searchNode(edge->getTargetId()))
-                    newGraph->insertNode(edge->getTargetId(), this->getNode(edge->getTargetId())->getWeight());
-                newNode->insertEdge(edge->getTargetId(), edge->getWeight());
-                newGraph->number_edges++;
+                visited[edge->getTargetId()] = true;
+                q.push(edge->getTargetId());
+                graph->insertEdge(id, edge->getTargetId(), edge->getWeight());
             }
         }
     }
 
-    if (!newGraph->searchNode(id))
-        newGraph->insertNode(id, this->getNode(id)->getWeight());
+    for (int i = 0; i < this->order; i++)
+        if (visited[i])
+            for (Edge *edge = this->getNode(i)->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
+                if (visited[edge->getTargetId()])
+                    graph->insertEdge(i, edge->getTargetId(), edge->getWeight());
 
-    return newGraph;
-}
+    graph->order = graph->nodesMap.size();
 
-/**
- * @brief Auxiliar function to directTransitiveClosure function
- *
- * @param node
- * @param nodesList
- */
-void Graph::auxDirectTransitiveClosure(Node *node, deque<int> &nodesList)
-{
-    for (Edge *edge = node->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
-    {
-        if (find(nodesList.begin(), nodesList.end(), edge->getTargetId()) == nodesList.end())
-        {
-            nodesList.push_back(edge->getTargetId());
-            this->auxDirectTransitiveClosure(getNode(edge->getTargetId()), nodesList);
-        }
-    }
+    return graph;
 }
 
 Graph *Graph::indirectTransitiveClosure(int id)
 {
-    if (this->getFirstNode() == nullptr || this->getNode(id) == nullptr)
-        return nullptr;
+    Graph *graph = new Graph(this->directed, this->weighted_edge, this->weighted_node);
+    graph->insertNode(id, this->getNode(id)->getWeight());
 
-    unordered_set<int> nodesList;
-    vector<int> visited;
+    vector<bool> nodes_contained(this->order, false);
 
-    for (pair<int, Node *> nodePair : nodesMap)
-        if (nodePair.first != id)
-            auxIndirectTransitiveClosure(nodePair.second, id, nodePair.second->getId(), nodesList, visited);
+    for (pair<int, Node *> nodePair : this->nodesMap)
+        nodes_contained[nodePair.first] = this->auxIndirectTransitiveClosure(nodePair.first, id);
 
-    Graph *newGraph = new Graph(nodesList.size(), this->directed, this->weighted_edge, this->weighted_node);
+    nodes_contained[id] = true;
 
-    if (!newGraph->searchNode(id))
-        newGraph->insertNode(id, this->getNode(id)->getWeight());
+    for (int i = 0; i < this->order; i++)
+        if (nodes_contained[i] && i != id)
+            for (Edge *edge = this->getNode(i)->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
+                if (nodes_contained[edge->getTargetId()])
+                    graph->insertEdge(i, edge->getTargetId(), edge->getWeight());
 
-    for (int nodeId : nodesList)
+    graph->order = graph->nodesMap.size();
+
+    return graph;
+}
+
+bool Graph::auxIndirectTransitiveClosure(int sourceId, int targetId)
+{
+    vector<bool> visited(this->order, false);
+
+    queue<int> q;
+    int id = sourceId;
+    q.push(id);
+    visited[id] = true;
+    while (!q.empty())
     {
-        Node *oldNode = this->getNode(nodeId);
-        Node *newNode;
-
-        if (!newGraph->searchNode(nodeId))
-            newNode = newGraph->insertNode(nodeId, oldNode->getWeight());
-        else
-            newNode = newGraph->getNode(nodeId);
-        for (Edge *edge = oldNode->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
+        id = q.front();
+        q.pop();
+        for (Edge *edge = this->getNode(id)->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
         {
-            if (find(nodesList.begin(), nodesList.end(), edge->getTargetId()) != nodesList.end() || edge->getTargetId() == id)
+            if (!visited[edge->getTargetId()])
             {
-                if (!newGraph->searchNode(edge->getTargetId()))
-                    newGraph->insertNode(edge->getTargetId(), this->getNode(edge->getTargetId())->getWeight());
-                newNode->insertEdge(edge->getTargetId(), edge->getWeight());
-                newGraph->number_edges++;
+                if (edge->getTargetId() == targetId)
+                    return true;
+                visited[edge->getTargetId()] = true;
+                q.push(edge->getTargetId());
             }
         }
     }
 
-    return newGraph;
-}
-
-void Graph::auxIndirectTransitiveClosure(Node *node, int &targetId, int startNode, unordered_set<int> &nodesList, vector<int> &visited)
-{
-    visited.push_back(node->getId());
-    if (node->getId() == targetId)
-    {
-        nodesList.insert(startNode);
-        return;
-    }
-    else
-    {
-        for (Edge *edge = node->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
-        {
-            if (find(visited.begin(), visited.end(), edge->getTargetId()) == visited.end() || edge->getTargetId() == targetId)
-                this->auxIndirectTransitiveClosure(this->getNode(edge->getTargetId()), targetId, startNode, nodesList, visited);
-        }
-    }
+    return false;
 }
 
 Graph *Graph::agmKuskal()

@@ -2,73 +2,269 @@
 #include <Edge.h>
 #include <Node.h>
 #include <iostream>
+#include <bits/stdc++.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 
-Graph *createGraph(std::string graph_file_path, bool directed, bool weighted_edge, bool weighted_node)
+namespace Utils
 {
-    ifstream graph_file;
-    graph_file.open(graph_file_path, ios::in);
-
-    int order;
-    graph_file >> order;
-
-    Graph* graph = new Graph(order, directed, weighted_edge, weighted_node);
-
-    int idNodeSource, idNodeTarget;
-
-
-    if (!weighted_edge && !weighted_node)
+    Graph *createGraph(std::string graph_file_path, bool directed, bool weighted_edge, bool weighted_node)
     {
+        ifstream graph_file;
+        graph_file.open(graph_file_path, ios::in);
 
-        while (graph_file >> idNodeSource >> idNodeTarget)
-        {
-            graph->insertEdge(idNodeSource, idNodeTarget, 1);
-        }
-    }
-    else if (weighted_edge && !weighted_node)
-    {
+        int order;
+        graph_file >> order;
 
-        float edgeWeight;
+        Graph *graph = new Graph(order, directed, weighted_edge, weighted_node);
 
-        while (graph_file >> idNodeSource >> idNodeTarget >> edgeWeight)
+        int idNodeSource, idNodeTarget;
+
+        if (!weighted_edge && !weighted_node)
         {
 
-            graph->insertEdge(idNodeSource, idNodeTarget, edgeWeight);
+            while (graph_file >> idNodeSource >> idNodeTarget)
+            {
+                graph->insertEdge(idNodeSource, idNodeTarget, 1);
+            }
         }
-    }
-    else if (weighted_node && !weighted_edge)
-    {
-
-        float nodeSourceWeight, nodeTargetWeight;
-
-        while (graph_file >> idNodeSource >> nodeSourceWeight >> idNodeTarget >> nodeTargetWeight)
+        else if (weighted_edge && !weighted_node)
         {
 
-            graph->insertEdge(idNodeSource, idNodeTarget, 1);
-            graph->getNode(idNodeSource)->setWeight(nodeSourceWeight);
-            graph->getNode(idNodeTarget)->setWeight(nodeTargetWeight);
+            float edgeWeight;
+
+            while (graph_file >> idNodeSource >> idNodeTarget >> edgeWeight)
+            {
+                graph->insertEdge(idNodeSource, idNodeTarget, edgeWeight);
+            }
         }
-    }
-    else if (weighted_node && weighted_edge)
-    {
-
-        float nodeSourceWeight, nodeTargetWeight, edgeWeight;
-
-        while (graph_file >> idNodeSource >> nodeSourceWeight >> idNodeTarget >> nodeTargetWeight)
+        else if (weighted_node && !weighted_edge)
         {
 
-            graph->insertEdge(idNodeSource, idNodeTarget, edgeWeight);
-            graph->getNode(idNodeSource)->setWeight(nodeSourceWeight);
-            graph->getNode(idNodeTarget)->setWeight(nodeTargetWeight);
+            float nodeSourceWeight, nodeTargetWeight;
+
+            while (graph_file >> idNodeSource >> nodeSourceWeight >> idNodeTarget >> nodeTargetWeight)
+            {
+
+                graph->insertEdge(idNodeSource, idNodeTarget, 1);
+                graph->getNode(idNodeSource)->setWeight(nodeSourceWeight);
+                graph->getNode(idNodeTarget)->setWeight(nodeTargetWeight);
+            }
         }
+        else if (weighted_node && weighted_edge)
+        {
+
+            float nodeSourceWeight, nodeTargetWeight, edgeWeight;
+
+            while (graph_file >> idNodeSource >> nodeSourceWeight >> idNodeTarget >> nodeTargetWeight)
+            {
+
+                graph->insertEdge(idNodeSource, idNodeTarget, edgeWeight);
+                graph->getNode(idNodeSource)->setWeight(nodeSourceWeight);
+                graph->getNode(idNodeTarget)->setWeight(nodeTargetWeight);
+            }
+        }
+
+        return graph;
     }
-    
-    return graph;
+
+    void ChangeGraph(Graph *graph)
+    {
+        std::string newGraphPath;
+        std::ifstream file_test;
+        do
+        {
+            cout << "Passe o endereço do novo grafo: ";
+            cin >> newGraphPath;
+            file_test.open(newGraphPath, ios::in);
+        } while (!file_test.is_open());
+        file_test.close();
+        delete graph;
+
+        cout << "Para as perguntas a seguir digite 1 para SIM e 0 para Não" << endl
+             << endl;
+
+        bool directed, weighted_edge, weighted_node;
+        do
+        {
+            std::cout << "Direcionado: ";
+            cin >> directed;
+        } while (directed < 0 || directed > 1);
+
+        do
+        {
+            std::cout << "Peso nas Arestas: ";
+            cin >> weighted_edge;
+        } while (weighted_edge < 0 || weighted_edge > 1);
+
+        do
+        {
+            std::cout << "Peso nos Vértices: ";
+            cin >> weighted_node;
+        } while (weighted_node < 0 || weighted_node > 1);
+
+        graph = Utils::createGraph(newGraphPath, directed, weighted_edge, weighted_node);
+    }
+
+    void CallBFS(Graph *graph)
+    {
+        int id;
+        do
+        {
+            std::cout << "Digite o ID do vértice de origem: ";
+            cin >> id;
+        } while (id < 0);
+
+        Graph *newGraph = graph->breadthFirstSearch(id);
+        delete newGraph;
+    }
+
+    void CallDirectTrasitiveClosure(Graph *graph)
+    {
+        int id;
+        do
+        {
+            std::cout << "Digite o ID do vértice que deseja ver o fecho: ";
+            cin >> id;
+        } while (id < 0);
+
+        Graph *newGraph = graph->directTransitiveClosure(id);
+        newGraph->generateDot("Direct_Trasitive_Closure");
+        delete newGraph;
+    }
+
+    void CallIndirectTrasitiveClosure(Graph *graph)
+    {
+        int id;
+        do
+        {
+            std::cout << "Digite o ID do vértice que deseja ver o fecho: ";
+            cin >> id;
+        } while (id < 0);
+
+        Graph *newGraph = graph->indirectTransitiveClosure(id);
+        newGraph->generateDot("Indirect_Trasitive_Closure");
+        delete newGraph;
+    }
+
+    void CallDijkstra(Graph *graph)
+    {
+        int idSource, idTarget;
+        do
+        {
+            std::cout << "Digite o ID do vértice de origem: ";
+            cin >> idSource;
+        } while (idSource < 0);
+
+        do
+        {
+            std::cout << "Digite o ID do vértice de destino: ";
+            cin >> idTarget;
+        } while (idTarget < 0);
+
+        cout << "Distancia: " << graph->dijkstra(idTarget, idSource) << endl;
+        // TODO Descomentar as linhas de baixo depois que o dijkstra começar a retornar um graph do caminho
+        //  Graph* newGraph = graph->dijkstra(idSource, idTarget);
+        //  newGraph->generateDot("Caminho_Minimo_Dijkstra");
+        //  delete newGraph;
+    }
+
+    void CallFloyd(Graph *graph)
+    {
+        int idSource, idTarget;
+        do
+        {
+            std::cout << "Digite o ID do vértice de origem: ";
+            cin >> idSource;
+        } while (idSource < 0);
+
+        do
+        {
+            std::cout << "Digite o ID do vértice de destino: ";
+            cin >> idTarget;
+        } while (idTarget < 0);
+
+        Graph *newGraph = graph->floydMarshall(idSource, idTarget);
+        newGraph->generateDot("Caminho_Minimo_Floyd-Marshall");
+        delete newGraph;
+    }
 }
 
 // int main(char* graph_file_path, bool directed, bool weighted_edge, bool weighted_node)
-int main(int argsc, char* args[])
+int main(int argsc, char *args[])
 {
-    Graph grafo(7, true, false, false);
+    std::string result_dir_path(args[2]);
+    std::string mkdir_command = "mkdir \"" + result_dir_path + "\"";
+    system(mkdir_command.c_str()); // TODO Arrumar isso aqui
+
+    Graph *graph = Utils::createGraph(args[1], stoi(args[3]), stoi(args[4]), stoi(args[5]));
+
+    graph->generateDot("Grafo_basico");
+
+    int option;
+
+    std::cout << std::endl
+              << "---------------- Bem Vindo ----------------" << std::endl
+              << std::endl;
+    do
+    {
+        std::cout << "O que deseja fazer com o grafo passado:" << endl
+                  << endl;
+
+        std::cout << "(1) Fecho Transitivo Direto" << std::endl;
+        std::cout << "(2) Fecho Transitivo Indireto" << std::endl;
+        std::cout << "(3) Caminho Mínimo usando Algoritmo de Dijkstra" << std::endl;
+        std::cout << "(4) Caminho Mínimo usando Algoritmo de Floyd-Marshall" << std::endl;
+        std::cout << "(5) Prim" << std::endl;    // TODO
+        std::cout << "(6) Kruskal" << std::endl; // TODO
+        std::cout << "(7) Árvore gerada por Caminhamento em Largura" << std::endl;
+        std::cout << "(8) Ordenação Topológica" << std::endl
+                  << std::endl;
+
+        std::cout << "(9) Trocar" << std::endl;
+        std::cout << "(0) Sair" << std::endl;
+        std::cout << endl
+                  << "-------------------------------------------" << std::endl
+                  << std::endl;
+
+        std::cout << "Opção: ";
+        cin >> option;
+        std::cout << std::endl;
+        switch (option)
+        {
+        case 1:
+            Utils::CallDirectTrasitiveClosure(graph);
+            break;
+
+        case 2:
+            Utils::CallIndirectTrasitiveClosure(graph);
+            break;
+
+        case 3:
+            Utils::CallDijkstra(graph);
+            break;
+
+        case 4:
+            Utils::CallFloyd(graph);
+            break;
+            
+        case 7:
+            Utils::CallBFS(graph);
+            break;
+
+        case 9:
+            Utils::ChangeGraph(graph);
+            break;
+
+        default:
+            break;
+        }
+
+        cout << "-------------------------------------------" << endl
+             << endl;
+    } while (option != 0);
+
+    Graph grafo(8, true, false, false);
 
     grafo.insertNode(4);
     grafo.insertNode(1);
@@ -77,8 +273,10 @@ int main(int argsc, char* args[])
     grafo.insertNode(5);
     grafo.insertNode(0);
     grafo.insertNode(6);
+    grafo.insertNode(7);
 
     grafo.insertEdge(1, 0);
+    grafo.insertEdge(7, 1);
     grafo.insertEdge(2, 0);
     grafo.insertEdge(3, 0);
     grafo.insertEdge(4, 0);
@@ -119,13 +317,11 @@ int main(int argsc, char* args[])
 
     delete newGraph;
 
-    newGraph = createGraph(args[1], stoi(args[2]), stoi(args[3]), stoi(args[4]));
-    
-    std::cout << "Grafo gerado" << std::endl;
+    newGraph = Utils::createGraph(args[1], stoi(args[3]), stoi(args[4]), stoi(args[5]));
+
     // newGraph->generateDot("graph_file");
     // newGraph = newGraph->breadthFirstSearch(5);
     // newGraph->generateDot("125_graph");
-    newGraph->floydMarshall(5, 28)->generateDot("test_5_28");
-    newGraph->floydMarshall(28, 5)->generateDot("test_28_5");
-
+    newGraph->floydMarshall(0, 0)->generateDot("test_5_28");
+    newGraph->floydMarshall(0, 0)->generateDot("test_28_5");
 }

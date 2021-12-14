@@ -68,8 +68,10 @@ public:
 
 private:
     //Auxiliar methods
-    void auxDirectTransitiveClosure(Node *node, deque<int> &nodesList);
-    void auxIndirectTransitiveClosure(Node *node, int &targetId, int startNode, unordered_set<int> &nodesList, vector<int> &visited);
+    // void auxDirectTransitiveClosure(Node *node, deque<int> &nodesList);
+    void auxDirectTransitiveClosure(Node* node, Graph* graph);
+    // void auxIndirectTransitiveClosure(Node *node, int &targetId, int startNode, unordered_set<int> &nodesList, vector<int> &visited);
+    bool auxIndirectTransitiveClosure(int sourceId, int targetId);
     void pathDistanceDFS(int node, vector<vector<float>>& dist_mat, vector<vector<float>> &path_mat);
 };
 
