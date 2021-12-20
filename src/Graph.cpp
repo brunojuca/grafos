@@ -329,42 +329,23 @@ Graph *Graph::floydMarshall(int idSource, int idTarget)
     }
 
     Graph *newGraph = new Graph(directed, weighted_edge, weighted_node);
-
+    string menor_caminho = "";
     while (path_mat[idSource][idTarget] != -1)
     {
         newGraph->insertEdge(path_mat[idSource][idTarget], idTarget, dist_mat[path_mat[idSource][idTarget]][idTarget]);
+        menor_caminho = " -> " + to_string(idTarget) + menor_caminho; 
         if (path_mat[idSource][idTarget] == idSource)
-        {
             break;
-        }
+        
         idTarget = path_mat[idSource][idTarget];
     }
+
+    menor_caminho = to_string(idSource) + menor_caminho;
 
     newGraph->order = newGraph->nodesMap.size();
 
     cout << "Menor Caminho usando o algoritmo de Floyd-Marshall:" << endl;
-    map<int, bool> visited;
-    int count = 0;
-    for (Node *node = newGraph->getNode(idSource); node != nullptr;)
-    {
-        cout << node->getId();
-        visited[node->getId()] = true;
-        count++;
-        if (count != newGraph->order)
-            cout << " -> ";
-
-        for (auto edge = node->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
-        {
-            if (edge->getNextEdge() == nullptr && count != 1)
-            {
-                node = nullptr;
-                break;
-            }
-            else if (!visited[edge->getTargetId()])
-                node = newGraph->getNode(node->getFirstEdge()->getTargetId());
-        }
-    }
-    cout << endl;
+    cout << menor_caminho << endl;
 
     return newGraph;
 }
