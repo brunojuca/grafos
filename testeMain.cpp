@@ -106,6 +106,18 @@ namespace Utils
         graph = Utils::createGraph(newGraphPath, directed, weighted_edge, weighted_node);
     }
 
+    void CallTopologicalSorting(Graph *graph)
+    {
+        graph->topologicalSorting();
+    }
+
+    void CallKruskal(Graph *graph)
+    {
+        Graph *newGraph = graph->agmKruskal();
+        newGraph->generateDot("Kruskal_AGM");
+        delete newGraph;
+    }
+
     void CallBFS(Graph *graph)
     {
         int id;
@@ -247,9 +259,17 @@ int main(int argsc, char *args[])
         case 4:
             Utils::CallFloyd(graph);
             break;
-            
+
+        case 6:
+            Utils::CallKruskal(graph);
+            break;
+
         case 7:
             Utils::CallBFS(graph);
+            break;
+
+        case 8:
+            Utils::CallTopologicalSorting(graph);
             break;
 
         case 9:
@@ -263,6 +283,10 @@ int main(int argsc, char *args[])
         cout << "-------------------------------------------" << endl
              << endl;
     } while (option != 0);
+
+    cout << "é ciclico? " << graph->isCyclic() << endl;
+
+    delete graph;
 
     Graph grafo(8, true, false, false);
 
@@ -322,6 +346,6 @@ int main(int argsc, char *args[])
     // newGraph->generateDot("graph_file");
     // newGraph = newGraph->breadthFirstSearch(5);
     // newGraph->generateDot("125_graph");
-    newGraph->floydMarshall(0, 0)->generateDot("test_5_28");
-    newGraph->floydMarshall(0, 0)->generateDot("test_28_5");
+    // newGraph->floydMarshall(0, 0)->generateDot("test_5_28");
+    // newGraph->floydMarshall(0, 0)->generateDot("test_28_5");
 }

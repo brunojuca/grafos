@@ -54,10 +54,12 @@ public:
     Graph *breadthFirstSearch(int id);
     Graph *directTransitiveClosure(int id);
     Graph *indirectTransitiveClosure(int id);
-    Graph *agmKuskal();
+    Graph *agmKruskal();
     Graph *agmPrim();
     Graph *floydMarshall(int idSource, int idTarget);
     float dijkstra(int idSource, int idTarget);
+
+    bool isCyclic();
 
     //methods phase1
     float greed();
@@ -73,6 +75,7 @@ private:
     // void auxIndirectTransitiveClosure(Node *node, int &targetId, int startNode, unordered_set<int> &nodesList, vector<int> &visited);
     bool auxIndirectTransitiveClosure(int sourceId, int targetId);
     void pathDistanceDFS(int node, vector<vector<float>>& dist_mat, vector<vector<float>> &path_mat);
+    bool findBy(int origin_node, int end_node);
 };
 
 #endif // GRAPH_H_INCLUDED

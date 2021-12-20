@@ -151,8 +151,14 @@ void Graph::insertEdge(int id, int target_id, float weight)
         target_node = this->insertNode(target_id);
 
     source_node->insertEdge(target_id, weight);
+    source_node->incrementOutDegree();
+    target_node->incrementInDegree();
     if (!directed)
+    {
+        target_node->incrementOutDegree();
+        source_node->incrementInDegree();
         target_node->insertEdge(id, weight);
+    }
     this->number_edges++;
 }
 
@@ -289,6 +295,10 @@ Graph *Graph::breadthFirstSearch(int id)
 
 Graph *Graph::floydMarshall(int idSource, int idTarget)
 {
+    if (idSource == idTarget)
+    {
+        cout << "Origem e destino iguais" << endl;
+    }
     vector<vector<float>> dist_mat(this->order, vector<float>(this->order));
     vector<vector<float>> path_mat(this->order, vector<float>(this->order, -1.0f));
 
@@ -300,25 +310,6 @@ Graph *Graph::floydMarshall(int idSource, int idTarget)
             if (dist_mat[i][j] == 0 && i != j)
                 dist_mat[i][j] = INFINITY;
 
-    // Print dist matrix
-    cout << "dist mat:" << endl;
-    for (int i = 0; i < dist_mat.size(); i++)
-    {
-        for (int j = 0; j < dist_mat.size(); j++)
-            cout << dist_mat[i][j] << " ";
-        cout << endl;
-    }
-    cout << endl;
-
-    cout << "path mat:" << endl;
-    for (int i = 0; i < path_mat.size(); i++)
-    {
-        for (int j = 0; j < path_mat.size(); j++)
-            cout << path_mat[i][j] << " ";
-        cout << endl;
-    }
-    cout << endl;
-
     for (int k = 0; k < this->order; k++)
     {
         for (int i = 0; i < this->order; i++)
@@ -327,39 +318,15 @@ Graph *Graph::floydMarshall(int idSource, int idTarget)
             {
                 if (k != i && k != j && i != j)
                 {
-                    cout << i << " " << j << " " << k << endl;
                     if (dist_mat[i][k] + dist_mat[k][j] < dist_mat[i][j])
                     {
-                        cout << "entrou" << endl;
                         dist_mat[i][j] = dist_mat[i][k] + dist_mat[k][j];
-                        cout << path_mat[i][j] << endl;
                         path_mat[i][j] = path_mat[k][j];
-                        cout << path_mat[i][j] << endl;
-                        cout << "mudou " << i << " " << j << " " << k << endl;
                     }
                 }
             }
         }
     }
-
-    // Print dist matrix
-    cout << "dist mat:" << endl;
-    for (int i = 0; i < dist_mat.size(); i++)
-    {
-        for (int j = 0; j < dist_mat.size(); j++)
-            cout << dist_mat[i][j] << " ";
-        cout << endl;
-    }
-    cout << endl;
-
-    cout << "path mat:" << endl;
-    for (int i = 0; i < path_mat.size(); i++)
-    {
-        for (int j = 0; j < path_mat.size(); j++)
-            cout << path_mat[i][j] << " ";
-        cout << endl;
-    }
-    cout << endl;
 
     Graph *newGraph = new Graph(directed, weighted_edge, weighted_node);
 
@@ -374,6 +341,30 @@ Graph *Graph::floydMarshall(int idSource, int idTarget)
     }
 
     newGraph->order = newGraph->nodesMap.size();
+
+    cout << "Menor Caminho usando o algoritmo de Floyd-Marshall:" << endl;
+    map<int, bool> visited;
+    int count = 0;
+    for (Node *node = newGraph->getNode(idSource); node != nullptr;)
+    {
+        cout << node->getId();
+        visited[node->getId()] = true;
+        count++;
+        if (count != newGraph->order)
+            cout << " -> ";
+
+        for (auto edge = node->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
+        {
+            if (edge->getNextEdge() == nullptr && count != 1)
+            {
+                node = nullptr;
+                break;
+            }
+            else if (!visited[edge->getTargetId()])
+                node = newGraph->getNode(node->getFirstEdge()->getTargetId());
+        }
+    }
+    cout << endl;
 
     return newGraph;
 }
@@ -453,9 +444,53 @@ float Graph::dijkstra(int idSource, int idTarget)
     return dist[idTarget];
 }
 
+bool TSCompareFunction(pair<int, int> a, pair<int, int> b);
+
+bool TSCompareFunction(pair<int, int> a, pair<int, int> b)
+{
+    return a.second < b.second;
+}
 // function that prints a topological sorting
 void Graph::topologicalSorting()
 {
+    if (this->isCyclic() || !this->directed)
+    {
+        cout << endl
+             << "Grafo é cíclico" << endl
+             << endl;
+        return;
+    }
+
+    vector<int> inDegrees(this->order);
+
+    for (auto nodePair : this->nodesMap)
+        inDegrees[nodePair.first] = nodePair.second->getInDegree();
+
+    int i;
+    int visitedCount = 0;
+    while (visitedCount != this->order)
+    {
+        for (i = 0; i < inDegrees.size(); i++)
+        {
+            if (inDegrees[i] == 0)
+                break;
+        }
+        cout << i;
+        inDegrees[i]--;
+        visitedCount++;
+
+        Node *node = this->getNode(i);
+
+        for (Edge *edge = node->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
+        {
+            cout << edge->getTargetId();
+            inDegrees[edge->getTargetId()]--;
+        }
+
+        if (visitedCount != this->order)
+            cout << " -> ";
+    }
+    cout << endl;
 }
 
 /**
@@ -469,7 +504,14 @@ Graph *Graph::directTransitiveClosure(int id)
     Graph *graph = new Graph(this->directed, this->weighted_edge, this->weighted_node);
     graph->insertNode(id, this->getNode(id)->getWeight());
 
-    vector<bool> visited(this->order, false);
+    if (this->nodesMap.size() < 1)
+    {
+        graph->order = graph->nodesMap.size();
+        return graph;
+    }
+
+    vector<bool>
+        visited(this->order, false);
 
     queue<int> q;
     q.push(id);
@@ -550,13 +592,95 @@ bool Graph::auxIndirectTransitiveClosure(int sourceId, int targetId)
     return false;
 }
 
-Graph *Graph::agmKuskal()
+bool kruskalCompFunction(tuple<int, int, float> edge1, tuple<int, int, float> edge2);
+
+bool kruskalCompFunction(tuple<int, int, float> edge1, tuple<int, int, float> edge2)
 {
+    return get<2>(edge1) < get<2>(edge2);
+}
+
+bool Graph::findBy(int origin_node, int end_node)
+{
+    cout << "teste findby" << endl;
+    Graph *graph = this->directTransitiveClosure(origin_node);
+    cout << "teste findby" << endl;
+    if (graph->getNode(end_node) != nullptr)
+    {
+        delete graph;
+        return true;
+    }
+    else
+    {
+        delete graph;
+        return false;
+    }
+}
+
+Graph *Graph::agmKruskal()
+{
+    Graph *newGraph = new Graph(this->order, this->directed, this->weighted_edge, this->weighted_node);
+
+    cout << " teste" << endl;
+
+    vector<tuple<int, int, float>> edges;
+    for (auto nodePair : nodesMap)
+        for (Edge *edge = this->getNode(nodePair.first)->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
+            if (find(edges.begin(), edges.end(), make_tuple(edge->getTargetId(), nodePair.first, edge->getWeight())) == edges.end())
+                edges.push_back(make_tuple(nodePair.first, edge->getTargetId(), edge->getWeight()));
+
+    cout << " teste" << endl;
+
+    sort(edges.begin(), edges.end(), kruskalCompFunction);
+    int alone_nodes = this->order;
+    int contador = 0;
+    cout << " teste" << endl;
+    while (newGraph->number_edges != this->order - 1 && !edges.empty())
+    {
+        cout << "teste" << endl;
+        auto edge = edges.front();
+        edges.erase(edges.begin());
+        cout << get<0>(edge) << endl;
+        if (!newGraph->findBy(get<0>(edge), get<1>(edge)))
+            newGraph->insertEdge(get<0>(edge), get<1>(edge), get<2>(edge));
+    }
+
+    return newGraph;
 }
 Graph *Graph::agmPrim()
 {
 }
 
+bool Graph::isCyclic()
+{
+    for (Node *node = this->getFirstNode(); node != nullptr; node = node->getNextNode())
+    {
+        vector<bool> visited(this->order, false);
+
+        queue<int> q;
+        int id = node->getId();
+        q.push(id);
+        visited[id] = true;
+        while (!q.empty())
+        {
+            id = q.front();
+            q.pop();
+            for (Edge *edge = this->getNode(id)->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
+            {
+                if (edge->getTargetId() == node->getId())
+                {
+                    cout << id << " " << edge->getTargetId() << endl;
+                    return true;
+                }
+                if (!visited[edge->getTargetId()])
+                {
+                    visited[edge->getTargetId()] = true;
+                    q.push(edge->getTargetId());
+                }
+            }
+        }
+    }
+    return false;
+}
 /**
  * @brief Function that generates a .dot file that can be used to generate a image of the graph using Graphviz
  *
