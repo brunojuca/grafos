@@ -51,13 +51,13 @@ public:
 
     //methods phase1
     void topologicalSorting();
-    Graph *breadthFirstSearch(int id);
+    Graph *breadthFirstSearch(int id, string result_dir_path);
     Graph *directTransitiveClosure(int id);
     Graph *indirectTransitiveClosure(int id);
     Graph *agmKruskal();
     Graph *agmPrim();
     Graph *floydMarshall(int idSource, int idTarget);
-    float dijkstra(int idSource, int idTarget);
+    Graph *dijkstra(int idSource, int idTarget);
 
     bool isCyclic();
 
@@ -66,7 +66,7 @@ public:
     float greedRandom();
     float greedRactiveRandom();
 
-    void generateDot(string nome, string layout="dot");
+    void generateDot(string nome, string outFile, string layout="dot");
 
 private:
     //Auxiliar methods

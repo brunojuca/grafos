@@ -191,7 +191,7 @@ Node *Graph::getNode(int id)
 
 // Function that prints a set of edges belongs breadth tree
 
-Graph *Graph::breadthFirstSearch(int id)
+Graph *Graph::breadthFirstSearch(int id, string result_dir_path)
 {
     vector<bool> visited(this->order, false);
     vector<bool> completed(this->order, false);
@@ -234,39 +234,55 @@ Graph *Graph::breadthFirstSearch(int id)
     }
 
     ofstream dot_file("DOTs/BFS_with_back_edges.dot", ios::out);
+    ofstream outFile(result_dir_path, ios::app);
     string edgeType;
     map<pair<int, int>, bool> edges_added;
+
+    outFile << "BFS_with_back_edges" << endl;
 
     if (getDirected())
     {
         dot_file << "digraph { " << endl;
+        outFile << "digraph { " << endl;
         edgeType = "->";
     }
     else
     {
         dot_file << "graph {" << endl;
+        outFile << "graph {" << endl;
         edgeType = "--";
     }
 
     dot_file << "   overlap=false; layout=dot; splines=true;" << endl;
+    outFile << "   overlap=false; layout=dot; splines=true;" << endl;
     dot_file << endl
              << "   node [shape=box, style=filled, fillcolor=lightblue]" << endl;
+    outFile << endl
+             << "   node [shape=box, style=filled, fillcolor=lightblue]" << endl;
     dot_file << endl
+             << "   edge [color=blue, len=20.0, fontsize=15]\n"
+             << endl;
+    outFile << endl
              << "   edge [color=blue, len=20.0, fontsize=15]\n"
              << endl;
 
     for (Node *node = newGraph->getFirstNode(); node != nullptr; node = node->getNextNode())
     {
         dot_file << "   " << node->getId() << endl;
+        outFile << "   " << node->getId() << endl;
         for (Edge *edge = node->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
         {
             if (edges_added[make_pair(edge->getTargetId(), node->getId())] != true)
             {
                 edges_added[make_pair(node->getId(), edge->getTargetId())] = true;
-                if (getWeightedEdge())
+                if (getWeightedEdge()) {
                     dot_file << "   " << node->getId() << edgeType << edge->getTargetId() << " [label=\"" << edge->getWeight() << "\"]" << endl;
-                else
+                    outFile << "   " << node->getId() << edgeType << edge->getTargetId() << " [label=\"" << edge->getWeight() << "\"]" << endl;
+                }
+                else {
                     dot_file << "   " << node->getId() << edgeType << edge->getTargetId() << endl;
+                    outFile << "   " << node->getId() << edgeType << edge->getTargetId() << endl;
+                }
             }
         }
     }
@@ -276,17 +292,25 @@ Graph *Graph::breadthFirstSearch(int id)
         if (edges_added[make_pair(get<1>(edge), get<0>(edge))] != true)
         {
             edges_added[make_pair(get<0>(edge), get<1>(edge))] = true;
-            if (getWeightedEdge())
+            if (getWeightedEdge()) {
                 dot_file << "   " << get<0>(edge) << edgeType << get<1>(edge) << " [label=\"" << get<2>(edge) << "\", color=\"red\"]" << endl;
-            else
+                outFile << "   " << get<0>(edge) << edgeType << get<1>(edge) << " [label=\"" << get<2>(edge) << "\", color=\"red\"]" << endl;
+            }
+                
+            else {
                 dot_file << "   " << get<0>(edge) << edgeType << get<1>(edge) << " [color=\"red\"]" << endl;
+                outFile << "   " << get<0>(edge) << edgeType << get<1>(edge) << " [color=\"red\"]" << endl;
+            }
         }
     }
 
     dot_file << "}";
+    outFile << "}";
+    outFile << endl << endl;
     dot_file.close();
+    outFile.close();
 
-    system(string("dot -Tpng ./DOTs/BFS_with_back_edges.dot -o output/BFS_with_back_edges.png").c_str());
+    //system(string("dot -Tpng ./DOTs/BFS_with_back_edges.dot -o output/BFS_with_back_edges.png").c_str());
 
     newGraph->order = newGraph->nodesMap.size();
 
@@ -333,10 +357,10 @@ Graph *Graph::floydMarshall(int idSource, int idTarget)
     while (path_mat[idSource][idTarget] != -1)
     {
         newGraph->insertEdge(path_mat[idSource][idTarget], idTarget, dist_mat[path_mat[idSource][idTarget]][idTarget]);
-        menor_caminho = " -> " + to_string(idTarget) + menor_caminho; 
+        menor_caminho = " -> " + to_string(idTarget) + menor_caminho;
         if (path_mat[idSource][idTarget] == idSource)
             break;
-        
+
         idTarget = path_mat[idSource][idTarget];
     }
 
@@ -379,22 +403,31 @@ void Graph::pathDistanceDFS(int node, vector<vector<float>> &dist_mat, vector<ve
     }
 }
 
-float Graph::dijkstra(int idSource, int idTarget)
+/**
+ * @brief
+ *
+ * @param idSource
+ * @param idTarget
+ * @return pair<float, int> first is the distance and second is the
+ */
+
+Graph *Graph::dijkstra(int idSource, int idTarget)
 {
     unordered_set<int> unvisited;
-    map<int, float> dist;
+    map<int, pair<float, int>> dist;
     int currentId;
-    float currentDist, tempDist;
+    pair<float, int> currentDist, tempDist;
     Node *node = this->first_node;
     Edge *edge;
+    vector<int> resultPath;
 
     while (node != nullptr)
     {
         unvisited.insert(node->getId());
-        dist.emplace(node->getId(), INFINITY);
+        dist.emplace(node->getId(), make_pair(INFINITY, -1));
         node = node->getNextNode();
     }
-    dist[idSource] = 0;
+    dist[idSource] = make_pair(0, idSource);
 
     while (!unvisited.empty())
     {
@@ -402,7 +435,7 @@ float Graph::dijkstra(int idSource, int idTarget)
         currentDist = dist[currentId];
         for (auto &&id : unvisited)
         {
-            if (dist[id] < currentDist)
+            if (dist[id].first < currentDist.first)
             {
                 currentId = id;
             }
@@ -414,15 +447,44 @@ float Graph::dijkstra(int idSource, int idTarget)
 
         while (edge != nullptr)
         {
-            tempDist = dist[currentId] + edge->getWeight();
-            if (tempDist < dist[edge->getTargetId()])
+            tempDist = make_pair(dist[currentId].first + edge->getWeight(), currentId);
+            if (tempDist.first < dist[edge->getTargetId()].first)
             {
                 dist[edge->getTargetId()] = tempDist;
             }
             edge = edge->getNextEdge();
         }
     }
-    return dist[idTarget];
+
+    int pathId = idTarget;
+    resultPath.insert(resultPath.begin(), idTarget);
+    Graph *newGraph = new Graph(directed, weighted_edge, weighted_node);
+
+    if (dist[idTarget].second == -1)
+    {
+        cout << "Nao ha caminho entre os vertices escolhidos" << endl;
+        return newGraph;
+    }
+
+    while (pathId != idSource)
+    {
+        cout << pathId << endl;
+        newGraph->insertEdge(dist[pathId].second, pathId, dist[pathId].first - dist[dist[pathId].second].first);
+        resultPath.insert(resultPath.begin(), dist[pathId].second);
+        pathId = dist[pathId].second;
+    }
+
+    cout << "Menor Caminho usando o algoritmo de Dijkstra (Tamanho: " << dist[idTarget].first << "): " << endl;
+    for (auto &&id : resultPath)
+    {
+        if (id == idSource)
+            cout << id;
+        else
+            cout << " -> " << id;
+    }
+    cout << endl;
+
+    return newGraph;
 }
 
 bool TSCompareFunction(pair<int, int> a, pair<int, int> b);
@@ -668,48 +730,68 @@ bool Graph::isCyclic()
  * @param nome
  * @param layout
  */
-void Graph::generateDot(string nome, string layout)
+void Graph::generateDot(string nome, string outFileStr, string layout)
 {
     ofstream dot_file("DOTs/" + nome + ".dot", ios::out);
+    ofstream outFile(outFileStr, ios::app);
     string edgeType;
     map<pair<int, int>, bool> edges_added;
+
+    outFile << nome << endl << endl;
+
     if (getDirected())
     {
         dot_file << "digraph { " << endl;
+        outFile << "digraph { " << endl;
         edgeType = "->";
     }
     else
     {
         dot_file << "graph {" << endl;
+        outFile << "graph {" << endl;
         edgeType = "--";
     }
 
     dot_file << "   overlap=false; layout=\"" + layout + "\"; splines=true;" << endl;
+    outFile << "   overlap=false; layout=\"" + layout + "\"; splines=true;" << endl;
     dot_file << endl
              << "   node [shape=box, style=filled, fillcolor=lightblue]" << endl;
+    outFile << endl
+             << "   node [shape=box, style=filled, fillcolor=lightblue]" << endl;
     dot_file << endl
+             << "   edge [color=blue, len=20.0, fontsize=15]\n"
+             << endl;
+    outFile << endl
              << "   edge [color=blue, len=20.0, fontsize=15]\n"
              << endl;
 
     for (Node *node = first_node; node != nullptr; node = node->getNextNode())
     {
         dot_file << "   " << node->getId() << endl;
+        outFile << "   " << node->getId() << endl;
         for (Edge *edge = node->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
         {
             if (edges_added[make_pair(edge->getTargetId(), node->getId())] != true)
             {
                 edges_added[make_pair(node->getId(), edge->getTargetId())] = true;
 
-                if (getWeightedEdge())
+                if (getWeightedEdge()) {
                     dot_file << "   " << node->getId() << edgeType << edge->getTargetId() << " [label=\"" << edge->getWeight() << "\"]" << endl;
-                else
+                    outFile << "   " << node->getId() << edgeType << edge->getTargetId() << " [label=\"" << edge->getWeight() << "\"]" << endl;
+                }
+                else {
                     dot_file << "   " << node->getId() << edgeType << edge->getTargetId() << endl;
+                    outFile << "   " << node->getId() << edgeType << edge->getTargetId() << endl;
+                }
             }
         }
     }
 
     dot_file << "}";
+    outFile << "}";
+    outFile << endl << endl;
     dot_file.close();
+    outFile.close();
 
-    system(string("dot -Tpng ./DOTs/" + nome + ".dot -o output/" + nome + ".png").c_str());
+    //system(string("dot -Tpng ./DOTs/" + nome + ".dot -o output/" + nome + ".png").c_str());
 }
