@@ -700,7 +700,7 @@ Graph *Graph::agmKruskal()
 
     return newGraph;
 }
-Graph *Graph::agmPrim()
+void Graph::agmPrim()
 {
 }
 

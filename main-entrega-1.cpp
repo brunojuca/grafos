@@ -157,4 +157,5 @@ int mainEntrega1(int argsc, char *args[])
     // newGraph->generateDot("125_graph", result_dir_path);
     // newGraph->floydMarshall(0, 0)->generateDot("test_5_28", result_dir_path);
     // newGraph->floydMarshall(0, 0)->generateDot("test_28_5", result_dir_path);
+    return 0;
 }

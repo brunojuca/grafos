@@ -13,6 +13,11 @@ public:
     // {
     //     Graph();
     // }
+
+    int minNodeWeight;
+    int maxNodeWeight;
+
+    void insertEdge(int id, int target_id, int sourceWeight, int targetWeight, float weight = 1);
 };
 
 #endif

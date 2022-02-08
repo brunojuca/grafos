@@ -272,10 +272,11 @@ vector<MinGapGraph> Utils::greed(Graph *graph, int p)
     sort(edges.begin(), edges.end(), [graph](pair<int, int> a, pair<int, int> b)
          { return abs(graph->getNode(a.first)->getWeight() - graph->getNode(a.second)->getWeight()) > abs(graph->getNode(b.first)->getWeight() - graph->getNode(b.second)->getWeight()); });
 
-    for (auto edge : edges)
-    {
-        cout << edge.first << " " << edge.second << " " << abs(graph->getNode(edge.first)->getWeight() - graph->getNode(edge.second)->getWeight()) << endl;
-    }
+    // print edges
+    // for (auto edge : edges)
+    // {
+    //     cout << edge.first << " " << edge.second << " " << abs(graph->getNode(edge.first)->getWeight() - graph->getNode(edge.second)->getWeight()) << endl;
+    // }
 
     cout << "\nNumero de edges: " << edges.size() << endl;
 
@@ -286,7 +287,7 @@ vector<MinGapGraph> Utils::greed(Graph *graph, int p)
     {
         if (insertedNodes.find(edges.back().first) == insertedNodes.end() && insertedNodes.find(edges.back().second) == insertedNodes.end())
         {
-            partitions[insertedEdges].insertEdge(edges.back().first, edges.back().second);
+            partitions[insertedEdges].insertEdge(edges.back().first, edges.back().second, graph->getNode(edges.back().first)->getWeight(), graph->getNode(edges.back().second)->getWeight());
             insertedNodes.insert(edges.back().first);
             insertedNodes.insert(edges.back().second);
             insertedEdges++;
@@ -294,15 +295,53 @@ vector<MinGapGraph> Utils::greed(Graph *graph, int p)
         edges.pop_back();
     }
 
+    // print partitions
+    // for (auto &&part : partitions)
+    // {
+    //     cout << "part" << endl;
+    //     for (Node* n = part.getFirstNode(); n != nullptr; n = n->getNextNode())
+    //     {
+    //         cout << n->getId() << " ";
+    //     } cout << part.maxNodeWeight << " " << part.minNodeWeight << endl;
+        
+    // }
+    
+    vector<pair<int,int>> candidates;
+
     for (auto &&part : partitions)
     {
-        cout << "part" << endl;
-        for (Node* n = part.getFirstNode(); n != nullptr; n = n->getNextNode())
+        for (Node *n = part.getFirstNode(); n != nullptr; n = n->getNextNode())
         {
-            cout << n->getId() << " ";
-        } cout << endl;
-        
+            Node *graphNode = graph->getNode(n->getId());
+            for (Edge *e = graphNode->getFirstEdge(); e != nullptr; e = e->getNextEdge())
+            {
+                if (insertedNodes.find(e->getTargetId()) == insertedNodes.end())
+                {
+
+                     cout << n->getId() << " " << e->getTargetId() << endl;
+                    candidates.push_back(make_pair(n->getId(), e->getTargetId()));
+                    /* code */
+                }
+            }
+        }
+        cout << endl;
     }
-    
-    
+
+    // sort(candidates.begin(), candidates.end(), [&partitions](pair<int, int> a, pair<int, int> b)
+    //     { 
+    //         int diffA = 0;
+    //         int diffB = 0;
+
+    //         for (auto &&part : partitions)
+    //         {
+    //             for (Node *n = part.getFirstNode(); n != nullptr; n = n->getNextNode())
+    //             {
+    //                 cout << part.minNodeWeight << " ";
+    //             }
+    //         }
+
+    //         return true; 
+    //     });
+
+    return partitions;
 }

@@ -19,6 +19,8 @@ class Graph
 
     //Atributes
 private:
+
+public:
     int order;
     int number_edges;
     bool directed;
@@ -27,8 +29,7 @@ private:
     Node *first_node;
     Node *last_node;
     map<int, Node *> nodesMap;
-
-public:
+    
     //Constructor
     Graph(int order, bool directed, bool weighted_edge, bool weighted_node);
     Graph(bool directed, bool weighted_edge, bool weighted_node);
@@ -56,7 +57,7 @@ public:
     Graph *directTransitiveClosure(int id);
     Graph *indirectTransitiveClosure(int id);
     Graph *agmKruskal();
-    Graph *agmPrim();
+    void agmPrim();
     Graph *floydMarshall(int idSource, int idTarget);
     Graph *dijkstra(int idSource, int idTarget);
 
