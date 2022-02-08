@@ -1,0 +1,171 @@
+test
+
+graph {
+   overlap=false; layout="dot"; splines=true;
+
+   node [shape=box, style=filled, fillcolor=lightblue]
+
+   edge [color=blue, len=20.0, fontsize=15]
+
+   1
+   1--2
+   1--4
+   2
+   2--3
+   3
+   3--4
+   4
+}
+
+test
+
+graph {
+   overlap=false; layout="dot"; splines=true;
+
+   node [shape=box, style=filled, fillcolor=lightblue]
+
+   edge [color=blue, len=20.0, fontsize=15]
+
+   1
+   1--2
+   1--4
+   2
+   2--3
+   3
+   3--4
+   4
+}
+
+test
+
+graph {
+   overlap=false; layout="dot"; splines=true;
+
+   node [shape=box, style=filled, fillcolor=lightblue]
+
+   edge [color=blue, len=20.0, fontsize=15]
+
+   1
+   1--2
+   1--4
+   2
+   2--3
+   3
+   3--4
+   4
+}
+
+test
+
+graph {
+   overlap=false; layout="dot"; splines=true;
+
+   node [shape=box, style=filled, fillcolor=lightblue]
+
+   edge [color=blue, len=20.0, fontsize=15]
+
+   1
+   1--2
+   1--4
+   2
+   2--3
+   3
+   3--4
+   4
+}
+
+test
+
+graph {
+   overlap=false; layout="dot"; splines=true;
+
+   node [shape=box, style=filled, fillcolor=lightblue]
+
+   edge [color=blue, len=20.0, fontsize=15]
+
+   1
+   1--2
+   1--4
+   2
+   2--3
+   3
+   3--4
+   4
+}
+
+test
+
+graph {
+   overlap=false; layout="dot"; splines=true;
+
+   node [shape=box, style=filled, fillcolor=lightblue]
+
+   edge [color=blue, len=20.0, fontsize=15]
+
+   1
+   1--2
+   1--4
+   2
+   2--3
+   3
+   3--4
+   4
+}
+
+test
+
+graph {
+   overlap=false; layout="dot"; splines=true;
+
+   node [shape=box, style=filled, fillcolor=lightblue]
+
+   edge [color=blue, len=20.0, fontsize=15]
+
+   1
+   1--2
+   1--4
+   2
+   2--3
+   3
+   3--4
+   4
+}
+
+test
+
+graph {
+   overlap=false; layout="dot"; splines=true;
+
+   node [shape=box, style=filled, fillcolor=lightblue]
+
+   edge [color=blue, len=20.0, fontsize=15]
+
+   1
+   1--2
+   1--4
+   2
+   2--3
+   3
+   3--4
+   4
+}
+
+test
+
+graph {
+   overlap=false; layout="dot"; splines=true;
+
+   node [shape=box, style=filled, fillcolor=lightblue]
+
+   edge [color=blue, len=20.0, fontsize=15]
+
+   1
+   1--2
+   1--4
+   2
+   2--3
+   3
+   3--4
+   4
+}
+

@@ -1,4 +1,6 @@
 #include "Utils.h"
+#include <algorithm>
+#include "set"
 
 Utils::Utils(/* args */)
 {
@@ -81,7 +83,7 @@ Graph *Utils::createGraphPart2(std::string graph_file_path, bool directed, bool 
     while (word != "p");
     graph_file >> word >> order;
 
-    Graph *graph = new Graph(order, directed, weighted_edge, weighted_node);
+    Graph *graph = new Graph(directed, weighted_edge, weighted_node);
 
     do
         graph_file >> word;
@@ -254,4 +256,53 @@ void Utils::CallFloyd(Graph *graph, string result_dir_path)
     Graph *newGraph = graph->floydMarshall(idSource, idTarget);
     newGraph->generateDot("Caminho_Minimo_Floyd-Marshall", result_dir_path);
     delete newGraph;
+}
+
+vector<MinGapGraph> Utils::greed(Graph *graph, int p)
+{
+
+    vector<pair<int, int>> edges;
+    set<int> insertedNodes;
+
+    for (Node *node = graph->getFirstNode(); node != nullptr; node = node->getNextNode())
+        for (Edge *edge = node->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
+            if (node->getId() < edge->getTargetId())
+                edges.push_back(make_pair(node->getId(), edge->getTargetId()));
+
+    sort(edges.begin(), edges.end(), [graph](pair<int, int> a, pair<int, int> b)
+         { return abs(graph->getNode(a.first)->getWeight() - graph->getNode(a.second)->getWeight()) > abs(graph->getNode(b.first)->getWeight() - graph->getNode(b.second)->getWeight()); });
+
+    for (auto edge : edges)
+    {
+        cout << edge.first << " " << edge.second << " " << abs(graph->getNode(edge.first)->getWeight() - graph->getNode(edge.second)->getWeight()) << endl;
+    }
+
+    cout << "\nNumero de edges: " << edges.size() << endl;
+
+    vector<MinGapGraph> partitions(p);
+
+    int insertedEdges = 0;
+    while (insertedEdges < p)
+    {
+        if (insertedNodes.find(edges.back().first) == insertedNodes.end() && insertedNodes.find(edges.back().second) == insertedNodes.end())
+        {
+            partitions[insertedEdges].insertEdge(edges.back().first, edges.back().second);
+            insertedNodes.insert(edges.back().first);
+            insertedNodes.insert(edges.back().second);
+            insertedEdges++;
+        }
+        edges.pop_back();
+    }
+
+    for (auto &&part : partitions)
+    {
+        cout << "part" << endl;
+        for (Node* n = part.getFirstNode(); n != nullptr; n = n->getNextNode())
+        {
+            cout << n->getId() << " ";
+        } cout << endl;
+        
+    }
+    
+    
 }

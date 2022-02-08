@@ -1,6 +1,7 @@
 #include "../include/Graph.h"
 #include "../include/Node.h"
 #include "../include/Edge.h"
+#include "../include/MinGapGraph.h"
 #include <iostream>
 #include <fstream>
 #include <stack>
@@ -45,6 +46,16 @@ Graph::Graph(bool directed, bool weighted_edge, bool weighted_node)
     this->directed = directed;
     this->weighted_edge = weighted_edge;
     this->weighted_node = weighted_node;
+    this->first_node = this->last_node = nullptr;
+    this->number_edges = 0;
+}
+
+Graph::Graph()
+{
+    this->order = 0;
+    this->directed = 0;
+    this->weighted_edge = 0;
+    this->weighted_node = 1;
     this->first_node = this->last_node = nullptr;
     this->number_edges = 0;
 }

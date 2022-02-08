@@ -32,6 +32,7 @@ public:
     //Constructor
     Graph(int order, bool directed, bool weighted_edge, bool weighted_node);
     Graph(bool directed, bool weighted_edge, bool weighted_node);
+    Graph();
     //Destructor
     ~Graph();
     //Getters
@@ -62,9 +63,9 @@ public:
     bool isCyclic();
 
     //methods phase1
-    float greed();
-    float greedRandom();
-    float greedRactiveRandom();
+    // vector<MinGapGraph> greed();
+    // vector<MinGapGraph> greedRandom();
+    // vector<MinGapGraph> greedReactiveRandom();
 
     void generateDot(string nome, string outFile, string layout="dot");
 
