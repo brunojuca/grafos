@@ -299,49 +299,84 @@ vector<MinGapGraph> Utils::greed(Graph *graph, int p)
     // for (auto &&part : partitions)
     // {
     //     cout << "part" << endl;
-    //     for (Node* n = part.getFirstNode(); n != nullptr; n = n->getNextNode())
+    //     for (Node *n = part.getFirstNode(); n != nullptr; n = n->getNextNode())
     //     {
     //         cout << n->getId() << " ";
-    //     } cout << part.maxNodeWeight << " " << part.minNodeWeight << endl;
-        
+    //     }
+    //     cout << part.maxNodeWeight << " " << part.minNodeWeight << endl;
     // }
-    
-    vector<pair<int,int>> candidates;
 
-    for (auto &&part : partitions)
+
+    graph->order = graph->nodesMap.size();
+
+    while (insertedNodes.size() != graph->order)
     {
-        for (Node *n = part.getFirstNode(); n != nullptr; n = n->getNextNode())
+        vector<pair<int, int>> candidates;
+        for (auto &&part : partitions)
         {
-            Node *graphNode = graph->getNode(n->getId());
-            for (Edge *e = graphNode->getFirstEdge(); e != nullptr; e = e->getNextEdge())
+            for (Node *n = part.getFirstNode(); n != nullptr; n = n->getNextNode())
             {
-                if (insertedNodes.find(e->getTargetId()) == insertedNodes.end())
+                Node *graphNode = graph->getNode(n->getId());
+                for (Edge *e = graphNode->getFirstEdge(); e != nullptr; e = e->getNextEdge())
                 {
-
-                     cout << n->getId() << " " << e->getTargetId() << endl;
-                    candidates.push_back(make_pair(n->getId(), e->getTargetId()));
-                    /* code */
+                    if (insertedNodes.find(e->getTargetId()) == insertedNodes.end())
+                    {
+                        candidates.push_back(make_pair(n->getId(), e->getTargetId()));
+                    }
                 }
             }
         }
-        cout << endl;
+        int abc = 0;
+        sort(candidates.begin(), candidates.end(), [&partitions, graph, &abc] (pair<int, int> a, pair<int, int> b) mutable
+             {
+            int diffA = 0;
+            int diffB = 0;
+
+             for (auto &&part : partitions)
+             {
+                if (part.getNode(a.first) != nullptr)
+                {
+                    if (graph->getNode(a.second)->getWeight() > part.maxNodeWeight)
+                    {
+                        diffA = graph->getNode(a.second)->getWeight() - part.minNodeWeight;
+                    }
+                    else if (graph->getNode(a.second)->getWeight() < part.minNodeWeight)
+                    {
+                        diffA = part.maxNodeWeight - graph->getNode(a.second)->getWeight();
+                    }
+                }
+
+                else if (part.getNode(b.first) != nullptr)
+                {
+                    if (graph->getNode(b.second)->getWeight() > part.maxNodeWeight)
+                    {
+                        diffB = graph->getNode(b.second)->getWeight() - part.minNodeWeight;
+                    }
+                    else if (graph->getNode(b.second)->getWeight() < part.minNodeWeight)
+                    {
+                        diffB = part.maxNodeWeight - graph->getNode(b.second)->getWeight();
+                    }
+                }
+                
+             }
+             abc++;
+            return diffA < diffB; });
+
+        for (auto &&part : partitions)
+        {   
+            if (part.getNode(candidates.front().first) != nullptr)
+            {
+                part.insertEdge(candidates.front().first, candidates.front().second, graph->getNode(candidates.front().first)->getWeight(), graph->getNode(candidates.front().second)->getWeight());
+                //insertedNodes.insert(candidates.front().first);
+                insertedNodes.insert(candidates.front().second);
+                insertedEdges++;
+                candidates.erase(candidates.begin());
+                break;
+            }
+        }
+        cout << "percentage: " << ((float)insertedNodes.size()/graph->order)*100 << "%" << endl;
+        cout << abc << endl;
     }
-
-    // sort(candidates.begin(), candidates.end(), [&partitions](pair<int, int> a, pair<int, int> b)
-    //     { 
-    //         int diffA = 0;
-    //         int diffB = 0;
-
-    //         for (auto &&part : partitions)
-    //         {
-    //             for (Node *n = part.getFirstNode(); n != nullptr; n = n->getNextNode())
-    //             {
-    //                 cout << part.minNodeWeight << " ";
-    //             }
-    //         }
-
-    //         return true; 
-    //     });
 
     return partitions;
 }
