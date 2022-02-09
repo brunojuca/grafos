@@ -360,7 +360,7 @@ vector<MinGapGraph> Utils::greed(Graph *graph, int p)
                 
             //  }
             //  abc++;
-            return abs(a.second - a.first) < abs(b.second - b.first); });
+            return abs(graph->getNode(a.second)->getWeight() - graph->getNode(a.first)->getWeight()) < abs(graph->getNode(b.second)->getWeight() - graph->getNode(b.first)->getWeight()); });
 
         for (auto &&part : partitions)
         {   

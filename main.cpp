@@ -41,22 +41,30 @@ int main(int argc, char const *argv[])
     vector<MinGapGraph> minGapForest = Utils::greed(graph, p);
 
     cout << endl;
-    
+
     int sum = 0;
+    int sumOrders = 0;
     int partNum = 1;
+    set<int> ids;
     for (auto &&part : minGapForest)
     {
         int diferenca = part.maxNodeWeight - part.minNodeWeight;
         sum += diferenca;
+        sumOrders += part.order;
 
-        cout << partNum << ": " <<  diferenca << " order: " << part.order << endl;
+        cout << partNum << ": " << diferenca << " order: " << part.order << endl;
         partNum++;
+
+        for (Node *node = part.getFirstNode(); node != nullptr; node = node->getNextNode())
+        {
+            ids.insert(node->getId());
+        }
     }
 
     cout << "=========================" << endl;
     cout << "Resultado: " << sum << endl;
+    cout << "Soma das ordens: " << sumOrders << endl;
     cout << "=========================" << endl;
-    
 
     return 0;
 }
