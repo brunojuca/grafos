@@ -260,6 +260,9 @@ void Utils::CallFloyd(Graph *graph, string result_dir_path)
     delete newGraph;
 }
 
+vector<MinGapGraph> *Utils::partitionsPointer;
+Graph *Utils::graphPointer;
+
 vector<MinGapGraph> Utils::greed(Graph *graph, int p)
 {
 
@@ -308,15 +311,14 @@ vector<MinGapGraph> Utils::greed(Graph *graph, int p)
     //     cout << part.maxNodeWeight << " " << part.minNodeWeight << endl;
     // }
 
-
     graph->order = graph->nodesMap.size();
 
-    //int abc = 0;
+    // int abc = 0;
 
     Utils::partitionsPointer = &partitions;
     Utils::graphPointer = graph;
     auto cmp = [](pair<int, int> a, pair<int, int> b)
-             {
+    {
             int diffA = 0;
             int diffB = 0;
 
@@ -352,7 +354,7 @@ vector<MinGapGraph> Utils::greed(Graph *graph, int p)
 
     while (insertedNodes.size() != graph->order)
     {
-        set<pair<int, int>, bool(*)(pair<int,int>, pair<int,int>)> candidates(cmp);
+        set<pair<int, int>, bool (*)(pair<int, int>, pair<int, int>)> candidates(cmp);
         for (auto &&part : partitions)
         {
             for (Node *n = part.getFirstNode(); n != nullptr; n = n->getNextNode())
@@ -369,19 +371,19 @@ vector<MinGapGraph> Utils::greed(Graph *graph, int p)
         }
 
         for (auto &&part : partitions)
-        {   
+        {
             if (part.getNode((*candidates.begin()).first) != nullptr)
             {
                 part.insertEdge((*candidates.begin()).first, (*candidates.begin()).second, graph->getNode((*candidates.begin()).first)->getWeight(), graph->getNode((*candidates.begin()).second)->getWeight());
-                //insertedNodes.insert((*candidates.begin()).first);
+                // insertedNodes.insert((*candidates.begin()).first);
                 insertedNodes.insert((*candidates.begin()).second);
                 insertedEdges++;
                 candidates.erase(candidates.begin());
                 break;
             }
         }
-        cout << "percentage: " << ((float)insertedNodes.size()/graph->order)*100 << "%" << endl;
-        //cout << abc << endl;
+        cout << "percentage: " << ((float)insertedNodes.size() / graph->order) * 100 << "%" << endl;
+        // cout << abc << endl;
     }
 
     return partitions;
