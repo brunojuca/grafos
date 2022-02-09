@@ -27,6 +27,8 @@ public:
     static vector<MinGapGraph> greed(Graph* graph, int p);
     static vector<MinGapGraph> greedRandom();
     static vector<MinGapGraph> greedReactiveRandom();
+    static vector<MinGapGraph> *partitionsPointer;
+    static Graph *graphPointer;
 };
 
 #endif

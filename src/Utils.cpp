@@ -2,6 +2,8 @@
 #include <algorithm>
 #include "set"
 
+using namespace std;
+
 Utils::Utils(/* args */)
 {
 }
@@ -309,9 +311,48 @@ vector<MinGapGraph> Utils::greed(Graph *graph, int p)
 
     graph->order = graph->nodesMap.size();
 
+    //int abc = 0;
+
+    Utils::partitionsPointer = &partitions;
+    Utils::graphPointer = graph;
+    auto cmp = [](pair<int, int> a, pair<int, int> b)
+             {
+            int diffA = 0;
+            int diffB = 0;
+
+             for (auto &&part : *(Utils::partitionsPointer))
+             {
+                if (part.getNode(a.first) != nullptr)
+                {
+                    if (Utils::graphPointer->getNode(a.second)->getWeight() > part.maxNodeWeight)
+                    {
+                        diffA = Utils::graphPointer->getNode(a.second)->getWeight() - part.minNodeWeight;
+                    }
+                    else if (Utils::graphPointer->getNode(a.second)->getWeight() < part.minNodeWeight)
+                    {
+                        diffA = part.maxNodeWeight - Utils::graphPointer->getNode(a.second)->getWeight();
+                    }
+                }
+
+                else if (part.getNode(b.first) != nullptr)
+                {
+                    if (Utils::graphPointer->getNode(b.second)->getWeight() > part.maxNodeWeight)
+                    {
+                        diffB = Utils::graphPointer->getNode(b.second)->getWeight() - part.minNodeWeight;
+                    }
+                    else if (Utils::graphPointer->getNode(b.second)->getWeight() < part.minNodeWeight)
+                    {
+                        diffB = part.maxNodeWeight - Utils::graphPointer->getNode(b.second)->getWeight();
+                    }
+                }
+                
+             }
+            //abc++;
+            return diffA < diffB; };
+
     while (insertedNodes.size() != graph->order)
     {
-        vector<pair<int, int>> candidates;
+        set<pair<int, int>, bool(*)(pair<int,int>, pair<int,int>)> candidates(cmp);
         for (auto &&part : partitions)
         {
             for (Node *n = part.getFirstNode(); n != nullptr; n = n->getNextNode())
@@ -321,61 +362,26 @@ vector<MinGapGraph> Utils::greed(Graph *graph, int p)
                 {
                     if (insertedNodes.find(e->getTargetId()) == insertedNodes.end())
                     {
-                        candidates.push_back(make_pair(n->getId(), e->getTargetId()));
+                        candidates.insert(make_pair(n->getId(), e->getTargetId()));
                     }
                 }
             }
         }
-        int abc = 0;
-        sort(candidates.begin(), candidates.end(), [&partitions, graph, &abc] (pair<int, int> a, pair<int, int> b) mutable
-             {
-            int diffA = 0;
-            int diffB = 0;
-
-             for (auto &&part : partitions)
-             {
-                if (part.getNode(a.first) != nullptr)
-                {
-                    if (graph->getNode(a.second)->getWeight() > part.maxNodeWeight)
-                    {
-                        diffA = graph->getNode(a.second)->getWeight() - part.minNodeWeight;
-                    }
-                    else if (graph->getNode(a.second)->getWeight() < part.minNodeWeight)
-                    {
-                        diffA = part.maxNodeWeight - graph->getNode(a.second)->getWeight();
-                    }
-                }
-
-                else if (part.getNode(b.first) != nullptr)
-                {
-                    if (graph->getNode(b.second)->getWeight() > part.maxNodeWeight)
-                    {
-                        diffB = graph->getNode(b.second)->getWeight() - part.minNodeWeight;
-                    }
-                    else if (graph->getNode(b.second)->getWeight() < part.minNodeWeight)
-                    {
-                        diffB = part.maxNodeWeight - graph->getNode(b.second)->getWeight();
-                    }
-                }
-                
-             }
-             abc++;
-            return diffA < diffB; });
 
         for (auto &&part : partitions)
         {   
-            if (part.getNode(candidates.front().first) != nullptr)
+            if (part.getNode((*candidates.begin()).first) != nullptr)
             {
-                part.insertEdge(candidates.front().first, candidates.front().second, graph->getNode(candidates.front().first)->getWeight(), graph->getNode(candidates.front().second)->getWeight());
-                //insertedNodes.insert(candidates.front().first);
-                insertedNodes.insert(candidates.front().second);
+                part.insertEdge((*candidates.begin()).first, (*candidates.begin()).second, graph->getNode((*candidates.begin()).first)->getWeight(), graph->getNode((*candidates.begin()).second)->getWeight());
+                //insertedNodes.insert((*candidates.begin()).first);
+                insertedNodes.insert((*candidates.begin()).second);
                 insertedEdges++;
                 candidates.erase(candidates.begin());
                 break;
             }
         }
         cout << "percentage: " << ((float)insertedNodes.size()/graph->order)*100 << "%" << endl;
-        cout << abc << endl;
+        //cout << abc << endl;
     }
 
     return partitions;
