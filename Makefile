@@ -16,7 +16,7 @@ objects		:= $(patsubst %.cpp, %.o, $(srcfiles))
 CC=g++
  
 # Flags for compiler
-CC_FLAGS= -I./include
+CC_FLAGS= -I./include -O3
  
 # Command used at clean target
 RM = rm -rf

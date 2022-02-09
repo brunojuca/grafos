@@ -1,6 +1,7 @@
 #include "Utils.h"
 #include <algorithm>
-#include "set"
+#include <set>
+#include <unordered_set>
 
 using namespace std;
 
@@ -267,7 +268,7 @@ vector<MinGapGraph> Utils::greed(Graph *graph, int p)
 {
 
     vector<pair<int, int>> edges;
-    set<int> insertedNodes;
+    unordered_set<int> insertedNodes;
 
     for (Node *node = graph->getFirstNode(); node != nullptr; node = node->getNextNode())
         for (Edge *edge = node->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
@@ -319,38 +320,38 @@ vector<MinGapGraph> Utils::greed(Graph *graph, int p)
     Utils::graphPointer = graph;
     auto cmp = [](pair<int, int> a, pair<int, int> b)
     {
-            int diffA = 0;
-            int diffB = 0;
+            // int diffA = 0;
+            // int diffB = 0;
 
-             for (auto &&part : *(Utils::partitionsPointer))
-             {
-                if (part.getNode(a.first) != nullptr)
-                {
-                    if (Utils::graphPointer->getNode(a.second)->getWeight() > part.maxNodeWeight)
-                    {
-                        diffA = Utils::graphPointer->getNode(a.second)->getWeight() - part.minNodeWeight;
-                    }
-                    else if (Utils::graphPointer->getNode(a.second)->getWeight() < part.minNodeWeight)
-                    {
-                        diffA = part.maxNodeWeight - Utils::graphPointer->getNode(a.second)->getWeight();
-                    }
-                }
+            //  for (auto &&part : *(Utils::partitionsPointer))
+            //  {
+            //     if (part.getNode(a.first) != nullptr)
+            //     {
+            //         if (Utils::graphPointer->getNode(a.second)->getWeight() > part.maxNodeWeight)
+            //         {
+            //             diffA = Utils::graphPointer->getNode(a.second)->getWeight() - part.minNodeWeight;
+            //         }
+            //         else if (Utils::graphPointer->getNode(a.second)->getWeight() < part.minNodeWeight)
+            //         {
+            //             diffA = part.maxNodeWeight - Utils::graphPointer->getNode(a.second)->getWeight();
+            //         }
+            //     }
 
-                else if (part.getNode(b.first) != nullptr)
-                {
-                    if (Utils::graphPointer->getNode(b.second)->getWeight() > part.maxNodeWeight)
-                    {
-                        diffB = Utils::graphPointer->getNode(b.second)->getWeight() - part.minNodeWeight;
-                    }
-                    else if (Utils::graphPointer->getNode(b.second)->getWeight() < part.minNodeWeight)
-                    {
-                        diffB = part.maxNodeWeight - Utils::graphPointer->getNode(b.second)->getWeight();
-                    }
-                }
+            //     else if (part.getNode(b.first) != nullptr)
+            //     {
+            //         if (Utils::graphPointer->getNode(b.second)->getWeight() > part.maxNodeWeight)
+            //         {
+            //             diffB = Utils::graphPointer->getNode(b.second)->getWeight() - part.minNodeWeight;
+            //         }
+            //         else if (Utils::graphPointer->getNode(b.second)->getWeight() < part.minNodeWeight)
+            //         {
+            //             diffB = part.maxNodeWeight - Utils::graphPointer->getNode(b.second)->getWeight();
+            //         }
+            //     }
                 
-             }
-            //abc++;
-            return diffA < diffB; };
+            //  }
+            // //abc++;
+            return abs(Utils::graphPointer->getNode(a.second)->getWeight() - Utils::graphPointer->getNode(a.first)->getWeight()) < abs(Utils::graphPointer->getNode(b.second)->getWeight() - Utils::graphPointer->getNode(b.first)->getWeight()); };
 
     while (insertedNodes.size() != graph->order)
     {

@@ -8,7 +8,7 @@
 #include <fstream>
 #include <stack>
 #include <list>
-#include <map>
+#include <unordered_map>
 #include <vector>
 #include <unordered_set>
 
@@ -28,7 +28,7 @@ public:
     bool weighted_node;
     Node *first_node;
     Node *last_node;
-    map<int, Node *> nodesMap;
+    unordered_map<int, Node *> nodesMap;
     
     //Constructor
     Graph(int order, bool directed, bool weighted_edge, bool weighted_node);
