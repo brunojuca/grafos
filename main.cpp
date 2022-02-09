@@ -49,7 +49,7 @@ int main(int argc, char const *argv[])
         int diferenca = part.maxNodeWeight - part.minNodeWeight;
         sum += diferenca;
 
-        cout << partNum << ": " <<  diferenca << endl;
+        cout << partNum << ": " <<  diferenca << " order: " << part.order << endl;
         partNum++;
     }
 

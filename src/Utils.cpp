@@ -329,38 +329,38 @@ vector<MinGapGraph> Utils::greed(Graph *graph, int p)
         int abc = 0;
         sort(candidates.begin(), candidates.end(), [&partitions, graph, &abc] (pair<int, int> a, pair<int, int> b) mutable
              {
-            int diffA = 0;
-            int diffB = 0;
+            // int diffA = 0;
+            // int diffB = 0;
 
-             for (auto &&part : partitions)
-             {
-                if (part.getNode(a.first) != nullptr)
-                {
-                    if (graph->getNode(a.second)->getWeight() > part.maxNodeWeight)
-                    {
-                        diffA = graph->getNode(a.second)->getWeight() - part.minNodeWeight;
-                    }
-                    else if (graph->getNode(a.second)->getWeight() < part.minNodeWeight)
-                    {
-                        diffA = part.maxNodeWeight - graph->getNode(a.second)->getWeight();
-                    }
-                }
+            //  for (auto &&part : partitions)
+            //  {
+            //     if (part.getNode(a.first) != nullptr)
+            //     {
+            //         if (graph->getNode(a.second)->getWeight() > part.maxNodeWeight)
+            //         {
+            //             diffA = graph->getNode(a.second)->getWeight() - part.minNodeWeight;
+            //         }
+            //         else if (graph->getNode(a.second)->getWeight() < part.minNodeWeight)
+            //         {
+            //             diffA = part.maxNodeWeight - graph->getNode(a.second)->getWeight();
+            //         }
+            //     }
 
-                else if (part.getNode(b.first) != nullptr)
-                {
-                    if (graph->getNode(b.second)->getWeight() > part.maxNodeWeight)
-                    {
-                        diffB = graph->getNode(b.second)->getWeight() - part.minNodeWeight;
-                    }
-                    else if (graph->getNode(b.second)->getWeight() < part.minNodeWeight)
-                    {
-                        diffB = part.maxNodeWeight - graph->getNode(b.second)->getWeight();
-                    }
-                }
+            //     else if (part.getNode(b.first) != nullptr)
+            //     {
+            //         if (graph->getNode(b.second)->getWeight() > part.maxNodeWeight)
+            //         {
+            //             diffB = graph->getNode(b.second)->getWeight() - part.minNodeWeight;
+            //         }
+            //         else if (graph->getNode(b.second)->getWeight() < part.minNodeWeight)
+            //         {
+            //             diffB = part.maxNodeWeight - graph->getNode(b.second)->getWeight();
+            //         }
+            //     }
                 
-             }
-             abc++;
-            return diffA < diffB; });
+            //  }
+            //  abc++;
+            return abs(a.second - a.first) < abs(b.second - b.first); });
 
         for (auto &&part : partitions)
         {   
