@@ -4,20 +4,20 @@
 
 class MinGapGraph : public Graph
 {
-     using Graph::Graph;
+    using Graph::Graph;
 
 private:
-    /* data */
 public:
-    // MinGapGraph()
-    // {
-    //     Graph();
-    // }
-
     int minNodeWeight;
     int maxNodeWeight;
+    list<pair<int, int>> candidates;
 
     void insertEdge(int id, int target_id, int sourceWeight, int targetWeight, float weight = 1);
+
+    // bool compare(tuple<int, int, int>& a, tuple<int, int, int>& b)
+    // {
+    //     return
+    // }
 };
 
 #endif

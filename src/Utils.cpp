@@ -1,8 +1,10 @@
+#include "Graph.h"
+#include <iostream>
 #include "Utils.h"
 #include <algorithm>
-#include "set"
+#include <set>
 
-using namespace std;
+// using namespace std;
 
 Utils::Utils(/* args */)
 {
@@ -275,7 +277,7 @@ vector<MinGapGraph> Utils::greed(Graph *graph, int p)
                 edges.push_back(make_pair(node->getId(), edge->getTargetId()));
 
     sort(edges.begin(), edges.end(), [graph](pair<int, int> a, pair<int, int> b)
-         { return abs(graph->getNode(a.first)->getWeight() - graph->getNode(a.second)->getWeight()) > abs(graph->getNode(b.first)->getWeight() - graph->getNode(b.second)->getWeight()); });
+         { return abs((int)(graph->getNode(a.first)->getWeight() - graph->getNode(a.second)->getWeight())) > abs((int)(graph->getNode(b.first)->getWeight() - graph->getNode(b.second)->getWeight())); });
 
     // print edges
     // for (auto edge : edges)
@@ -315,75 +317,148 @@ vector<MinGapGraph> Utils::greed(Graph *graph, int p)
 
     // int abc = 0;
 
-    Utils::partitionsPointer = &partitions;
-    Utils::graphPointer = graph;
-    auto cmp = [](pair<int, int> a, pair<int, int> b)
+    // Utils::partitionsPointer = &partitions;
+    // Utils::graphPointer = graph;
+    // auto cmp = [](pair<int, int> a, pair<int, int> b)
+    // {
+    //         int diffA = 0;
+    //         int diffB = 0;
+
+    //          for (auto &&part : *(Utils::partitionsPointer))
+    //          {
+    //             if (part.getNode(a.first) != nullptr)
+    //             {
+    //                 if (Utils::graphPointer->getNode(a.second)->getWeight() > part.maxNodeWeight)
+    //                 {
+    //                     diffA = Utils::graphPointer->getNode(a.second)->getWeight() - part.minNodeWeight;
+    //                 }
+    //                 else if (Utils::graphPointer->getNode(a.second)->getWeight() < part.minNodeWeight)
+    //                 {
+    //                     diffA = part.maxNodeWeight - Utils::graphPointer->getNode(a.second)->getWeight();
+    //                 }
+    //             }
+
+    //             else if (part.getNode(b.first) != nullptr)
+    //             {
+    //                 if (Utils::graphPointer->getNode(b.second)->getWeight() > part.maxNodeWeight)
+    //                 {
+    //                     diffB = Utils::graphPointer->getNode(b.second)->getWeight() - part.minNodeWeight;
+    //                 }
+    //                 else if (Utils::graphPointer->getNode(b.second)->getWeight() < part.minNodeWeight)
+    //                 {
+    //                     diffB = part.maxNodeWeight - Utils::graphPointer->getNode(b.second)->getWeight();
+    //                 }
+    //             }
+
+    //          }
+    //         //abc++;
+    //         return diffA < diffB; };
+
+    // while (insertedNodes.size() != graph->order)
+    // {
+    //     set<pair<int, int>, bool (*)(pair<int, int>, pair<int, int>)> candidates(cmp);
+    //     for (auto &&part : partitions)
+    //     {
+    //         for (Node *n = part.getFirstNode(); n != nullptr; n = n->getNextNode())
+    //         {
+    //             Node *graphNode = graph->getNode(n->getId());
+    //             for (Edge *e = graphNode->getFirstEdge(); e != nullptr; e = e->getNextEdge())
+    //             {
+    //                 if (insertedNodes.find(e->getTargetId()) == insertedNodes.end())
+    //                 {
+    //                     candidates.insert(make_pair(n->getId(), e->getTargetId()));
+    //                 }
+    //             }
+    //         }
+    //     }
+
+    //     for (auto &&part : partitions)
+    //     {
+    //         if (part.getNode((*candidates.begin()).first) != nullptr)
+    //         {
+    //             part.insertEdge((*candidates.begin()).first, (*candidates.begin()).second, graph->getNode((*candidates.begin()).first)->getWeight(), graph->getNode((*candidates.begin()).second)->getWeight());
+    //             // insertedNodes.insert((*candidates.begin()).first);
+    //             insertedNodes.insert((*candidates.begin()).second);
+    //             insertedEdges++;
+    //             candidates.erase(candidates.begin());
+    //             break;
+    //         }
+    //     }
+    //     cout << "percentage: " << ((float)insertedNodes.size() / graph->order) * 100 << "%" << endl;
+    //     // cout << abc << endl;
+    // }
+
+    for (auto &&part : partitions)
+        for (Node *node = part.getFirstNode(); node != nullptr; node = node->getNextNode())
+            for (Edge *edge = graph->getNode(node->getId())->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
+                part.candidates.emplace_back(make_pair(node->getId(), edge->getTargetId()));
+
+    while (insertedNodes.size() < graph->order)
     {
-            int diffA = 0;
-            int diffB = 0;
-
-             for (auto &&part : *(Utils::partitionsPointer))
-             {
-                if (part.getNode(a.first) != nullptr)
-                {
-                    if (Utils::graphPointer->getNode(a.second)->getWeight() > part.maxNodeWeight)
-                    {
-                        diffA = Utils::graphPointer->getNode(a.second)->getWeight() - part.minNodeWeight;
-                    }
-                    else if (Utils::graphPointer->getNode(a.second)->getWeight() < part.minNodeWeight)
-                    {
-                        diffA = part.maxNodeWeight - Utils::graphPointer->getNode(a.second)->getWeight();
-                    }
-                }
-
-                else if (part.getNode(b.first) != nullptr)
-                {
-                    if (Utils::graphPointer->getNode(b.second)->getWeight() > part.maxNodeWeight)
-                    {
-                        diffB = Utils::graphPointer->getNode(b.second)->getWeight() - part.minNodeWeight;
-                    }
-                    else if (Utils::graphPointer->getNode(b.second)->getWeight() < part.minNodeWeight)
-                    {
-                        diffB = part.maxNodeWeight - Utils::graphPointer->getNode(b.second)->getWeight();
-                    }
-                }
-                
-             }
-            //abc++;
-            return diffA < diffB; };
-
-    while (insertedNodes.size() != graph->order)
-    {
-        set<pair<int, int>, bool (*)(pair<int, int>, pair<int, int>)> candidates(cmp);
-        for (auto &&part : partitions)
+        for (int i = 0; i < partitions.size() && insertedNodes.size() < graph->order; i++)
         {
-            for (Node *n = part.getFirstNode(); n != nullptr; n = n->getNextNode())
+            MinGapGraph& part = partitions[i];
+            std::__cxx11::list<std::pair<int, int>>::iterator best_candidate;
+            int best_diference = graph->order;
+
+            for (auto candidate = part.candidates.begin(); candidate != part.candidates.end(); candidate++)
             {
-                Node *graphNode = graph->getNode(n->getId());
-                for (Edge *e = graphNode->getFirstEdge(); e != nullptr; e = e->getNextEdge())
+                int candidate_weight = graph->getNode((*candidate).second)->getWeight();
+                int candidate_diference;
+
+                if (candidate_weight >= part.minNodeWeight || candidate_weight <= part.maxNodeWeight)
                 {
-                    if (insertedNodes.find(e->getTargetId()) == insertedNodes.end())
+                    candidate_diference = part.maxNodeWeight - part.minNodeWeight;
+                    if (candidate_diference < best_diference)
                     {
-                        candidates.insert(make_pair(n->getId(), e->getTargetId()));
+                        best_candidate = candidate;
+                        best_diference = candidate_diference;
+                    }
+                }
+                else if (candidate_weight > part.maxNodeWeight)
+                {
+                    candidate_diference = candidate_weight - part.minNodeWeight;
+                    if (candidate_diference < best_diference)
+                    {
+                        best_candidate = candidate;
+                        best_diference = candidate_diference;
+                    }
+                }
+                else if (candidate_weight < part.minNodeWeight)
+                {
+                    candidate_diference = part.minNodeWeight - candidate_weight;
+                    if (candidate_diference < best_diference)
+                    {
+                        best_candidate = candidate;
+                        best_diference = candidate_diference;
                     }
                 }
             }
-        }
 
-        for (auto &&part : partitions)
-        {
-            if (part.getNode((*candidates.begin()).first) != nullptr)
+            part.insertEdge((*best_candidate).first, (*best_candidate).second, graph->getNode((*best_candidate).first)->getWeight(), graph->getNode((*best_candidate).second)->getWeight());
+            insertedNodes.insert((*best_candidate).second);
+
+
+            cout << "============" << endl;
+            cout << "partition: " << i << endl;
+            cout << "inserted nodes: " << insertedNodes.size() << endl;
+            cout << "percentage: " << ((float)insertedNodes.size() / graph->order) * 100 << "%" << endl;
+
+            for (Edge *edge = graph->getNode((*best_candidate).second)->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
             {
-                part.insertEdge((*candidates.begin()).first, (*candidates.begin()).second, graph->getNode((*candidates.begin()).first)->getWeight(), graph->getNode((*candidates.begin()).second)->getWeight());
-                // insertedNodes.insert((*candidates.begin()).first);
-                insertedNodes.insert((*candidates.begin()).second);
-                insertedEdges++;
-                candidates.erase(candidates.begin());
-                break;
+                bool aux = true;
+                for (auto &&otherPart : partitions)
+                {
+                    if (otherPart.getNode(edge->getTargetId()) != nullptr)
+                    {
+                        aux = false;
+                        break;
+                    }
+                }
+                if(aux)
+                    part.candidates.emplace_back(make_pair((*best_candidate).second, edge->getTargetId()));
             }
         }
-        cout << "percentage: " << ((float)insertedNodes.size() / graph->order) * 100 << "%" << endl;
-        // cout << abc << endl;
     }
 
     return partitions;
