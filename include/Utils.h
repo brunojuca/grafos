@@ -24,7 +24,7 @@ public:
     static void CallIndirectTrasitiveClosure(Graph *graph, string result_dir_path);
     static void CallDijkstra(Graph *graph, string result_dir_path);
     static void CallFloyd(Graph *graph, string result_dir_path);
-    static vector<MinGapGraph> greed(Graph* graph, int p);
+    static vector<MinGapGraph> greed(Graph* graph, int p, float alpha = 0);
     static vector<MinGapGraph> greedRandom();
     static vector<MinGapGraph> greedReactiveRandom();
 };

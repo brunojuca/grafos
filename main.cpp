@@ -38,6 +38,8 @@ int main(int argc, char const *argv[])
 
     Graph *graph = Utils::createGraphPart2(argv[1], stoi(argv[3]), stoi(argv[4]), stoi(argv[5]));
 
+    srand(time(NULL));
+
     vector<MinGapGraph> minGapForest = Utils::greed(graph, p);
 
     cout << endl;
