@@ -1,5 +1,6 @@
 #include "Utils.h"
 #include <algorithm>
+#include <ctime>
 #include <set>
 #include <unordered_set>
 
@@ -264,11 +265,13 @@ void Utils::CallFloyd(Graph *graph, string result_dir_path)
 vector<MinGapGraph> *Utils::partitionsPointer;
 Graph *Utils::graphPointer;
 
-vector<MinGapGraph> Utils::greed(Graph *graph, int p)
+vector<MinGapGraph> Utils::greed(Graph *graph, int p, float alpha)
 {
-
+    clock_t start = clock();
     vector<pair<int, int>> edges;
     unordered_set<int> insertedNodes;
+    int randNum;
+    int max;
 
     for (Node *node = graph->getFirstNode(); node != nullptr; node = node->getNextNode())
         for (Edge *edge = node->getFirstEdge(); edge != nullptr; edge = edge->getNextEdge())
@@ -371,21 +374,40 @@ vector<MinGapGraph> Utils::greed(Graph *graph, int p)
             }
         }
 
+        set<pair<int,int>>::iterator it = candidates.begin();
+
+        if (alpha != 0)
+        {
+            max = (int)(alpha * (candidates.size()));
+            cout << "futmax: " << max << endl;
+            if (max != 0){
+                randNum = rand() % max;
+                cout << randNum << endl;
+                for (int i = 0; i < randNum; i++)
+                    it++;
+            }
+        }
+ 
+
         for (auto &&part : partitions)
         {
-            if (part.getNode((*candidates.begin()).first) != nullptr)
+
+            if (part.getNode((*it).first) != nullptr)
             {
-                part.insertEdge((*candidates.begin()).first, (*candidates.begin()).second, graph->getNode((*candidates.begin()).first)->getWeight(), graph->getNode((*candidates.begin()).second)->getWeight());
-                // insertedNodes.insert((*candidates.begin()).first);
-                insertedNodes.insert((*candidates.begin()).second);
+                part.insertEdge((*it).first, (*it).second, graph->getNode((*it).first)->getWeight(), graph->getNode((*it).second)->getWeight());
+                insertedNodes.insert((*it).second);
                 insertedEdges++;
-                candidates.erase(candidates.begin());
+                candidates.erase(it);
                 break;
             }
         }
         cout << "percentage: " << ((float)insertedNodes.size() / graph->order) * 100 << "%" << endl;
-        // cout << abc << endl;
+        cout << "maxSize: " << candidates.max_size() << endl;
+        cout << "size: " << candidates.size() << endl;
     }
+    clock_t end = clock();
+    long double time_elapsed = 1000.0 * (end - start) / CLOCKS_PER_SEC;
 
+    cout << "Tempo: " << time_elapsed << " ms" << endl; // legal
     return partitions;
 }
