@@ -298,3 +298,163 @@ Resultado .............. 14980
 Tempo     ....... 171.875000ms
 
 
+Resultados A1 para n300plap1i1:
+Resultado ............... 1240
+Tempo     ........ 22.142000ms
+
+
+Resultados A1 para n400plap1i5:
+Resultado ............... 1887
+Tempo     ........ 65.769000ms
+
+
+Resultados A1 para n500d06p3i3:
+Resultado ................ 347
+Tempo     ...... 6093.700000ms
+
+
+Resultados A1 para n500plap3i5:
+Resultado .............. 14980
+Tempo     ....... 104.510000ms
+
+
+Resultados A1 para n300plap1i1:
+Resultado ............... 1240
+Tempo     ........ 31.205000ms
+
+
+Resultados A1 para n400plap1i5:
+Resultado ............... 1887
+Tempo     ........ 69.542000ms
+
+
+Resultados A1 para n500d06p3i3:
+Resultado ................ 347
+Tempo     ...... 7051.462000ms
+
+
+Resultados A1 para n500plap3i5:
+Resultado .............. 14980
+Tempo     ....... 117.191000ms
+
+
+Resultados A1 para n500plap3i5:
+Resultado .............. 14980
+Tempo     ....... 125.533000ms
+
+
+Resultados A1 para n500d06p3i3:
+Resultado ................ 347
+Tempo     ...... 7081.117000ms
+
+
+Resultados A1 para n500plap3i5:
+Resultado .............. 14980
+Tempo     ....... 117.597000ms
+
+
+Resultados A1 para n500plap3i5:
+Resultado .............. 14980
+Tempo     ....... 124.393000ms
+
+
+Resultados A1 para n500d06p3i3:
+Resultado ................ 347
+Tempo     ...... 5765.292000ms
+
+
+Resultados A1 para n100d03p1i1:
+Resultado ................. 88
+Tempo     ........ 28.501000ms
+
+
+Resultados A1 para n100plap1i1:
+Resultado ................ 281
+Tempo     ......... 4.232000ms
+
+
+Resultados A1 para n200d03p3i1:
+Resultado ................ 199
+Tempo     ....... 142.672000ms
+
+
+Resultados A1 para n200plap1i1:
+Resultado ................ 777
+Tempo     ......... 7.671000ms
+
+
+Resultados A1 para n200plap1i3:
+Resultado ................ 791
+Tempo     ......... 8.921000ms
+
+
+Resultados A1 para n300d03p1i5:
+Resultado ................ 278
+Tempo     ....... 625.611000ms
+
+
+Resultados A1 para n300plap1i1:
+Resultado ............... 1240
+Tempo     ........ 21.749000ms
+
+
+Resultados A1 para n400plap1i5:
+Resultado ............... 1887
+Tempo     ........ 43.431000ms
+
+
+Resultados A1 para n500plap3i5:
+Resultado .............. 14980
+Tempo     ........ 73.893000ms
+
+
+Resultados A1 para n100d03p1i1:
+Resultado ................. 88
+Tempo     ........ 27.929000ms
+
+
+Resultados A1 para n100plap1i1:
+Resultado ................ 281
+Tempo     ......... 4.593000ms
+
+
+Resultados A1 para n200d03p3i1:
+Resultado ................ 199
+Tempo     ....... 148.750000ms
+
+
+Resultados A1 para n200plap1i1:
+Resultado ................ 777
+Tempo     ......... 8.869000ms
+
+
+Resultados A1 para n200plap1i3:
+Resultado ................ 791
+Tempo     ......... 7.948000ms
+
+
+Resultados A1 para n300d03p1i5:
+Resultado ................ 278
+Tempo     ....... 627.258000ms
+
+
+Resultados A1 para n300plap1i1:
+Resultado ............... 1240
+Tempo     ........ 22.310000ms
+
+
+Resultados A1 para n400plap1i5:
+Resultado ............... 1887
+Tempo     ........ 47.321000ms
+
+
+Resultados A1 para n500plap3i5:
+Resultado .............. 14980
+Tempo     ........ 80.196000ms
+
+
+Resultados A1 para n500d06p3i3:
+Resultado ................ 347
+Tempo     ...... 6372.363000ms
+
+

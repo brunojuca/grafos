@@ -30,37 +30,25 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
 
-    if (argc < 4)
-    {
-        cout << "Poucos argumentos na chamada do programa" << endl;
-        cout << "Siga as instruções do arquivo README.md" << endl;
-        return 1;
-    }
-    else if (argc > 4)
-    {
-        cout << "Muitos argumentos na chamada do programa" << endl;
-        cout << "Siga as instruções do arquivo README.md" << endl;
-    }
-
     ifstream graph_file;
     string word, weight;
 
     int p; // number of partitions
 
-    string files[4] = {
-                        // "n100d03p1i1",
-                        // "n100plap1i1",
-                        // "n200d03p3i1",
-                        // "n200plap1i1",
-                        // "n200plap1i3",
-                        // "n300d03p1i5",
+    string files[10] = {
+                        "n100d03p1i1",
+                        "n100plap1i1",
+                        "n200d03p3i1",
+                        "n200plap1i1",
+                        "n200plap1i3",
+                        "n300d03p1i5",
                         "n300plap1i1",
                         "n400plap1i5",
-                        "n500d06p3i3",
-                        "n500plap3i5"
+                        "n500plap3i5",
+                        "n500d06p3i3"
                         };
 
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 10; i++)
     {
         graph_file.open("instances/" + files[i] + ".txt", ios::in);
         do
@@ -70,18 +58,15 @@ int main(int argc, char const *argv[])
 
         graph_file.close();
 
-        Graph *graph = Utils::createGraphPart2("instances/" + files[i] + ".txt", stoi(argv[1]), stoi(argv[2]), stoi(argv[3]));
+        Graph *graph = Utils::createGraphPart2("instances/" + files[i] + ".txt", 0, 0, 1);
 
         srand(time(NULL));
 
-        cout << "Arquivo: " << files[i] << endl
-             << endl;
 
         clock_t start = clock();
         vector<MinGapGraph> minGapForest = Utils::greed(graph, p);
         clock_t end = clock();
 
-        cout << endl;
 
         int sum = 0;
         int sumOrders = 0;
@@ -103,10 +88,6 @@ int main(int argc, char const *argv[])
 
         long double time_elapsed = 1000.0 * (end - start) / CLOCKS_PER_SEC;
 
-        cout << "Resultado: " << sum << endl;
-        cout << "Soma das ordens: " << sumOrders << endl;
-        cout << "=========================" << endl;
-
         ofstream result_file("resultados/resultados_a1.txt", ios::out | ios::app);
         result_file << "Resultados A1 para " << files[i] << ":" << endl;
         result_file << "Resultado " << std::setfill('.') << std::setw(20) << " " + to_string(sum) << endl;
@@ -119,10 +100,12 @@ int main(int argc, char const *argv[])
     }
     float alphas[3] = {0.1, 0.2, 0.3};
 
-    for (int k = 0; k < 4; k++)
+    for (int k = 0; k < 10; k++)
     {
         for (auto &&alpha : alphas)
         {
+            int sumBest = 0;
+            long double sumTime = 0;
             for (int i = 0; i < 30; i++)
             {
                 int best_result = std::numeric_limits<int>::max();
@@ -138,7 +121,7 @@ int main(int argc, char const *argv[])
 
                     graph_file.close();
 
-                    Graph *graph = Utils::createGraphPart2("instances/" + files[k] + ".txt", stoi(argv[1]), stoi(argv[2]), stoi(argv[3]));
+                    Graph *graph = Utils::createGraphPart2("instances/" + files[k] + ".txt", 0, 0, 1);
                     
                     srand(time(NULL));
 
@@ -172,6 +155,8 @@ int main(int argc, char const *argv[])
                     cout << std::setfill('0') << std::setw(2) << "\b\b\b" << (int)(((float)(j + 1) / 500) * 100) << "%" << std::flush;
                     delete graph;
                 }
+                sumBest+= best_result;
+                sumTime+=time_elapsed;
                 ofstream result_file("resultados/resultados_a2/" + files[k] + ".txt", ios::out | ios::app);
                 result_file << "Resultados " << (i + 1) << " A2 para " << files[k] << "(Alpha: " << alpha << "):" << endl;
                 result_file << "Resultado " << std::setfill('.') << std::setw(20) << " " + to_string(best_result) << endl;
@@ -179,6 +164,10 @@ int main(int argc, char const *argv[])
                 result_file << endl
                             << endl;
             }
+            ofstream result_file("resultados/resultados_a2/" + files[k] + ".txt", ios::out | ios::app);
+            result_file << "Média resultados: " << std::setfill('.') << std::setw(20) << " " + to_string((float)sumBest/30) << endl;
+            result_file << "Média tempo: " << std::setfill('.') << std::setw(20) << " " + to_string(sumTime/30) << endl;
+            result_file << endl << endl;
         }
     }
 

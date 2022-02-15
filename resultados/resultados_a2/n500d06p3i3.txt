@@ -1,0 +1,462 @@
+Resultados 1 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2432
+Tempo     ...... 6504.498000ms
+
+
+Resultados 2 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2260
+Tempo     ...... 7246.341000ms
+
+
+Resultados 3 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2457
+Tempo     ...... 6684.894000ms
+
+
+Resultados 4 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2439
+Tempo     ...... 6608.578000ms
+
+
+Resultados 5 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2422
+Tempo     ...... 7403.078000ms
+
+
+Resultados 6 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2442
+Tempo     ...... 6739.632000ms
+
+
+Resultados 7 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2348
+Tempo     ...... 7192.218000ms
+
+
+Resultados 8 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2223
+Tempo     ...... 6490.472000ms
+
+
+Resultados 9 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2352
+Tempo     ...... 5844.817000ms
+
+
+Resultados 10 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2432
+Tempo     ...... 5921.962000ms
+
+
+Resultados 11 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2368
+Tempo     ...... 7104.625000ms
+
+
+Resultados 12 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2362
+Tempo     ...... 7142.557000ms
+
+
+Resultados 13 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2422
+Tempo     ...... 6564.864000ms
+
+
+Resultados 14 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2253
+Tempo     ...... 7084.670000ms
+
+
+Resultados 15 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2395
+Tempo     ...... 7200.226000ms
+
+
+Resultados 16 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2327
+Tempo     ...... 7204.031000ms
+
+
+Resultados 17 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2322
+Tempo     ...... 6720.564000ms
+
+
+Resultados 18 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2373
+Tempo     ...... 6535.172000ms
+
+
+Resultados 19 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2370
+Tempo     ...... 6778.979000ms
+
+
+Resultados 20 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2321
+Tempo     ...... 6512.913000ms
+
+
+Resultados 21 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2407
+Tempo     ...... 6545.867000ms
+
+
+Resultados 22 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2460
+Tempo     ...... 6432.608000ms
+
+
+Resultados 23 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2399
+Tempo     ...... 8249.940000ms
+
+
+Resultados 24 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2413
+Tempo     ...... 8560.330000ms
+
+
+Resultados 25 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2369
+Tempo     ...... 4786.159000ms
+
+
+Resultados 26 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2471
+Tempo     ...... 4345.119000ms
+
+
+Resultados 27 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2551
+Tempo     ...... 4731.637000ms
+
+
+Resultados 28 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2283
+Tempo     ...... 4686.980000ms
+
+
+Resultados 29 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2500
+Tempo     ...... 4533.235000ms
+
+
+Resultados 30 A2 para n500d06p3i3(Alpha: 0.1):
+Resultado ............... 2258
+Tempo     ...... 4489.518000ms
+
+
+Média resultados: ........ 2381.033447
+Média tempo: ........ 6428.216133
+
+
+Resultados 1 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4774
+Tempo     ...... 4557.932000ms
+
+
+Resultados 2 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4510
+Tempo     ...... 4330.156000ms
+
+
+Resultados 3 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4565
+Tempo     ...... 4404.290000ms
+
+
+Resultados 4 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4607
+Tempo     ...... 4357.044000ms
+
+
+Resultados 5 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4506
+Tempo     ...... 4393.150000ms
+
+
+Resultados 6 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4651
+Tempo     ...... 4276.509000ms
+
+
+Resultados 7 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4495
+Tempo     ...... 4259.598000ms
+
+
+Resultados 8 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4334
+Tempo     ...... 4243.783000ms
+
+
+Resultados 9 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4420
+Tempo     ...... 4243.245000ms
+
+
+Resultados 10 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4435
+Tempo     ...... 4220.771000ms
+
+
+Resultados 11 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4749
+Tempo     ...... 4259.177000ms
+
+
+Resultados 12 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4597
+Tempo     ...... 4297.853000ms
+
+
+Resultados 13 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4647
+Tempo     ...... 4481.081000ms
+
+
+Resultados 14 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4751
+Tempo     ...... 4413.873000ms
+
+
+Resultados 15 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4426
+Tempo     ...... 4447.344000ms
+
+
+Resultados 16 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4497
+Tempo     ...... 6046.608000ms
+
+
+Resultados 17 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4716
+Tempo     ...... 5529.598000ms
+
+
+Resultados 18 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4745
+Tempo     ...... 6123.438000ms
+
+
+Resultados 19 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4646
+Tempo     ...... 6284.226000ms
+
+
+Resultados 20 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4548
+Tempo     ...... 6355.691000ms
+
+
+Resultados 21 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4505
+Tempo     ...... 6330.887000ms
+
+
+Resultados 22 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4463
+Tempo     ...... 5708.979000ms
+
+
+Resultados 23 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4629
+Tempo     ...... 5777.437000ms
+
+
+Resultados 24 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4227
+Tempo     ...... 5773.317000ms
+
+
+Resultados 25 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4628
+Tempo     ...... 5721.302000ms
+
+
+Resultados 26 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4562
+Tempo     ...... 5577.253000ms
+
+
+Resultados 27 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4537
+Tempo     ...... 5701.802000ms
+
+
+Resultados 28 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4750
+Tempo     ...... 5680.211000ms
+
+
+Resultados 29 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4526
+Tempo     ...... 5581.183000ms
+
+
+Resultados 30 A2 para n500d06p3i3(Alpha: 0.2):
+Resultado ............... 4546
+Tempo     ...... 5698.609000ms
+
+
+Média resultados: ........ 4566.399902
+Média tempo: ........ 5102.544900
+
+
+Resultados 1 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 6723
+Tempo     ...... 5693.695000ms
+
+
+Resultados 2 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 6835
+Tempo     ...... 5647.478000ms
+
+
+Resultados 3 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 6799
+Tempo     ...... 5638.352000ms
+
+
+Resultados 4 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 6907
+Tempo     ...... 5539.239000ms
+
+
+Resultados 5 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 6747
+Tempo     ...... 5683.466000ms
+
+
+Resultados 6 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 6614
+Tempo     ...... 5614.467000ms
+
+
+Resultados 7 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 6915
+Tempo     ...... 5825.806000ms
+
+
+Resultados 8 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 6652
+Tempo     ...... 5602.699000ms
+
+
+Resultados 9 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 6801
+Tempo     ...... 5577.601000ms
+
+
+Resultados 10 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 7089
+Tempo     ...... 5634.475000ms
+
+
+Resultados 11 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 6897
+Tempo     ...... 5602.072000ms
+
+
+Resultados 12 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 6912
+Tempo     ...... 5692.241000ms
+
+
+Resultados 13 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 6903
+Tempo     ...... 5629.628000ms
+
+
+Resultados 14 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 6738
+Tempo     ...... 5702.963000ms
+
+
+Resultados 15 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 6707
+Tempo     ...... 5635.927000ms
+
+
+Resultados 16 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 6777
+Tempo     ...... 5603.287000ms
+
+
+Resultados 17 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 6797
+Tempo     ...... 5745.881000ms
+
+
+Resultados 18 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 6657
+Tempo     ...... 5647.481000ms
+
+
+Resultados 19 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 6680
+Tempo     ...... 5702.106000ms
+
+
+Resultados 20 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 6379
+Tempo     ...... 5745.508000ms
+
+
+Resultados 21 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 7003
+Tempo     ...... 5623.911000ms
+
+
+Resultados 22 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 7174
+Tempo     ...... 5677.477000ms
+
+
+Resultados 23 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 6282
+Tempo     ...... 5600.112000ms
+
+
+Resultados 24 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 6829
+Tempo     ...... 5657.151000ms
+
+
+Resultados 25 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 6739
+Tempo     ...... 5513.263000ms
+
+
+Resultados 26 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 6983
+Tempo     ...... 5451.079000ms
+
+
+Resultados 27 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 7039
+Tempo     ...... 5564.439000ms
+
+
+Resultados 28 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 6907
+Tempo     ...... 5795.004000ms
+
+
+Resultados 29 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 6899
+Tempo     ...... 4543.982000ms
+
+
+Resultados 30 A2 para n500d06p3i3(Alpha: 0.3):
+Resultado ............... 7101
+Tempo     ...... 4523.052000ms
+
+
+Média resultados: ........ 6816.166504
+Média tempo: ........ 5570.461400
+
+

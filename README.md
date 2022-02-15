@@ -14,10 +14,4 @@ Para compilar é necessário usar o comando
 ## Como rodar
 Para rodar é necessário fornecer os seguintes argumentos na chamada do programa
 
- - `./grafos.exe "arquivo contendo grafo" "arquivo de saida" "direcionado" "peso na aresta" "peso no nó"`
-
-## Observações
-
-Além das saídas serem dadas em modo append no arquivo passado como parâmetro, elas também estarão divididas por cada algoritmo chamado na pasta DOTs. Além disso, quando possível, as saídas são exibidas no console.
-
-PS: Não foram implementados os algoritmos de Prim e Kruskal.
+ - `./grafos.exe

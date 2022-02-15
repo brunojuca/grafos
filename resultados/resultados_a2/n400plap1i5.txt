@@ -1,0 +1,450 @@
+Resultados 1 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1815
+Tempo     ........ 57.883000ms
+
+
+Resultados 2 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1887
+Tempo     ........ 58.009000ms
+
+
+Resultados 3 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1739
+Tempo     ........ 69.709000ms
+
+
+Resultados 4 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1862
+Tempo     ........ 67.998000ms
+
+
+Resultados 5 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1808
+Tempo     ........ 85.763000ms
+
+
+Resultados 6 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1813
+Tempo     ........ 65.591000ms
+
+
+Resultados 7 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1813
+Tempo     ........ 56.575000ms
+
+
+Resultados 8 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1813
+Tempo     ........ 80.786000ms
+
+
+Resultados 9 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1882
+Tempo     ........ 56.855000ms
+
+
+Resultados 10 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1866
+Tempo     ........ 71.307000ms
+
+
+Resultados 11 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1862
+Tempo     ........ 70.325000ms
+
+
+Resultados 12 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1862
+Tempo     ........ 75.140000ms
+
+
+Resultados 13 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1649
+Tempo     ........ 55.247000ms
+
+
+Resultados 14 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1844
+Tempo     ........ 59.350000ms
+
+
+Resultados 15 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1859
+Tempo     ........ 62.504000ms
+
+
+Resultados 16 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1813
+Tempo     ........ 56.105000ms
+
+
+Resultados 17 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1882
+Tempo     ........ 58.792000ms
+
+
+Resultados 18 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1857
+Tempo     ........ 54.539000ms
+
+
+Resultados 19 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1762
+Tempo     ........ 52.374000ms
+
+
+Resultados 20 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1788
+Tempo     ........ 84.874000ms
+
+
+Resultados 21 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1887
+Tempo     ........ 86.963000ms
+
+
+Resultados 22 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1846
+Tempo     ........ 50.479000ms
+
+
+Resultados 23 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1862
+Tempo     ........ 52.385000ms
+
+
+Resultados 24 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1862
+Tempo     ........ 60.484000ms
+
+
+Resultados 25 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1811
+Tempo     ........ 67.703000ms
+
+
+Resultados 26 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1866
+Tempo     ........ 59.369000ms
+
+
+Resultados 27 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1862
+Tempo     ........ 53.419000ms
+
+
+Resultados 28 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1887
+Tempo     ........ 54.393000ms
+
+
+Resultados 29 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1882
+Tempo     ........ 54.053000ms
+
+
+Resultados 30 A2 para n400plap1i5(Alpha: 0.1):
+Resultado ............... 1862
+Tempo     ........ 63.966000ms
+
+
+Resultados 1 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1915
+Tempo     ........ 46.466000ms
+
+
+Resultados 2 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1930
+Tempo     ........ 63.310000ms
+
+
+Resultados 3 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1920
+Tempo     ........ 49.469000ms
+
+
+Resultados 4 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1764
+Tempo     ........ 52.790000ms
+
+
+Resultados 5 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1739
+Tempo     ........ 52.618000ms
+
+
+Resultados 6 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1795
+Tempo     ........ 49.859000ms
+
+
+Resultados 7 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1727
+Tempo     ........ 52.086000ms
+
+
+Resultados 8 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1852
+Tempo     ........ 58.386000ms
+
+
+Resultados 9 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1975
+Tempo     ........ 50.425000ms
+
+
+Resultados 10 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1782
+Tempo     ........ 51.919000ms
+
+
+Resultados 11 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1808
+Tempo     ........ 50.336000ms
+
+
+Resultados 12 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1975
+Tempo     ........ 49.304000ms
+
+
+Resultados 13 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1845
+Tempo     ........ 60.058000ms
+
+
+Resultados 14 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1796
+Tempo     ........ 63.627000ms
+
+
+Resultados 15 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1835
+Tempo     ........ 51.428000ms
+
+
+Resultados 16 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1920
+Tempo     ........ 55.668000ms
+
+
+Resultados 17 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 2002
+Tempo     ........ 53.379000ms
+
+
+Resultados 18 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1808
+Tempo     ........ 63.081000ms
+
+
+Resultados 19 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1861
+Tempo     ........ 56.438000ms
+
+
+Resultados 20 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1736
+Tempo     ........ 53.206000ms
+
+
+Resultados 21 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1843
+Tempo     ........ 50.610000ms
+
+
+Resultados 22 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1809
+Tempo     ........ 53.181000ms
+
+
+Resultados 23 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1782
+Tempo     ........ 53.119000ms
+
+
+Resultados 24 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1817
+Tempo     ........ 51.104000ms
+
+
+Resultados 25 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1808
+Tempo     ........ 55.670000ms
+
+
+Resultados 26 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1841
+Tempo     ........ 54.659000ms
+
+
+Resultados 27 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1841
+Tempo     ........ 63.687000ms
+
+
+Resultados 28 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1999
+Tempo     ........ 53.416000ms
+
+
+Resultados 29 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 1856
+Tempo     ........ 51.558000ms
+
+
+Resultados 30 A2 para n400plap1i5(Alpha: 0.2):
+Resultado ............... 2002
+Tempo     ........ 55.086000ms
+
+
+Resultados 1 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 1861
+Tempo     ........ 68.748000ms
+
+
+Resultados 2 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 1930
+Tempo     ........ 55.095000ms
+
+
+Resultados 3 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 1920
+Tempo     ........ 49.262000ms
+
+
+Resultados 4 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 1909
+Tempo     ........ 52.169000ms
+
+
+Resultados 5 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 2054
+Tempo     ........ 63.953000ms
+
+
+Resultados 6 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 1957
+Tempo     ........ 44.829000ms
+
+
+Resultados 7 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 2002
+Tempo     ........ 49.888000ms
+
+
+Resultados 8 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 1952
+Tempo     ........ 46.841000ms
+
+
+Resultados 9 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 1807
+Tempo     ........ 49.369000ms
+
+
+Resultados 10 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 1858
+Tempo     ........ 49.571000ms
+
+
+Resultados 11 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 1917
+Tempo     ........ 68.224000ms
+
+
+Resultados 12 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 2023
+Tempo     ........ 50.428000ms
+
+
+Resultados 13 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 1998
+Tempo     ........ 50.555000ms
+
+
+Resultados 14 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 1781
+Tempo     ........ 51.061000ms
+
+
+Resultados 15 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 1807
+Tempo     ........ 53.998000ms
+
+
+Resultados 16 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 2027
+Tempo     ........ 46.551000ms
+
+
+Resultados 17 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 1808
+Tempo     ........ 48.912000ms
+
+
+Resultados 18 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 1784
+Tempo     ........ 50.680000ms
+
+
+Resultados 19 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 1943
+Tempo     ........ 52.210000ms
+
+
+Resultados 20 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 2028
+Tempo     ........ 46.244000ms
+
+
+Resultados 21 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 1835
+Tempo     ........ 49.140000ms
+
+
+Resultados 22 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 2108
+Tempo     ........ 49.603000ms
+
+
+Resultados 23 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 1979
+Tempo     ........ 52.602000ms
+
+
+Resultados 24 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 1808
+Tempo     ........ 49.760000ms
+
+
+Resultados 25 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 1943
+Tempo     ........ 50.770000ms
+
+
+Resultados 26 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 1917
+Tempo     ........ 50.219000ms
+
+
+Resultados 27 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 1812
+Tempo     ........ 44.952000ms
+
+
+Resultados 28 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 1960
+Tempo     ........ 49.282000ms
+
+
+Resultados 29 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 2017
+Tempo     ........ 61.886000ms
+
+
+Resultados 30 A2 para n400plap1i5(Alpha: 0.3):
+Resultado ............... 1812
+Tempo     ........ 48.669000ms
+
+

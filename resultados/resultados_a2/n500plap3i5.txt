@@ -1,0 +1,462 @@
+Resultados 1 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14676
+Tempo     ........ 91.835000ms
+
+
+Resultados 2 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14210
+Tempo     ........ 96.873000ms
+
+
+Resultados 3 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14228
+Tempo     ........ 92.119000ms
+
+
+Resultados 4 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14798
+Tempo     ........ 97.053000ms
+
+
+Resultados 5 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14709
+Tempo     ....... 104.462000ms
+
+
+Resultados 6 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14935
+Tempo     ........ 97.619000ms
+
+
+Resultados 7 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14555
+Tempo     ........ 90.926000ms
+
+
+Resultados 8 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14812
+Tempo     ........ 92.026000ms
+
+
+Resultados 9 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14685
+Tempo     ........ 93.081000ms
+
+
+Resultados 10 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14578
+Tempo     ........ 86.017000ms
+
+
+Resultados 11 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14854
+Tempo     ....... 194.921000ms
+
+
+Resultados 12 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14607
+Tempo     ........ 96.059000ms
+
+
+Resultados 13 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14867
+Tempo     ....... 105.435000ms
+
+
+Resultados 14 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14815
+Tempo     ........ 91.437000ms
+
+
+Resultados 15 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14617
+Tempo     ....... 103.434000ms
+
+
+Resultados 16 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14685
+Tempo     ....... 122.348000ms
+
+
+Resultados 17 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14195
+Tempo     ....... 100.351000ms
+
+
+Resultados 18 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14773
+Tempo     ....... 140.363000ms
+
+
+Resultados 19 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14497
+Tempo     ....... 109.274000ms
+
+
+Resultados 20 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14735
+Tempo     ........ 99.325000ms
+
+
+Resultados 21 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14743
+Tempo     ........ 83.643000ms
+
+
+Resultados 22 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14313
+Tempo     ....... 140.696000ms
+
+
+Resultados 23 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14738
+Tempo     ........ 96.991000ms
+
+
+Resultados 24 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14693
+Tempo     ........ 82.129000ms
+
+
+Resultados 25 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14853
+Tempo     ........ 79.900000ms
+
+
+Resultados 26 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14688
+Tempo     ........ 78.960000ms
+
+
+Resultados 27 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14285
+Tempo     ........ 81.072000ms
+
+
+Resultados 28 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14531
+Tempo     ........ 80.555000ms
+
+
+Resultados 29 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14558
+Tempo     ........ 76.914000ms
+
+
+Resultados 30 A2 para n500plap3i5(Alpha: 0.1):
+Resultado .............. 14166
+Tempo     ........ 80.574000ms
+
+
+Média resultados: ....... 14613.299805
+Média tempo: .......... 99.546400
+
+
+Resultados 1 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 15357
+Tempo     ....... 123.186000ms
+
+
+Resultados 2 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 15280
+Tempo     ........ 84.983000ms
+
+
+Resultados 3 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 15627
+Tempo     ........ 91.792000ms
+
+
+Resultados 4 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 15576
+Tempo     ........ 83.709000ms
+
+
+Resultados 5 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 15125
+Tempo     ....... 100.553000ms
+
+
+Resultados 6 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 15197
+Tempo     ........ 83.326000ms
+
+
+Resultados 7 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 15825
+Tempo     ........ 87.311000ms
+
+
+Resultados 8 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 15472
+Tempo     ........ 81.540000ms
+
+
+Resultados 9 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 15285
+Tempo     ........ 98.853000ms
+
+
+Resultados 10 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 15476
+Tempo     ........ 80.875000ms
+
+
+Resultados 11 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 15239
+Tempo     ........ 80.810000ms
+
+
+Resultados 12 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 15408
+Tempo     ....... 106.743000ms
+
+
+Resultados 13 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 15012
+Tempo     ........ 90.513000ms
+
+
+Resultados 14 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 14988
+Tempo     ........ 85.052000ms
+
+
+Resultados 15 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 15440
+Tempo     ....... 114.551000ms
+
+
+Resultados 16 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 15447
+Tempo     ........ 83.050000ms
+
+
+Resultados 17 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 15420
+Tempo     ........ 80.217000ms
+
+
+Resultados 18 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 14999
+Tempo     ........ 78.229000ms
+
+
+Resultados 19 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 15156
+Tempo     ........ 77.956000ms
+
+
+Resultados 20 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 14930
+Tempo     ........ 84.003000ms
+
+
+Resultados 21 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 15315
+Tempo     ........ 82.252000ms
+
+
+Resultados 22 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 15510
+Tempo     ........ 81.391000ms
+
+
+Resultados 23 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 15552
+Tempo     ........ 87.236000ms
+
+
+Resultados 24 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 15565
+Tempo     ........ 81.850000ms
+
+
+Resultados 25 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 15502
+Tempo     ........ 80.200000ms
+
+
+Resultados 26 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 15574
+Tempo     ....... 113.456000ms
+
+
+Resultados 27 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 14444
+Tempo     ........ 79.363000ms
+
+
+Resultados 28 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 15361
+Tempo     ........ 82.248000ms
+
+
+Resultados 29 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 15390
+Tempo     ........ 82.014000ms
+
+
+Resultados 30 A2 para n500plap3i5(Alpha: 0.2):
+Resultado .............. 15833
+Tempo     ........ 81.247000ms
+
+
+Média resultados: ....... 15343.500000
+Média tempo: .......... 88.283633
+
+
+Resultados 1 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 16367
+Tempo     ........ 78.691000ms
+
+
+Resultados 2 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 16494
+Tempo     ........ 85.234000ms
+
+
+Resultados 3 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 16308
+Tempo     ........ 81.625000ms
+
+
+Resultados 4 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 16055
+Tempo     ........ 81.909000ms
+
+
+Resultados 5 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 16295
+Tempo     ........ 78.565000ms
+
+
+Resultados 6 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 16241
+Tempo     ........ 84.567000ms
+
+
+Resultados 7 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 16191
+Tempo     ........ 86.720000ms
+
+
+Resultados 8 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 16381
+Tempo     ........ 87.182000ms
+
+
+Resultados 9 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 16132
+Tempo     ........ 91.662000ms
+
+
+Resultados 10 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 16339
+Tempo     ........ 82.793000ms
+
+
+Resultados 11 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 16264
+Tempo     ........ 81.685000ms
+
+
+Resultados 12 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 16401
+Tempo     ........ 69.815000ms
+
+
+Resultados 13 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 16393
+Tempo     ........ 69.282000ms
+
+
+Resultados 14 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 16758
+Tempo     ........ 74.556000ms
+
+
+Resultados 15 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 15979
+Tempo     ........ 80.248000ms
+
+
+Resultados 16 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 16094
+Tempo     ........ 76.429000ms
+
+
+Resultados 17 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 16642
+Tempo     ........ 68.709000ms
+
+
+Resultados 18 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 16364
+Tempo     ........ 69.861000ms
+
+
+Resultados 19 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 15840
+Tempo     ........ 69.683000ms
+
+
+Resultados 20 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 15486
+Tempo     ........ 70.294000ms
+
+
+Resultados 21 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 16307
+Tempo     ........ 74.254000ms
+
+
+Resultados 22 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 16802
+Tempo     ........ 68.231000ms
+
+
+Resultados 23 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 15971
+Tempo     ........ 77.206000ms
+
+
+Resultados 24 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 15776
+Tempo     ........ 70.898000ms
+
+
+Resultados 25 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 16628
+Tempo     ........ 69.142000ms
+
+
+Resultados 26 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 16476
+Tempo     ........ 92.365000ms
+
+
+Resultados 27 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 16094
+Tempo     ........ 70.092000ms
+
+
+Resultados 28 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 16321
+Tempo     ........ 70.606000ms
+
+
+Resultados 29 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 16247
+Tempo     ........ 69.705000ms
+
+
+Resultados 30 A2 para n500plap3i5(Alpha: 0.3):
+Resultado .............. 16206
+Tempo     ........ 68.645000ms
+
+
+Média resultados: ....... 16261.733398
+Média tempo: .......... 76.688467
+
+
