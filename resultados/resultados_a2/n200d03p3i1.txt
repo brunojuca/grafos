@@ -1,0 +1,450 @@
+Resultados 1 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 430
+Tempo     ....... 203.125000ms
+
+
+Resultados 2 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 431
+Tempo     ....... 281.250000ms
+
+
+Resultados 3 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 433
+Tempo     ....... 234.375000ms
+
+
+Resultados 4 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 412
+Tempo     ....... 265.625000ms
+
+
+Resultados 5 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 435
+Tempo     ....... 250.000000ms
+
+
+Resultados 6 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 436
+Tempo     ....... 250.000000ms
+
+
+Resultados 7 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 423
+Tempo     ....... 265.625000ms
+
+
+Resultados 8 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 406
+Tempo     ....... 296.875000ms
+
+
+Resultados 9 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 456
+Tempo     ....... 265.625000ms
+
+
+Resultados 10 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 418
+Tempo     ....... 296.875000ms
+
+
+Resultados 11 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 431
+Tempo     ....... 265.625000ms
+
+
+Resultados 12 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 400
+Tempo     ....... 328.125000ms
+
+
+Resultados 13 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 448
+Tempo     ....... 250.000000ms
+
+
+Resultados 14 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 391
+Tempo     ....... 218.750000ms
+
+
+Resultados 15 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 426
+Tempo     ....... 203.125000ms
+
+
+Resultados 16 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 434
+Tempo     ....... 171.875000ms
+
+
+Resultados 17 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 434
+Tempo     ....... 187.500000ms
+
+
+Resultados 18 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 424
+Tempo     ....... 187.500000ms
+
+
+Resultados 19 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 429
+Tempo     ....... 156.250000ms
+
+
+Resultados 20 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 401
+Tempo     ....... 187.500000ms
+
+
+Resultados 21 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 422
+Tempo     ....... 203.125000ms
+
+
+Resultados 22 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 432
+Tempo     ....... 218.750000ms
+
+
+Resultados 23 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 383
+Tempo     ....... 187.500000ms
+
+
+Resultados 24 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 429
+Tempo     ....... 140.625000ms
+
+
+Resultados 25 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 411
+Tempo     ....... 218.750000ms
+
+
+Resultados 26 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 432
+Tempo     ....... 218.750000ms
+
+
+Resultados 27 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 423
+Tempo     ....... 218.750000ms
+
+
+Resultados 28 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 423
+Tempo     ....... 203.125000ms
+
+
+Resultados 29 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 433
+Tempo     ....... 171.875000ms
+
+
+Resultados 30 A2 para n200d03p3i1(Alpha: 0.1):
+Resultado ................ 428
+Tempo     ....... 171.875000ms
+
+
+Resultados 1 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 729
+Tempo     ....... 156.250000ms
+
+
+Resultados 2 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 702
+Tempo     ....... 187.500000ms
+
+
+Resultados 3 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 714
+Tempo     ....... 187.500000ms
+
+
+Resultados 4 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 743
+Tempo     ....... 203.125000ms
+
+
+Resultados 5 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 726
+Tempo     ....... 187.500000ms
+
+
+Resultados 6 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 683
+Tempo     ....... 156.250000ms
+
+
+Resultados 7 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 707
+Tempo     ....... 156.250000ms
+
+
+Resultados 8 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 735
+Tempo     ....... 187.500000ms
+
+
+Resultados 9 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 708
+Tempo     ....... 187.500000ms
+
+
+Resultados 10 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 738
+Tempo     ....... 187.500000ms
+
+
+Resultados 11 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 729
+Tempo     ....... 187.500000ms
+
+
+Resultados 12 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 741
+Tempo     ....... 187.500000ms
+
+
+Resultados 13 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 710
+Tempo     ....... 171.875000ms
+
+
+Resultados 14 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 719
+Tempo     ....... 171.875000ms
+
+
+Resultados 15 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 713
+Tempo     ....... 203.125000ms
+
+
+Resultados 16 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 724
+Tempo     ....... 187.500000ms
+
+
+Resultados 17 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 751
+Tempo     ....... 187.500000ms
+
+
+Resultados 18 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 741
+Tempo     ....... 203.125000ms
+
+
+Resultados 19 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 700
+Tempo     ....... 187.500000ms
+
+
+Resultados 20 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 699
+Tempo     ....... 140.625000ms
+
+
+Resultados 21 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 702
+Tempo     ....... 171.875000ms
+
+
+Resultados 22 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 708
+Tempo     ....... 171.875000ms
+
+
+Resultados 23 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 695
+Tempo     ....... 187.500000ms
+
+
+Resultados 24 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 687
+Tempo     ....... 281.250000ms
+
+
+Resultados 25 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 731
+Tempo     ....... 171.875000ms
+
+
+Resultados 26 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 724
+Tempo     ....... 140.625000ms
+
+
+Resultados 27 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 722
+Tempo     ....... 171.875000ms
+
+
+Resultados 28 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 736
+Tempo     ....... 171.875000ms
+
+
+Resultados 29 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 752
+Tempo     ....... 187.500000ms
+
+
+Resultados 30 A2 para n200d03p3i1(Alpha: 0.2):
+Resultado ................ 726
+Tempo     ....... 156.250000ms
+
+
+Resultados 1 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1040
+Tempo     ....... 187.500000ms
+
+
+Resultados 2 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1052
+Tempo     ....... 171.875000ms
+
+
+Resultados 3 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ................ 981
+Tempo     ....... 187.500000ms
+
+
+Resultados 4 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1071
+Tempo     ....... 203.125000ms
+
+
+Resultados 5 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1103
+Tempo     ....... 187.500000ms
+
+
+Resultados 6 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1047
+Tempo     ....... 187.500000ms
+
+
+Resultados 7 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1043
+Tempo     ....... 187.500000ms
+
+
+Resultados 8 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1006
+Tempo     ....... 171.875000ms
+
+
+Resultados 9 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1069
+Tempo     ....... 156.250000ms
+
+
+Resultados 10 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ................ 949
+Tempo     ....... 171.875000ms
+
+
+Resultados 11 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1039
+Tempo     ....... 203.125000ms
+
+
+Resultados 12 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1075
+Tempo     ....... 218.750000ms
+
+
+Resultados 13 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1053
+Tempo     ....... 187.500000ms
+
+
+Resultados 14 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1039
+Tempo     ....... 203.125000ms
+
+
+Resultados 15 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1073
+Tempo     ....... 187.500000ms
+
+
+Resultados 16 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1005
+Tempo     ....... 203.125000ms
+
+
+Resultados 17 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1021
+Tempo     ....... 171.875000ms
+
+
+Resultados 18 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1034
+Tempo     ....... 187.500000ms
+
+
+Resultados 19 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1058
+Tempo     ....... 171.875000ms
+
+
+Resultados 20 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1111
+Tempo     ....... 187.500000ms
+
+
+Resultados 21 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1060
+Tempo     ....... 187.500000ms
+
+
+Resultados 22 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1014
+Tempo     ....... 171.875000ms
+
+
+Resultados 23 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1002
+Tempo     ....... 187.500000ms
+
+
+Resultados 24 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1026
+Tempo     ....... 187.500000ms
+
+
+Resultados 25 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1064
+Tempo     ....... 187.500000ms
+
+
+Resultados 26 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1009
+Tempo     ....... 187.500000ms
+
+
+Resultados 27 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1093
+Tempo     ....... 187.500000ms
+
+
+Resultados 28 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1077
+Tempo     ....... 171.875000ms
+
+
+Resultados 29 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1075
+Tempo     ....... 187.500000ms
+
+
+Resultados 30 A2 para n200d03p3i1(Alpha: 0.3):
+Resultado ............... 1066
+Tempo     ....... 187.500000ms
+
+

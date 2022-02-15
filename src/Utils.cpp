@@ -1,5 +1,8 @@
 #include "Utils.h"
+#include <iostream>
+#include <iomanip>
 #include <algorithm>
+#include <ctime>
 #include "set"
 
 Utils::Utils(/* args */)
@@ -272,7 +275,7 @@ vector<MinGapGraph> Utils::greed(Graph *graph, int p, float alpha)
                 edges.push_back(make_pair(node->getId(), edge->getTargetId()));
 
     sort(edges.begin(), edges.end(), [graph](pair<int, int> a, pair<int, int> b)
-         { return abs(graph->getNode(a.first)->getWeight() - graph->getNode(a.second)->getWeight()) > abs(graph->getNode(b.first)->getWeight() - graph->getNode(b.second)->getWeight()); });
+         { return abs((int)(graph->getNode(a.first)->getWeight() - graph->getNode(a.second)->getWeight())) > abs((int)(graph->getNode(b.first)->getWeight() - graph->getNode(b.second)->getWeight())); });
 
     // print edges
     // for (auto edge : edges)
@@ -280,7 +283,7 @@ vector<MinGapGraph> Utils::greed(Graph *graph, int p, float alpha)
     //     cout << edge.first << " " << edge.second << " " << abs(graph->getNode(edge.first)->getWeight() - graph->getNode(edge.second)->getWeight()) << endl;
     // }
 
-    cout << "\nNumero de edges: " << edges.size() << endl;
+    // cout << "\nNumero de edges: " << edges.size() << endl;
 
     vector<MinGapGraph> partitions(p);
 
@@ -310,6 +313,8 @@ vector<MinGapGraph> Utils::greed(Graph *graph, int p, float alpha)
 
 
     graph->order = graph->nodesMap.size();
+
+    // cout << "Progresso:" << endl;
 
     while (insertedNodes.size() != graph->order)
     {
@@ -362,7 +367,7 @@ vector<MinGapGraph> Utils::greed(Graph *graph, int p, float alpha)
                 
             //  }
             //  abc++;
-            return abs(graph->getNode(a.second)->getWeight() - graph->getNode(a.first)->getWeight()) < abs(graph->getNode(b.second)->getWeight() - graph->getNode(b.first)->getWeight()); });
+            return abs((int)(graph->getNode(a.second)->getWeight() - graph->getNode(a.first)->getWeight())) < abs((int)(graph->getNode(b.second)->getWeight() - graph->getNode(b.first)->getWeight())); });
 
         vector<pair<int,int>>::iterator it = candidates.begin();
         if (alpha != 0)
@@ -371,7 +376,7 @@ vector<MinGapGraph> Utils::greed(Graph *graph, int p, float alpha)
             //cout << "futmax: " << max << endl;
             if (max != 0){
                 randNum = rand() % max;
-                cout << randNum << endl;
+                // cout << randNum << endl;
                 for (int i = 0; i < randNum; i++)
                     it++;
             }
@@ -389,11 +394,13 @@ vector<MinGapGraph> Utils::greed(Graph *graph, int p, float alpha)
                 break;
             }
         }
-        cout << "percentage: " << ((float)insertedNodes.size()/graph->order)*100 << "%" << endl;
+        
+        // cout << std::setfill('0') << std::setw(2) << "\b\b\b" << (int)(((float)insertedNodes.size()/graph->order)*100) << "%" << std::flush;
     }
+    // cout << endl << endl;;
     clock_t end = clock();
     long double time_elapsed = 1000.0 * (end - start) / CLOCKS_PER_SEC;
 
-    cout << "Tempo: " << time_elapsed << " ms" << endl; 
+    // cout << "Tempo: " << time_elapsed << " ms" << endl; 
     return partitions;
 }

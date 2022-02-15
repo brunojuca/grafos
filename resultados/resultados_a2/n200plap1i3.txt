@@ -1,0 +1,450 @@
+Resultados 1 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 694
+Tempo     ........ 15.625000ms
+
+
+Resultados 2 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 758
+Tempo     ........ 31.250000ms
+
+
+Resultados 3 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 751
+Tempo     ........ 31.250000ms
+
+
+Resultados 4 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 738
+Tempo     ........ 15.625000ms
+
+
+Resultados 5 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 701
+Tempo     ........ 15.625000ms
+
+
+Resultados 6 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 757
+Tempo     ........ 15.625000ms
+
+
+Resultados 7 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 731
+Tempo     ........ 15.625000ms
+
+
+Resultados 8 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 758
+Tempo     ........ 15.625000ms
+
+
+Resultados 9 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 731
+Tempo     ........ 31.250000ms
+
+
+Resultados 10 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 731
+Tempo     ........ 31.250000ms
+
+
+Resultados 11 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 777
+Tempo     ........ 31.250000ms
+
+
+Resultados 12 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 731
+Tempo     ........ 31.250000ms
+
+
+Resultados 13 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 740
+Tempo     ........ 31.250000ms
+
+
+Resultados 14 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 742
+Tempo     ........ 15.625000ms
+
+
+Resultados 15 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 701
+Tempo     ........ 31.250000ms
+
+
+Resultados 16 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 731
+Tempo     ........ 31.250000ms
+
+
+Resultados 17 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 711
+Tempo     ........ 15.625000ms
+
+
+Resultados 18 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 731
+Tempo     ........ 15.625000ms
+
+
+Resultados 19 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 758
+Tempo     ........ 31.250000ms
+
+
+Resultados 20 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 777
+Tempo     ........ 31.250000ms
+
+
+Resultados 21 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 731
+Tempo     ........ 31.250000ms
+
+
+Resultados 22 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 731
+Tempo     ........ 15.625000ms
+
+
+Resultados 23 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 701
+Tempo     ........ 15.625000ms
+
+
+Resultados 24 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 771
+Tempo     ......... 0.000000ms
+
+
+Resultados 25 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 731
+Tempo     ........ 31.250000ms
+
+
+Resultados 26 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 769
+Tempo     ........ 15.625000ms
+
+
+Resultados 27 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 731
+Tempo     ........ 31.250000ms
+
+
+Resultados 28 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 758
+Tempo     ........ 31.250000ms
+
+
+Resultados 29 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 758
+Tempo     ........ 31.250000ms
+
+
+Resultados 30 A2 para n200plap1i3(Alpha: 0.1):
+Resultado ................ 731
+Tempo     ........ 15.625000ms
+
+
+Resultados 1 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 726
+Tempo     ........ 15.625000ms
+
+
+Resultados 2 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 779
+Tempo     ........ 15.625000ms
+
+
+Resultados 3 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 695
+Tempo     ........ 15.625000ms
+
+
+Resultados 4 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 704
+Tempo     ........ 15.625000ms
+
+
+Resultados 5 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 760
+Tempo     ........ 31.250000ms
+
+
+Resultados 6 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 785
+Tempo     ........ 31.250000ms
+
+
+Resultados 7 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 780
+Tempo     ........ 31.250000ms
+
+
+Resultados 8 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 745
+Tempo     ........ 15.625000ms
+
+
+Resultados 9 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 788
+Tempo     ........ 15.625000ms
+
+
+Resultados 10 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 780
+Tempo     ........ 31.250000ms
+
+
+Resultados 11 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 706
+Tempo     ......... 0.000000ms
+
+
+Resultados 12 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 778
+Tempo     ........ 31.250000ms
+
+
+Resultados 13 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 731
+Tempo     ........ 15.625000ms
+
+
+Resultados 14 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 731
+Tempo     ........ 15.625000ms
+
+
+Resultados 15 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 773
+Tempo     ........ 15.625000ms
+
+
+Resultados 16 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 771
+Tempo     ........ 15.625000ms
+
+
+Resultados 17 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 766
+Tempo     ........ 31.250000ms
+
+
+Resultados 18 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 778
+Tempo     ........ 31.250000ms
+
+
+Resultados 19 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 766
+Tempo     ......... 0.000000ms
+
+
+Resultados 20 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 756
+Tempo     ........ 46.875000ms
+
+
+Resultados 21 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 771
+Tempo     ........ 31.250000ms
+
+
+Resultados 22 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 757
+Tempo     ......... 0.000000ms
+
+
+Resultados 23 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 775
+Tempo     ........ 15.625000ms
+
+
+Resultados 24 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 757
+Tempo     ........ 15.625000ms
+
+
+Resultados 25 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 777
+Tempo     ........ 15.625000ms
+
+
+Resultados 26 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 758
+Tempo     ......... 0.000000ms
+
+
+Resultados 27 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 777
+Tempo     ......... 0.000000ms
+
+
+Resultados 28 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 758
+Tempo     ........ 31.250000ms
+
+
+Resultados 29 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 780
+Tempo     ........ 31.250000ms
+
+
+Resultados 30 A2 para n200plap1i3(Alpha: 0.2):
+Resultado ................ 731
+Tempo     ........ 31.250000ms
+
+
+Resultados 1 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 765
+Tempo     ........ 15.625000ms
+
+
+Resultados 2 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 758
+Tempo     ........ 15.625000ms
+
+
+Resultados 3 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 755
+Tempo     ........ 31.250000ms
+
+
+Resultados 4 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 794
+Tempo     ........ 31.250000ms
+
+
+Resultados 5 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 791
+Tempo     ......... 0.000000ms
+
+
+Resultados 6 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 792
+Tempo     ........ 15.625000ms
+
+
+Resultados 7 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 727
+Tempo     ......... 0.000000ms
+
+
+Resultados 8 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 803
+Tempo     ........ 15.625000ms
+
+
+Resultados 9 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 791
+Tempo     ........ 31.250000ms
+
+
+Resultados 10 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 769
+Tempo     ........ 15.625000ms
+
+
+Resultados 11 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 780
+Tempo     ........ 15.625000ms
+
+
+Resultados 12 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 762
+Tempo     ........ 15.625000ms
+
+
+Resultados 13 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 786
+Tempo     ........ 15.625000ms
+
+
+Resultados 14 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 783
+Tempo     ........ 31.250000ms
+
+
+Resultados 15 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 789
+Tempo     ........ 15.625000ms
+
+
+Resultados 16 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 777
+Tempo     ........ 15.625000ms
+
+
+Resultados 17 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 778
+Tempo     ........ 15.625000ms
+
+
+Resultados 18 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 780
+Tempo     ........ 15.625000ms
+
+
+Resultados 19 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 780
+Tempo     ........ 31.250000ms
+
+
+Resultados 20 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 789
+Tempo     ........ 31.250000ms
+
+
+Resultados 21 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 786
+Tempo     ........ 31.250000ms
+
+
+Resultados 22 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 784
+Tempo     ........ 31.250000ms
+
+
+Resultados 23 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 784
+Tempo     ........ 15.625000ms
+
+
+Resultados 24 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 795
+Tempo     ........ 15.625000ms
+
+
+Resultados 25 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 797
+Tempo     ......... 0.000000ms
+
+
+Resultados 26 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 765
+Tempo     ......... 0.000000ms
+
+
+Resultados 27 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 777
+Tempo     ........ 31.250000ms
+
+
+Resultados 28 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 697
+Tempo     ......... 0.000000ms
+
+
+Resultados 29 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 776
+Tempo     ........ 15.625000ms
+
+
+Resultados 30 A2 para n200plap1i3(Alpha: 0.3):
+Resultado ................ 756
+Tempo     ........ 15.625000ms
+
+
